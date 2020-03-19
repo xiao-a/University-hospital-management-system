@@ -5,11 +5,13 @@ import org.hibernate.annotations.Proxy;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 @Data
 @Entity
 @Proxy(lazy = false)    //关闭延迟加载，不然测试单元总是报错
+@Table(name ="t_patient")
 public class PatientEntity implements Serializable {
     @Id
     private String id;
