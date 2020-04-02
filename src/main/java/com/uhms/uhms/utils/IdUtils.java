@@ -12,6 +12,6 @@ public class IdUtils {
                 r = (long) ((Math.random() + 1) * w);
             }
 
-            return System.currentTimeMillis() + String.valueOf(r).substring(1)+"-"+className;
+            return System.currentTimeMillis() + String.valueOf(r).substring(1)+"_"+className;
         }
     }

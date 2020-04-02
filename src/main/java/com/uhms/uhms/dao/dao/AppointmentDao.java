@@ -1,8 +1,6 @@
 package com.uhms.uhms.dao.dao;
 
 import com.uhms.uhms.entity.AppointmentEntity;
-import com.uhms.uhms.entity.BedEntity;
-
 import java.util.List;
 
 public interface AppointmentDao {

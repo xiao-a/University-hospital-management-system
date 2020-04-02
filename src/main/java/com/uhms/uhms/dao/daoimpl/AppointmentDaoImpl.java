@@ -1,13 +1,12 @@
 package com.uhms.uhms.dao.daoimpl;
-
 import com.uhms.uhms.dao.dao.AppointmentDao;
 import com.uhms.uhms.entity.AppointmentEntity;
-import org.springframework.stereotype.Component;
-
 import java.util.List;
 
-@Component
-public class AppointmentDaoImpl implements AppointmentDao {
+
+
+public class AppointmentDaoImpl  implements AppointmentDao {
+
     @Override
     public void insert(AppointmentEntity appointmentEntity) {
 

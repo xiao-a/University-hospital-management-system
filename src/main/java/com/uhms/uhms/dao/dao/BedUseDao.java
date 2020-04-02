@@ -11,4 +11,5 @@ public interface BedUseDao {
     BedUseEntity getById(String id);
     List<BedUseEntity> getAll();
     void update(String id,BedUseEntity bedUseEntity);
+
 }

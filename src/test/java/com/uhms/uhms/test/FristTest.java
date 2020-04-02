@@ -21,7 +21,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class FristTest {
 
     @Autowired
-    private BedDao bedRepository;
+    private BedDao bedDao;
+
     Logger logger = LogManager.getLogger(LogManager.ROOT_LOGGER_NAME);
     @Test
     public  void test()
@@ -42,14 +43,11 @@ public class FristTest {
 //        logger.info(bedRepository.getAll());
 //        修改
         BedEntity bedEntity =new BedEntity();
-        bedEntity.setId("158462633153120787271-bed");
-        bedEntity.setDivision("jinshen科");
-        bedRepository.update(bedEntity);
-        logger.info(bedRepository.getById("158462633150859610598-bed"));
+        bedEntity.setStatus(BedStatusEnum.IDLE.getType());
+        bedDao.update("158462633152664839265_bed",bedEntity);
 
 
-
-
+        logger.info(bedDao.getById("158462633152664839265_bed"));
     }
 
 }
