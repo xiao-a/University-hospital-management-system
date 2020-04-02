@@ -10,9 +10,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class BedServiceImpl implements BedService {
-    @Autowired
-    private BedDao bedDao;
-    public void insert(BedEntity bedEntity){
-        bedDao.insert(bedEntity);
+    @Override
+    public void insert(BedEntity bedEntity) {
+
     }
+//    @Autowired
+//    private BedDao bedDao;
+//    public void insert(BedEntity bedEntity){
+//        bedDao.insert(bedEntity);
+//    }
 }

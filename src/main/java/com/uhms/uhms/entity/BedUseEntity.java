@@ -16,7 +16,7 @@ import java.sql.Date;
 public class BedUseEntity implements Serializable {
     @Id
     private String id;
-    private String doctorId;
+    private String patientId;
     private Date startDate;
     private Date endDate;
 }

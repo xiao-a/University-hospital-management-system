@@ -40,10 +40,12 @@ public class FristTest {
         //查询
 //        logger.info(bedRepository.getById("158462633134428697002-bed"));
 //        logger.info(bedRepository.getAll());
-        BedEntity bedEntity = bedRepository.getById("158462633134428697002-bed");
-        bedEntity.setDivision("外科");
+//        修改
+        BedEntity bedEntity =new BedEntity();
+        bedEntity.setId("158462633153120787271-bed");
+        bedEntity.setDivision("jinshen科");
         bedRepository.update(bedEntity);
-        logger.info(bedRepository.getById("158462633134428697002-bed"));
+        logger.info(bedRepository.getById("158462633150859610598-bed"));
 
 
 
