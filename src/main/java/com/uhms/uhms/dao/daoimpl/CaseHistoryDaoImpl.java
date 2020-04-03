@@ -14,26 +14,30 @@ public class CaseHistoryDaoImpl implements CaseHistoryDao {
     private CaseHistoryRepository caseHistoryRepository;
     @Override
     public void insert(CaseHistoryEntity caseHistoryEntity) {
-
+        caseHistoryRepository.save(caseHistoryEntity);
     }
 
     @Override
     public void deleteById(String id) {
-
+        caseHistoryRepository.deleteById(id);
     }
 
     @Override
     public CaseHistoryEntity getById(String id) {
-        return null;
+        return caseHistoryRepository.getOne(id);
     }
 
     @Override
     public List<CaseHistoryEntity> getAll() {
-        return null;
+        return caseHistoryRepository.findAll();
     }
 
     @Override
     public void update(String id, CaseHistoryEntity caseHistoryEntity) {
-
+        CaseHistoryEntity entity = getById(id);
+        entity.setIllnessDescription(caseHistoryEntity.getIllnessDescription());
+        entity.setBedUseId(caseHistoryEntity.getBedUseId());
+        entity.setDoctorId(caseHistoryEntity.getDoctorId());
+        entity.setDiagnosis(caseHistoryEntity.getDiagnosis());
     }
 }

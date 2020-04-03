@@ -7,12 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.sql.Date;
 
 @Data
 @Entity
 @Proxy(lazy = false)    //关闭延迟加载，不然测试单元总是报错
 @Table(name = "t_case_history")
-public class CaseHistoryEntity implements Serializable {
+public class CaseHistoryEntity  implements Serializable {
     @Id
     private String id;
     private String doctorId;
@@ -20,5 +21,8 @@ public class CaseHistoryEntity implements Serializable {
     private String bedUseId;
     private String illnessDescription;
     private String Diagnosis;
-    private String createDate;
+    private String status;
+    private Date createDate;
+    private Date updateDate;
+
 }

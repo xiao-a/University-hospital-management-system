@@ -19,4 +19,7 @@ public class BedUseEntity implements Serializable {
     private String patientId;
     private Date startDate;
     private Date endDate;
+    private String status;
+    private Date createDate;
+    private Date updateDate;
 }

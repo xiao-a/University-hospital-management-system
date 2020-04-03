@@ -20,4 +20,7 @@ public class ChangeHospitalEntity implements Serializable {
     private String doctorId;
     private Date changeHospitalDate;
     private String changeHospitalName;
+    private String status;
+    private Date createDate;
+    private Date updateDate;
 }

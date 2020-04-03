@@ -1,6 +1,5 @@
 package com.uhms.uhms.dao.dao;
 
-import com.uhms.uhms.entity.DoctorEntity;
 import com.uhms.uhms.entity.PatientEntity;
 
 import java.util.List;

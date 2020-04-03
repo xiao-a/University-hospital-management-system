@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.persistence.Table;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes= UhmsApplication.class)
@@ -24,30 +26,39 @@ public class FristTest {
     private BedDao bedDao;
 
     Logger logger = LogManager.getLogger(LogManager.ROOT_LOGGER_NAME);
+
+    /**
+     * 插入
+     */
     @Test
-    public  void test()
+    public  void testInset()
     {
-        //插入
-//        for(int i=0;i<10;i++) {
-//            BedEntity bed = new BedEntity();
-//            bed.setId(IdUtils.createID("bed"));
-//            bed.setDivision("内科");
-//            bed.setStatus(BedStatusEnum.IDLE.getType());
-//            bedRepository.insert(bed);
-//        }
-        //删除
-//        bedRepository.deleteById("158462633153930061598-bed");
+        for(int i=0;i<10;i++) {
+            BedEntity bed = new BedEntity();
+            bed.setDivision("内科");
+            bed.setUseStatus(BedStatusEnum.IDLE.getType());
+            bedDao.insert(bed);
+        }
 
-        //查询
-//        logger.info(bedRepository.getById("158462633134428697002-bed"));
-//        logger.info(bedRepository.getAll());
-//        修改
-        BedEntity bedEntity =new BedEntity();
-        bedEntity.setStatus(BedStatusEnum.IDLE.getType());
-        bedDao.update("158462633152664839265_bed",bedEntity);
+    }
 
+    /**
+     *  查询
+     */
+    @Test
+    public void testDelete()
+    {
+        logger.info(bedDao.getById("158462633134428697002-bed"));
+        logger.info(bedDao.getAll());
+    }
 
-        logger.info(bedDao.getById("158462633152664839265_bed"));
+    @Test
+    public void testUpdate()
+    {
+        BedEntity entity = bedDao.getById("158588395023721143559_bed");
+        entity.setUseStatus(BedStatusEnum.IN_USE.getType());
+        bedDao.update("158588395023721143559_bed",entity);
+        logger.info(bedDao.getById("158588395023721143559_bed"));
     }
 
 }

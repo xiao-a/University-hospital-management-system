@@ -13,10 +13,13 @@ import java.sql.Date;
 @Entity
 @Proxy(lazy = false)    //关闭延迟加载，不然测试单元总是报错
 @Table(name="t_appointment")
-public class AppointmentEntity implements Serializable {
+public class AppointmentEntity  implements Serializable {
     @Id
     private String id;
     private String patientId;
     private String doctorId;
     private Date appointmentDate;
+    private String status;
+    private Date createDate;
+    private Date updateDate;
 }

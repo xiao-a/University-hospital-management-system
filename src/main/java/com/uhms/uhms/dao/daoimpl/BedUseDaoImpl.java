@@ -39,5 +39,6 @@ public class BedUseDaoImpl implements BedUseDao {
         entity.setPatientId(bedUseEntity.getPatientId());
         entity.setStartDate(bedUseEntity.getStartDate());
         entity.setEndDate(bedUseEntity.getEndDate());
+        bedUseRepository.save(entity);
     }
 }

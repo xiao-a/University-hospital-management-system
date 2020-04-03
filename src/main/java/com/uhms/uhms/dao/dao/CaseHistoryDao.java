@@ -1,6 +1,5 @@
 package com.uhms.uhms.dao.dao;
 
-import com.uhms.uhms.entity.AppointmentEntity;
 import com.uhms.uhms.entity.CaseHistoryEntity;
 
 import java.util.List;
