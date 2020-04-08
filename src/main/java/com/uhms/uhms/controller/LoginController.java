@@ -16,7 +16,7 @@ public class LoginController{
     private DoctorService doctorService;
     @RequestMapping("/login")
     public String hello() {
-        return "/index";
+        return "/login";
     }
     @RequestMapping("/login/submit")
     public String loginSubmission(HttpServletRequest request, HttpServletResponse response, Model model) {
@@ -24,7 +24,7 @@ public class LoginController{
         String password = request.getParameter("password");
         int i = doctorService.login(username, password);
         if(i>0)
-            return "/loginSuccess";
+            return "/main";
         else
             return "/loginFail";
     }
