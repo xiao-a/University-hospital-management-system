@@ -25,6 +25,7 @@ public class DoctorEntity  implements Serializable {
     private String phoneNumber;
     private String username;
     private String password;
+    private String email;
     private String status;
     private Date createDate;
     private Date updateDate;

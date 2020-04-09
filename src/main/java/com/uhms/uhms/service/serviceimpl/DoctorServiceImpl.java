@@ -2,6 +2,7 @@ package com.uhms.uhms.service.serviceimpl;
 
 import com.uhms.uhms.dao.dao.DoctorDao;
 import com.uhms.uhms.entity.BedEntity;
+import com.uhms.uhms.entity.DoctorEntity;
 import com.uhms.uhms.service.service.BedService;
 import com.uhms.uhms.service.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,5 +15,10 @@ public class DoctorServiceImpl implements DoctorService {
     @Override
     public int login(String username, String password){
         return doctorDao.login(username, password);
+    }
+
+    @Override
+    public void insert(DoctorEntity doctorEntity) {
+        doctorDao.insert(doctorEntity);
     }
 }

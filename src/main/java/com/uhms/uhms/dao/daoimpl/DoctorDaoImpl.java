@@ -3,6 +3,7 @@ package com.uhms.uhms.dao.daoimpl;
 import com.uhms.uhms.dao.dao.DoctorDao;
 import com.uhms.uhms.entity.DoctorEntity;
 import com.uhms.uhms.repository.DoctorRepository;
+import com.uhms.uhms.utils.IdUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +16,8 @@ public class DoctorDaoImpl implements DoctorDao {
     private DoctorRepository doctorRepository;
     @Override
     public void insert(DoctorEntity doctorEntity) {
-
+        doctorEntity.setId(IdUtils.createID("doctor"));
+        doctorRepository.save(doctorEntity);
     }
 
     @Override

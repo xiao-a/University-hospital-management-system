@@ -35,9 +35,9 @@
               <div class="info d-flex align-items-center">
                 <div class="content">
                   <div class="logo">
-                    <h1>Dashboard</h1>
+                    <h1>管理系统</h1>
                   </div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                  <p>河南职业技术校医院管理系统</p>
                 </div>
               </div>
             </div>
@@ -45,27 +45,23 @@
             <div class="col-lg-6 bg-white">
               <div class="form d-flex align-items-center">
                 <div class="content">
-                  <form class="form-validate">
+                  <form class="form-validate" method="post" action="/register/submit">
                     <div class="form-group">
-                      <input id="register-username" type="text" name="registerUsername" required data-msg="Please enter your username" class="input-material">
-                      <label for="register-username" class="label-material">User Name</label>
-                    </div>
-                    <div class="form-group">
-                      <input id="register-email" type="email" name="registerEmail" required data-msg="Please enter a valid email address" class="input-material">
-                      <label for="register-email" class="label-material">Email Address      </label>
+                      <input id="register-username" type="text" name="username" required data-msg="请输入名户名" class="input-material">
+                      <label for="register-username" class="label-material">用户名</label>
                     </div>
                     <div class="form-group">
-                      <input id="register-password" type="password" name="registerPassword" required data-msg="Please enter your password" class="input-material">
-                      <label for="register-password" class="label-material">password        </label>
-                    </div>
-                    <div class="form-group terms-conditions">
-                      <input id="register-agree" name="registerAgree" type="checkbox" required value="1" data-msg="Your agreement is required" class="checkbox-template">
-                      <label for="register-agree">Agree the terms and policy</label>
+                      <input id="register-email" type="email" name="email" required data-msg="请输入合法的邮箱地址" class="input-material">
+                      <label for="register-email" class="label-material">邮箱地址</label>
                     </div>
                     <div class="form-group">
-                      <button id="regidter" type="submit" name="registerSubmit" class="btn btn-primary">Register</button>
+                      <input id="register-password" type="password" name="password" required data-msg="请输入密码" class="input-material">
+                      <label for="register-password" class="label-material">密码</label>
                     </div>
-                  </form><small>Already have an account? </small><a href="main.html" class="signup">Login</a>
+                    <div class="form-group">
+                      <button id="regidter" type="submit" class="btn btn-primary">注册</button>
+                    </div>
+                  </form><small>已经注册？</small><a href="main.html" class="signup">登录</a>
                 </div>
               </div>
             </div>
@@ -73,7 +69,7 @@
         </div>
       </div>
       <div class="copyrights text-center">
-        <p>Copyright &copy; 2019.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+        <p>河南职业技术校医院管理系统</p>
       </div>
     </div>
     <!-- JavaScript files-->
