@@ -11,5 +11,5 @@ public interface DoctorDao {
     List<DoctorEntity> getAll();
     void update(String id, DoctorEntity doctorEntity);
 
-    int login(String username,String password);
+    String login(String username,String password);
 }

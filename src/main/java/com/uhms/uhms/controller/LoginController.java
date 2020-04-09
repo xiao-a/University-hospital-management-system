@@ -22,11 +22,13 @@ public class LoginController{
     public String loginSubmission(HttpServletRequest request, HttpServletResponse response, Model model) {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        int i = doctorService.login(username, password);
-        if(i>0)
+        String id = doctorService.login(username, password);
+        if(id!=null&&!id.equals("")){
+            model.addAttribute("personal_id",id);
             return "/main";
-        else
+        }else {
             return "/loginFail";
+        }
     }
 
     @RequestMapping("/register")

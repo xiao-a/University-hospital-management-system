@@ -13,12 +13,17 @@ public class DoctorServiceImpl implements DoctorService {
     @Autowired
     private DoctorDao doctorDao;
     @Override
-    public int login(String username, String password){
+    public String login(String username, String password){
         return doctorDao.login(username, password);
     }
 
     @Override
     public void insert(DoctorEntity doctorEntity) {
         doctorDao.insert(doctorEntity);
+    }
+
+    @Override
+    public DoctorEntity getById(String id) {
+        return doctorDao.getById(id);
     }
 }

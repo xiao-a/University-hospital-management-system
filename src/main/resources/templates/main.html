@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -129,8 +129,14 @@
                         <li><a href="#">二级菜单</a></li>
                       </ul>
                     </li>
-                    <li><a href="main.html"> <i class="icon-interface-windows"></i>登录页面 </a></li>
-          </ul><span class="heading">Extras</span>
+                    <li><a href="#personal" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>我的</a>
+                      <ul id="personal" class="collapse list-unstyled ">
+                        <li><a th:href="@{/my_info/} + ${personal_id}"> 个人信息显示</a></li>
+                        <li><a href="#">修改个人信息</a></li>
+                      </ul>
+                    </li>
+          </ul>
+          <span class="heading">Extras</span>
           <ul class="list-unstyled">
             <li> <a href="#"> <i class="icon-flask"></i>Demo1</a></li>
             <li> <a href="#"> <i class="icon-screen"></i>Demo2</a></li>
@@ -142,7 +148,7 @@
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom">Dashboard</h2>
+              <h2 class="no-margin-bottom" name="id" th:text="${personal_id}">Dashboard</h2>
             </div>
           </header>
           <!-- Dashboard Counts Section-->
@@ -685,12 +691,8 @@
           <footer class="main-footer">
             <div class="container-fluid">
               <div class="row">
-                <div class="col-sm-6">
-                  <p>Copyright &copy; 2019.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
-                </div>
-                <div class="col-sm-6 text-right">
-                  <p></p>
-                  <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+                <div class="col-sm-12" align="center">
+                  <p>版本V0.1.</p>
                 </div>
               </div>
             </div>

@@ -22,17 +22,17 @@ public class DoctorDaoImpl implements DoctorDao {
 
     @Override
     public void deleteById(String id) {
-
+        doctorRepository.deleteById(id);
     }
 
     @Override
     public DoctorEntity getById(String id) {
-        return null;
+        return doctorRepository.getOne(id);
     }
 
     @Override
     public List<DoctorEntity> getAll() {
-        return null;
+        return doctorRepository.findAll();
     }
 
     @Override
@@ -41,7 +41,7 @@ public class DoctorDaoImpl implements DoctorDao {
     }
 
     @Override
-    public int login(String username, String password) {
+    public String login(String username, String password) {
         return doctorRepository.login(username,password);
     }
 }
