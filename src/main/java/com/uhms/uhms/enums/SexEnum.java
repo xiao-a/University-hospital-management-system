@@ -26,4 +26,15 @@ public enum SexEnum{
         return null;
     }
 
+    public static  String getTypeByName(String name){
+        for (SexEnum sexEnum:SexEnum.values())
+        {
+            if (sexEnum.describe.equals(name))
+            {
+                return sexEnum.type;
+            }
+        }
+        return null;
+    }
+
 }

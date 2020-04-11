@@ -9,7 +9,8 @@ public interface DoctorDao {
     void deleteById(String id);
     DoctorEntity getById(String id);
     List<DoctorEntity> getAll();
+    void updateJpa(DoctorEntity doctorEntity);
     void update(String id, DoctorEntity doctorEntity);
 
-    String login(String username,String password);
+    DoctorEntity login(String username,String password);
 }

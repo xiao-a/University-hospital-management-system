@@ -18,7 +18,7 @@ public class BedDaoImpl implements BedDao {
     private BedRepository bedRepository;
     @Override
     public void insert(BedEntity bedEntity) {
-        bedEntity.setId(IdUtils.createID("bed"));
+        bedEntity.setBedId(IdUtils.createID("bed"));
         bedRepository.save(bedEntity);
     }
 

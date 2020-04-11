@@ -15,7 +15,7 @@ import java.sql.Date;
 @Table(name = "t_change_hospital")
 public class ChangeHospitalEntity implements Serializable {
     @Id
-    private String id;
+    private String changeHospitalId;
     private String patientId;
     private String doctorId;
     private Date changeHospitalDate;

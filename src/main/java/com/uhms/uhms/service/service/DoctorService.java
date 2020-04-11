@@ -1,9 +1,11 @@
 package com.uhms.uhms.service.service;
 
+import com.uhms.uhms.dto.DoctorDto;
 import com.uhms.uhms.entity.DoctorEntity;
 
 public interface DoctorService {
-    String login(String username,String password);
+    DoctorEntity login(String username,String password);
     void insert(DoctorEntity doctorEntity);
-    DoctorEntity getById(String id);
+    DoctorDto getById(String id);
+    void updateJpa(DoctorDto doctorDto);
 }

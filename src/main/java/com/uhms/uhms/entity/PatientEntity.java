@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 @Data
 @Entity
@@ -15,7 +15,7 @@ import java.sql.Date;
 @Table(name ="t_patient")
 public class PatientEntity  implements Serializable {
     @Id
-    private String id;
+    private String PatientId;
     private String name;
     private String sex;
     private Integer age;

@@ -16,7 +16,7 @@ import java.sql.Date;
 @Table(name = "t_bed")
 public class BedEntity  implements Serializable {
     @Id
-    private String id;
+    private String bedId;
     private String useStatus;
     private String division;
     private String status;
