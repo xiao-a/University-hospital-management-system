@@ -29,4 +29,9 @@ public class PatientServiceImpl implements PatientService {
     public PatientEntity getById(String id) {
         return patientDao.getById(id);
     }
+
+    @Override
+    public void deleteById(String id) {
+        patientDao.deleteById(id);
+    }
 }

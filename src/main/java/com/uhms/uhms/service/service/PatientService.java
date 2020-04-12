@@ -9,4 +9,5 @@ public interface PatientService {
     List<PatientEntity> findAll();
     void insert(PatientEntity patientEntity);
     PatientEntity getById(String id);
+    void deleteById(String id);
 }

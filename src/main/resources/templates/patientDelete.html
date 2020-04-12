@@ -8,17 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="../static/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="../static/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../static/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Fontastic Custom icon font-->
-    <link rel="stylesheet" href="../static/css/fontastic.css">
+    <link rel="stylesheet" href="../../static/css/fontastic.css">
     <!-- Google fonts - Poppins -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="../static/css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="../../static/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="../static/css/custom.css">
+    <link rel="stylesheet" href="../../static/css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="../static/img/favicon.ico">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
@@ -93,7 +93,7 @@
                   </ul>
                 </li>
                 <!-- Languages dropdown    -->
-                <li class="nav-item dropdown"><a id="languages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="../static/img/flags/16/GB.png" alt="English"><span class="d-none d-sm-inline-block">English</span></a>
+                <li class="nav-item dropdown"><a id="languages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="../../static/img/flags/16/GB.png" alt="English"><span class="d-none d-sm-inline-block">English</span></a>
                   <ul aria-labelledby="languages" class="dropdown-menu">
                     <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="../static/img/flags/16/DE.png" alt="English" class="mr-2">German</a></li>
                     <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="../static/img/flags/16/FR.png" alt="English" class="mr-2">French                                         </a></li>
@@ -111,23 +111,23 @@
         <nav class="side-navbar">
           <!-- Sidebar Header-->
           <div class="sidebar-header d-flex align-items-center">
-            <div class="avatar"><img src="../static/img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
+            <div class="avatar"><img src="../../static/img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
             <div class="title">
               <h1 class="h4" th:text="${doctor.name}">王麻子</h1>
               <p th:inline="text">[[${doctor.division}]]精神科主治医师</p>
             </div>
           </div>
           <ul class="list-unstyled">
-                    <li class="active"><a href="/"> <i class="icon-home"></i>首页 </a></li>
+                    <li ><a href="/"> <i class="icon-home"></i>首页 </a></li>
                     <li><a href="tables.html"> <i class="icon-grid"></i>表格</a></li>
                     <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>图表</a></li>
                     <li><a href="forms.html"> <i class="icon-padnote"></i>表单</a></li>
                     <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>患者信息管理</a>
                       <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                        <li><a href="#">患者信息列表</a></li>
-                        <li><a href="#">添加患者信息</a></li>
-                        <li><a href="#">修改患者信息</a></li>
-                        <li><a href="#">删除患者信息</a></li>
+                        <li><a th:href="@{/select_patient/} + ${doctor.doctorId}">患者信息列表</a></li>
+                        <li><a th:href="@{/add_patient/} + ${doctor.doctorId}">添加患者信息</a></li>
+                        <li><a th:href="@{/update_patient/} + ${doctor.doctorId}">修改患者信息</a></li>
+                        <li class="active"><a th:href="@{/delete_patient/} + ${doctor.doctorId}">删除患者信息</a></li>
                       </ul>
                     </li>
                     <li><a href="#personal" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>我的</a>
@@ -255,7 +255,7 @@
                 <div class="row bg-white has-shadow">
                   <div class="left-col col-lg-6 d-flex align-items-center justify-content-between">
                     <div class="project-title d-flex align-items-center">
-                      <div class="image has-shadow"><img src="../static/img/project-1.jpg" alt="..." class="img-fluid"></div>
+                      <div class="image has-shadow"><img src="../../static/img/project-1.jpg" alt="..." class="img-fluid"></div>
                       <div class="text">
                         <h3 class="h4">Project Title</h3><small>Lorem Ipsum Dolor</small>
                       </div>
@@ -278,7 +278,7 @@
                 <div class="row bg-white has-shadow">
                   <div class="left-col col-lg-6 d-flex align-items-center justify-content-between">
                     <div class="project-title d-flex align-items-center">
-                      <div class="image has-shadow"><img src="../static/img/project-2.jpg" alt="..." class="img-fluid"></div>
+                      <div class="image has-shadow"><img src="../../static/img/project-2.jpg" alt="..." class="img-fluid"></div>
                       <div class="text">
                         <h3 class="h4">Project Title</h3><small>Lorem Ipsum Dolor</small>
                       </div>
@@ -301,7 +301,7 @@
                 <div class="row bg-white has-shadow">
                   <div class="left-col col-lg-6 d-flex align-items-center justify-content-between">
                     <div class="project-title d-flex align-items-center">
-                      <div class="image has-shadow"><img src="../static/img/project-3.jpg" alt="..." class="img-fluid"></div>
+                      <div class="image has-shadow"><img src="../../static/img/project-3.jpg" alt="..." class="img-fluid"></div>
                       <div class="text">
                         <h3 class="h4">Project Title</h3><small>Lorem Ipsum Dolor</small>
                       </div>
@@ -324,7 +324,7 @@
                 <div class="row bg-white has-shadow">
                   <div class="left-col col-lg-6 d-flex align-items-center justify-content-between">
                     <div class="project-title d-flex align-items-center">
-                      <div class="image has-shadow"><img src="../static/img/project-4.jpg" alt="..." class="img-fluid"></div>
+                      <div class="image has-shadow"><img src="../../static/img/project-4.jpg" alt="..." class="img-fluid"></div>
                       <div class="text">
                         <h3 class="h4">Project Title</h3><small>Lorem Ipsum Dolor</small>
                       </div>
@@ -376,7 +376,7 @@
                       </div>
                     </div>
                     <div class="card-body text-center">
-                      <div class="client-avatar"><img src="../static/img/avatar-2.jpg" alt="..." class="img-fluid rounded-circle">
+                      <div class="client-avatar"><img src="../../static/img/avatar-2.jpg" alt="..." class="img-fluid rounded-circle">
                         <div class="status bg-green"></div>
                       </div>
                       <div class="client-title">
@@ -448,12 +448,12 @@
                             <h3 class="h5">Lorem Ipsum Dolor</h3></a><small>Posted on 5th June 2017 by Ashley Wood.   </small></div>
                       </div>
                       <div class="item d-flex align-items-center">
-                        <div class="image"><img src="../static/img/avatar-4.jpg" alt="..." class="img-fluid rounded-circle"></div>
+                        <div class="image"><img src="../../static/img/avatar-4.jpg" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="text"><a href="#">
                             <h3 class="h5">Lorem Ipsum Dolor</h3></a><small>Posted on 5th June 2017 by Jason Doe.   </small></div>
                       </div>
                       <div class="item d-flex align-items-center">
-                        <div class="image"><img src="../static/img/avatar-5.jpg" alt="..." class="img-fluid rounded-circle"></div>
+                        <div class="image"><img src="../../static/img/avatar-5.jpg" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="text"><a href="#">
                             <h3 class="h5">Lorem Ipsum Dolor</h3></a><small>Posted on 5th June 2017 by Sam Martinez.   </small></div>
                       </div>
@@ -702,13 +702,13 @@
       </div>
     </div>
     <!-- JavaScript files-->
-    <script src="../static/vendor/jquery/jquery.min.js"></script>
-    <script src="../static/vendor/popper.js/umd/popper.min.js"> </script>
-    <script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../static/vendor/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="../static/vendor/chart.js/Chart.min.js"></script>
-    <script src="../static/vendor/jquery-validation/jquery.validate.min.js"></script>
-    <script src="../static/js/charts-home.js"></script>
+    <script src="../../static/vendor/jquery/jquery.min.js"></script>
+    <script src="../../static/vendor/popper.js/umd/popper.min.js"> </script>
+    <script src="../../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../static/vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="../../static/vendor/chart.js/Chart.min.js"></script>
+    <script src="../../static/vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script src="../../static/js/charts-home.js"></script>
     <!-- Main File-->
     <script src="../static/js/front.js"></script>
   </body>

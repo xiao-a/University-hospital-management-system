@@ -27,7 +27,7 @@ public class PatientDaoImpl implements PatientDao {
 
     @Override
     public void deleteById(String id) {
-
+        patientRepository.deleteById(id);
     }
 
     @Override

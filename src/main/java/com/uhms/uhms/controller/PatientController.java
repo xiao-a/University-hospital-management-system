@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
@@ -26,17 +27,27 @@ public class PatientController {
         model.addAttribute("patientList",patientList);
         return "/patientSelect";
     }
-    @RequestMapping("/select_patient_detail/{doctorId}/{patientId}")
+    @RequestMapping(value = "/select_patient_detail/{doctorId}/{patientId}" ,method = RequestMethod.GET)
     public String selectDetailPatient(@PathVariable("doctorId")String doctorId,@PathVariable("patientId")String patientId,Model model){
         DoctorDto doctorDto = doctorService.getById(doctorId);
         PatientEntity patient = patientService.getById(patientId);
         System.out.println(patient);
         model.addAttribute("doctor",doctorDto);
         model.addAttribute("patient",patient);
-        return "/updateMyInfo";
+        return "/patientDetailSelect";
     }
-    @RequestMapping("/update_patient/{doctorId}")
-    public String updatePatient(@PathVariable("doctorId")String doctorId,Model model){
+    @RequestMapping(value = "/update_patient/{doctorId}/{patientId}",method = RequestMethod.GET)
+    public String updatePatient(@PathVariable("doctorId")String doctorId,@PathVariable("patientId")String patientId,Model model){
+        DoctorDto doctorDto = doctorService.getById(doctorId);
+        PatientEntity patient = patientService.getById(patientId);
+        System.out.println(patient);
+        model.addAttribute("doctor",doctorDto);
+        model.addAttribute("patient",patient);
+        return "/patientUpdate";
+    }
+    @RequestMapping(value = "/delete_patient/{doctorId}/{patientId}",method = RequestMethod.GET)
+    public String deletePatient(@PathVariable("doctorId")String doctorId,@PathVariable("patientId")String patientId,Model model){
+        patientService.deleteById(patientId);
         DoctorDto doctorDto = doctorService.getById(doctorId);
         List<PatientEntity> patientList = patientService.findAll();
         model.addAttribute("doctor",doctorDto);
