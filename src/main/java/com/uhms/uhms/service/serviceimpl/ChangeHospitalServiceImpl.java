@@ -2,6 +2,7 @@ package com.uhms.uhms.service.serviceimpl;
 
 import com.uhms.uhms.dao.dao.ChangeHospitalDao;
 import com.uhms.uhms.dao.dao.PatientDao;
+import com.uhms.uhms.dto.ChangeHospitalDto;
 import com.uhms.uhms.dto.PatientDto;
 import com.uhms.uhms.entity.ChangeHospitalEntity;
 import com.uhms.uhms.entity.PatientEntity;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @Service
 public class ChangeHospitalServiceImpl implements ChangeHospitalService {
+    private  ChangeHospitalEntity changeHospitalEntity=new ChangeHospitalEntity();
 
     @Autowired
     private ChangeHospitalDao changeHospitalDao;
@@ -26,7 +28,11 @@ public class ChangeHospitalServiceImpl implements ChangeHospitalService {
     }
 
     @Override
-    public void insert(ChangeHospitalEntity changeHospitalEntity) {
+    public void insert(ChangeHospitalDto changeHospitalDto) {
+        changeHospitalEntity.setDoctorId(changeHospitalDto.getDoctorId());
+        changeHospitalEntity.setPatientId(changeHospitalDto.getPatientId());
+        changeHospitalEntity.setChangeHospitalName(changeHospitalDto.getChangeHospitalName());
+        changeHospitalEntity.setChangeHospitalDate(DateUtils.getCurrentDate());
         changeHospitalDao.insert(changeHospitalEntity);
     }
 
