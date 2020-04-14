@@ -114,14 +114,17 @@
             <div class="avatar"><img src="../../static/img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
             <div class="title">
               <h1 class="h4" th:text="${doctor.name}">王麻子</h1>
-              <p th:inline="text">[[${doctor.division}]]精神科主治医师</p>
+              <p th:inline="text">[[${doctor.division}]]主治医师</p>
             </div>
           </div>
           <ul class="list-unstyled">
-                    <li ><a th:href="@{/main/} + ${doctor.doctorId}"> <i class="icon-home"></i>首页 </a></li>
-                    <li><a href="tables.html"> <i class="icon-grid"></i>表格</a></li>
-                    <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>图表</a></li>
-                    <li><a href="forms.html"> <i class="icon-padnote"></i>表单</a></li>
+                <li ><a th:href="@{/main/} + ${doctor.doctorId}"> <i class="icon-home"></i>首页 </a></li>
+                  <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>转院信息管理</a>
+                      <ul id="changeHospital" class="collapse list-unstyled ">
+                          <li ><a th:href="@{/select_change_hospital_list/} + ${doctor.doctorId}">转院信息列表</a></li>
+                          <li><a th:href="@{/add_change_hospital/} + ${doctor.doctorId}">添加转院信息</a></li>
+                      </ul>
+                  </li>
                     <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>患者信息管理</a>
                       <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                           <li class="active"><a th:href="@{/select_patient/} + ${doctor.doctorId}">患者信息列表</a></li>
@@ -136,13 +139,6 @@
                         <li><a th:href="@{/update_my_info/} + ${doctor.doctorId}">修改个人信息</a></li>
                       </ul>
                     </li>
-          </ul>
-          <span class="heading">Extras</span>
-          <ul class="list-unstyled">
-            <li> <a href="#"> <i class="icon-flask"></i>Demo1</a></li>
-            <li> <a href="#"> <i class="icon-screen"></i>Demo2</a></li>
-            <li> <a href="#"> <i class="icon-mail"></i>Demo3</a></li>
-            <li> <a href="#"> <i class="icon-picture"></i>Demo4</a></li>
           </ul>
         </nav>
         <div class="content-inner">

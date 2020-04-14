@@ -41,7 +41,8 @@ public class PatientDaoImpl implements PatientDao {
     }
 
     @Override
-    public void update(String id, PatientEntity patientEntity) {
-
+    public void update(PatientEntity patientEntity) {
+        patientRepository.save(patientEntity);
     }
+
 }

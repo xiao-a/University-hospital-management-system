@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface PatientService {
     List<PatientEntity> findAll();
-    void insert(PatientEntity patientEntity);
+    void insert(PatientDto patientDto);
     PatientEntity getById(String id);
     void deleteById(String id);
+    void updateJpa(PatientDto patientDto);
 }

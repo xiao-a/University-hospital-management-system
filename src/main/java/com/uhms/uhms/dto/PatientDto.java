@@ -7,13 +7,12 @@ import java.sql.Date;
 
 @Data
 public class PatientDto implements Serializable {
-    private String id;
+    private String patientId;
+    private String doctorId;
     private String name;
     private String sex;
     private Integer age;
     private String username;
-    private String password;
     private String phoneNumber;
     private String address;
-    private String status;
 }

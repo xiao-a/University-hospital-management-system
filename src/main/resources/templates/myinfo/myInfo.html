@@ -2,24 +2,25 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
-    <title>查询患者信息</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>查看我的个人信息</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="../../static/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="../../static/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Fontastic Custom icon font-->
-    <link rel="stylesheet" href="../../static/css/fontastic.css">
+    <link rel="stylesheet" href="../static/css/fontastic.css">
     <!-- Google fonts - Poppins -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="../../static/css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="../static/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="../../static/css/custom.css">
+    <link rel="stylesheet" href="../static/css/custom.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="../../static/img/favicon.ico">
+    <link rel="shortcut icon" href="../static/img/favicon.ico">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -92,10 +93,10 @@
                   </ul>
                 </li>
                 <!-- Languages dropdown    -->
-                <li class="nav-item dropdown"><a id="languages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="../../static/img/flags/16/GB.png" alt="English"><span class="d-none d-sm-inline-block">English</span></a>
+                <li class="nav-item dropdown"><a id="languages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="../static/img/flags/16/GB.png" alt="English"><span class="d-none d-sm-inline-block">English</span></a>
                   <ul aria-labelledby="languages" class="dropdown-menu">
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="../../static/img/flags/16/DE.png" alt="English" class="mr-2">German</a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="../../static/img/flags/16/FR.png" alt="English" class="mr-2">French                                         </a></li>
+                    <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="../static/img/flags/16/DE.png" alt="English" class="mr-2">German</a></li>
+                    <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="../static/img/flags/16/FR.png" alt="English" class="mr-2">French                                         </a></li>
                   </ul>
                 </li>
                 <!-- Logout    -->
@@ -110,92 +111,86 @@
         <nav class="side-navbar">
           <!-- Sidebar Header-->
           <div class="sidebar-header d-flex align-items-center">
-            <div class="avatar"><img src="../../static/img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
+            <div class="avatar"><img src="../static/img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
             <div class="title">
               <h1 class="h4" th:text="${doctor.name}">王麻子</h1>
               <p th:inline="text">[[${doctor.division}]]主治医师</p>
             </div>
           </div>
           <ul class="list-unstyled">
-                    <li ><a th:href="@{/main/} + ${doctor.doctorId}"> <i class="icon-home"></i>首页 </a></li>
-                      <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>转院信息管理</a>
-                          <ul id="changeHospital" class="collapse list-unstyled ">
-                              <li ><a th:href="@{/select_change_hospital_list/} + ${doctor.doctorId}">转院信息列表</a></li>
-                              <li><a th:href="@{/add_change_hospital/} + ${doctor.doctorId}">添加转院信息</a></li>
-                          </ul>
-                      </li>
-                    <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>患者信息管理</a>
-                      <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                        <li class="active"><a th:href="@{/select_patient/} + ${doctor.doctorId}">患者信息列表</a></li>
-                        <li ><a th:href="@{/add_patient/} + ${doctor.doctorId}">添加患者信息</a></li>
-                        <li><a th:href="@{/update_patient/} + ${doctor.doctorId}">修改患者信息</a></li>
-                        <li><a th:href="@{/delete_patient/} + ${doctor.doctorId}">删除患者信息</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="#personal" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>我的</a>
-                      <ul id="personal" class="collapse list-unstyled ">
-                        <li><a th:href="@{/my_info/} + ${doctor.doctorId}"> 个人信息显示</a></li>
-                        <li><a th:href="@{/update_my_info/} + ${doctor.doctorId}">修改个人信息</a></li>
-                      </ul>
-                    </li>
+              <li><a th:href="@{/main/} + ${doctor.doctorId}"> <i class="icon-home"></i>首页 </a></li>
+            <li><a href="tables.html"> <i class="icon-grid"></i>表格</a></li>
+            <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>图表</a></li>
+            <li><a href="forms.html"> <i class="icon-padnote"></i>表单</a></li>
+            <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>患者信息管理</a>
+              <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+                <li class="active"><a th:href="@{/select_patient/} + ${doctor.doctorId}">患者信息列表</a></li>
+                <li ><a th:href="@{/add_patient/} + ${doctor.doctorId}">添加患者信息</a></li>
+                <li><a th:href="@{/update_patient/} + ${doctor.doctorId}">修改患者信息</a></li>
+                <li><a th:href="@{/delete_patient/} + ${doctor.doctorId}">删除患者信息</a></li>
+              </ul>
+            </li>
+            <li><a href="#personal" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>我的</a>
+              <ul id="personal" class="collapse list-unstyled ">
+                <li class="active"><a th:href="@{/my_info/} + ${doctor.doctorId}"> 个人信息显示</a></li>
+                <li><a th:href="@{/update_my_info/} + ${doctor.doctorId}">修改个人信息</a></li>
+              </ul>
+            </li>
           </ul>
         </nav>
         <div class="content-inner">
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom" name="id" th:text="${doctor.doctorId}">个人首页</h2>
+              <h2 class="no-margin-bottom" name="id" th:text="${doctor.doctorId}">显示个人信息</h2>
             </div>
           </header>
-          <section class="dashboard-counts no-padding-bottom">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="card">
-                  <div class="card-close">
-                    <div class="dropdown">
-                      <button type="button" id="closeCard1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                      <div aria-labelledby="closeCard1" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+          <section class="tables">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="card">
+                    <div class="card-close">
+                      <div class="dropdown">
+                        <button type="button" id="closeCard1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                        <div aria-labelledby="closeCard1" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                      </div>
                     </div>
-                  </div>
-                  <div class="card-header d-flex align-items-center">
-                    <div class="row">
-                      <h3 class="h4">病人信息表</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4 th:text="${msg}"></h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a th:href="@{'/print_patient_list/'+${doctor.doctorId}}" class="btn btn-primary">打印</a>
-                      &nbsp;&nbsp;&nbsp;&nbsp;<a th:href="@{'/patient_insert/'+${doctor.doctorId}}" class="btn btn-primary">新增</a>
+                    <div class="card-header d-flex align-items-center">
+                      <h3 class="h4">个人信息</h3>
                     </div>
-                  </div>
-                  <div class="card-body">
-                    <div class="table-responsive">
-                      <table class="table">
-                        <thead>
-                        <tr>
-                          <th>编号</th>
-                          <th>姓名</th>
-                          <th>性别</th>
-                          <th>年龄</th>
-                          <th>用户名</th>
-                          <th>手机号</th>
-                          <th>地址</th>
-                          <th>创建时间</th>
-                          <th>修改时间</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="patient:${patientList}">
-                          <th scope="row" th:text="${patient.patientId}"></th>
-                          <th scope="row" th:text="${patient.name}"></th>
-                          <th scope="row" th:text="${patient.sex}"></th>
-                          <th scope="row" th:text="${patient.age}"></th>
-                          <th scope="row" th:text="${patient.username}"></th>
-                          <th scope="row" th:text="${patient.phoneNumber}"></th>
-                          <th scope="row" th:text="${patient.address}"></th>
-                          <th scope="row" th:text="${patient.createDate}"></th>
-                          <th scope="row" th:text="${patient.updateDate}"></th>
-                          <th scope="row"><a th:href="@{'/select_patient_detail/'+${doctor.doctorId}+'/'+${patient.patientId}}" class="btn btn-primary">查看</a></th>
-                          <th scope="row"><a th:href="@{/update_patient/} + ${doctor.doctorId}+'/'+${patient.patientId}" class="btn btn-primary">修改</a></th>
-                          <th scope="row"><a th:href="@{/delete_patient/} + ${doctor.doctorId}+'/'+${patient.patientId}" class="btn btn-primary">删除</a></th>
-                        </tr>
-                        </tbody>
-                      </table>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table">
+                          <tr>
+                            <td class="font-weight-bold">姓名</td><td th:text="${doctor.name}">张三</td>
+                          </tr>
+                          <tr>
+                            <td class="font-weight-bold">性别</td><td th:text="${doctor.sex}">男</td>
+                          </tr>
+                          <tr>
+                            <td class="font-weight-bold">科室</td><td th:text="${doctor.division}">内科</td>
+                          </tr>
+                          <tr>
+                            <td class="font-weight-bold">年龄</td><td th:text="${doctor.age}">88</td>
+                          </tr>
+                          <tr>
+                            <td class="font-weight-bold">开始工作日期</td><td th:text="${doctor.startWorkDateStr}">2008-10-25</td>
+                          </tr>
+                          <tr>
+                            <td class="font-weight-bold">手机号</td><td th:text="${doctor.phoneNumber}">10086</td>
+                          </tr>
+                          <tr>
+                            <td class="font-weight-bold">用户名</td><td th:text="${doctor.username}">bugaoshuni</td>
+                          </tr>
+                          <tr>
+                            <td class="font-weight-bold">密码</td><td th:text="${doctor.password}">nicai</td>
+                          </tr>
+                          <tr>
+                            <td class="font-weight-bold">邮箱</td><td th:text="${doctor.email}">10086@qq.com</td>
+                          </tr>
+                        </table>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -206,9 +201,9 @@
           <footer class="main-footer">
             <div class="container-fluid">
               <div class="row">
-                <div class="col-sm-12" align="center">
-                  <p>版本V0.1.</p>
-                </div>
+                  <div class="col-sm-12" align="center">
+                      <p>版本V0.1.</p>
+                  </div>
               </div>
             </div>
           </footer>
@@ -216,14 +211,14 @@
       </div>
     </div>
     <!-- JavaScript files-->
-    <script src="../../static/vendor/jquery/jquery.min.js"></script>
-    <script src="../../static/vendor/popper.js/umd/popper.min.js"> </script>
-    <script src="../../static/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../../static/vendor/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="../../static/vendor/chart.js/Chart.min.js"></script>
-    <script src="../../static/vendor/jquery-validation/jquery.validate.min.js"></script>
-    <script src="../../static/js/charts-home.js"></script>
+    <script src="../static/vendor/jquery/jquery.min.js"></script>
+    <script src="../static/vendor/popper.js/umd/popper.min.js"> </script>
+    <script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../static/vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="../static/vendor/chart.js/Chart.min.js"></script>
+    <script src="../static/vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script src="../static/js/charts-home.js"></script>
     <!-- Main File-->
-    <script src="../../static/js/front.js"></script>
+    <script src="../static/js/front.js"></script>
   </body>
 </html>
