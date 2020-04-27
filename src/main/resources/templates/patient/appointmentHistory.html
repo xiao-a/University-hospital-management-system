@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>在线预约平台</title>
+<title>预约历史</title>
 <link rel="stylesheet" type="text/css" href="../../resources/static/css/customize/style.css"/>
 <link rel="stylesheet" type="text/css" href="../../resources/static/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="../../resources/static/css/font-awesome.min.css"/>
@@ -94,17 +94,45 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
-        <h3 class="top-head">[[${date}]]值班医生</h3>
+        <h3 class="top-head">2020-18-20值班医生</h3>
       </div>
       <div class="col-md-12 col-xs-12 col-sm-12">
-        <div class="col-md-2 col-sm-6 col-xs-6" th:each="todayWorkDoctor:${todayWorkDoctor}">
-          <div class="docbox" >
-            <img src="../../resources/static/img/images/team-img-01.jpg"/>
-            <h4 th:text="${todayWorkDoctor.name}">张三</h4>
-            <p>[[${todayWorkDoctor.division}]]医生</p>
+        <div class="col-md-2 col-sm-6 col-xs-6">
+          <div class="docbox"> <img src="../../resources/static/img/images/team-img-01.jpg"/>
+            <h4>张三</h4>
+            <p>内科医生</p>
           </div>
         </div>
-
+        <div class="col-md-2 col-sm-6 col-xs-6">
+          <div class="docbox"> <img src="../../resources/static/img/images/team-img-02.jpg"/>
+            <h4>李四</h4>
+            <p>外科医生</p>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-6 col-xs-6">
+          <div class="docbox"> <img src="../../resources/static/img/images/team-img-03.jpg"/>
+            <h4>王麻子</h4>
+            <p>妇科医生</p>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-6 col-xs-6">
+          <div class="docbox"> <img src="../../resources/static/img/images/team-img-02.jpg"/>
+            <h4>王五</h4>
+            <p>骨科医生</p>
+          </div>
+        </div>
+		<div class="col-md-2 col-sm-6 col-xs-6">
+          <div class="docbox"> <img src="../../resources/static/img/images/team-img-02.jpg"/>
+            <h4>赵六</h4>
+            <p>五官科医生</p>
+          </div>
+        </div>
+		<div class="col-md-2 col-sm-6 col-xs-6">
+          <div class="docbox"> <img src="../../resources/static/img/images/team-img-02.jpg"/>
+            <h4>赖皮蛇</h4>
+            <p>皮肤科医生</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

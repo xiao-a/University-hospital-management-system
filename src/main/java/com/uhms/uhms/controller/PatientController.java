@@ -28,7 +28,7 @@ public class PatientController {
         model.addAttribute("doctor",doctorDto);
         model.addAttribute("patientList",patientList);
         model.addAttribute("msg",null);
-        return "/patientSelect";
+        return "admin/patientSelect";
     }
     @RequestMapping(value = "/select_patient_detail/{doctorId}/{patientId}" ,method = RequestMethod.GET)
     public String selectDetailPatient(@PathVariable("doctorId")String doctorId,@PathVariable("patientId")String patientId,Model model){
@@ -37,7 +37,7 @@ public class PatientController {
         System.out.println(patient);
         model.addAttribute("doctor",doctorDto);
         model.addAttribute("patient",patient);
-        return "/patientDetailSelect";
+        return "admin/patientDetailSelect";
     }
     @RequestMapping(value = "/update_patient/{doctorId}/{patientId}",method = RequestMethod.GET)
     public String updatePatient(@PathVariable("doctorId")String doctorId,@PathVariable("patientId")String patientId,Model model){
@@ -46,7 +46,7 @@ public class PatientController {
         System.out.println(patient);
         model.addAttribute("doctor",doctorDto);
         model.addAttribute("patient",patient);
-        return "/patientUpdate";
+        return "admin/patientUpdate";
     }
 
     @RequestMapping(value = "/patient_update_submission" ,method = RequestMethod.POST)
@@ -59,7 +59,7 @@ public class PatientController {
         model.addAttribute("doctor",doctorEntity);
         model.addAttribute("patient",patientEntity);
         System.out.println(patientEntity);
-        return "/patientUpdate";
+        return "admin/patientUpdate";
     }
     @RequestMapping(value = "/delete_patient/{doctorId}/{patientId}",method = RequestMethod.GET)
     public String deletePatient(@PathVariable("doctorId")String doctorId,@PathVariable("patientId")String patientId,Model model){
@@ -69,13 +69,13 @@ public class PatientController {
         model.addAttribute("doctor",doctorDto);
         model.addAttribute("patientList",patientList);
         model.addAttribute("msg",null);
-        return "/patientSelect";
+        return "admin/patientSelect";
     }
     @RequestMapping(value = "/patient_insert/{doctorId}" ,method = RequestMethod.GET)
     public String selectDetailPatient(@PathVariable("doctorId")String doctorId,Model model){
         DoctorDto doctorDto = doctorService.getById(doctorId);
         model.addAttribute("doctor",doctorDto);
-        return "/patientInsert";
+        return "admin/patientInsert";
     }
     @RequestMapping(value = "/patient_insert_submission" ,method = RequestMethod.POST)
     public String selectDetailPatientSubmission(PatientDto patientDto,Model model){
@@ -85,7 +85,7 @@ public class PatientController {
         model.addAttribute("doctor",doctorDto);
         model.addAttribute("patientList",patientList);
         model.addAttribute("msg",null);
-        return "/patientSelect";
+        return "admin/patientSelect";
     }
 
 }

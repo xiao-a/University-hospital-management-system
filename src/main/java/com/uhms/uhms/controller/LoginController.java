@@ -3,6 +3,8 @@ package com.uhms.uhms.controller;
 import com.uhms.uhms.dto.DoctorDto;
 import com.uhms.uhms.entity.DoctorEntity;
 import com.uhms.uhms.service.service.DoctorService;
+import com.uhms.uhms.service.service.patient.TodayWorkDoctorService;
+import com.uhms.uhms.utils.DateUtils;
 import com.uhms.uhms.utils.EmptyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,16 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginController{
     @Autowired
     private DoctorService doctorService;
+    @Autowired
+    private TodayWorkDoctorService todayWorkDoctorService;
+
+    @RequestMapping("/index")
+    public String index(Model model) {
+        model.addAttribute("todayWorkDoctor",todayWorkDoctorService.getDayWordDoctor());
+        model.addAttribute("date", DateUtils.showYearMonthDayStr());
+        System.out.println(DateUtils.showYearMonthDayStr());
+        return "index";
+    }
     @RequestMapping("/login")
     public String login() {
         return "/login";
@@ -28,7 +40,7 @@ public class LoginController{
         System.out.println(doctorEntity);
         if(EmptyUtils.isNotEmpty(doctorEntity)){
             model.addAttribute("doctor",doctorEntity);
-            return "/main";
+            return "doctor/main";
         }else {
             return "/loginFail";
         }
@@ -37,7 +49,7 @@ public class LoginController{
     public String UpdateMyInfo(@PathVariable("doctorId") String doctorId, Model model, HttpServletRequest request) {
         DoctorDto dto = doctorService.getById(doctorId);
         model.addAttribute("doctor",dto);
-        return "/main";
+        return "doctor/main";
     }
 
 

@@ -53,4 +53,9 @@ public class DoctorDaoImpl implements DoctorDao {
     public DoctorEntity login(String username, String password) {
         return doctorRepository.login(username,password);
     }
+
+    @Override
+    public List<DoctorEntity> selectByDivision(String division) {
+        return doctorRepository.selectByDivision(division);
+    }
 }

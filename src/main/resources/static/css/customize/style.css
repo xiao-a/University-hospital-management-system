@@ -1,0 +1,343 @@
+body {
+	background-color: #fff !important;
+}
+a {
+	outline: none !important;
+}
+.header {
+	background-color: #fff;
+}
+.logo {
+	font-family: 'Ubuntu', sans-serif;
+	color: #78D0EE;
+	font-size: 30px !important;
+	text-transform: uppercase;
+}
+.menubar {
+	margin-bottom: 0px !important;
+}
+.navbar-header {
+	margin: 0px !important;
+}
+.navb {
+	display: inline-block;
+	float: right !important;
+	text-align: center;
+	margin: 0px !important;
+}
+.navb a {
+	padding: 30px !important;
+	font-family: 'Ubuntu', sans-serif;
+	color: #c0e3f1;
+	font-weight: 500;
+	font-size:15px;
+	letter-spacing: 0.5px;
+}
+.navbar-brand {
+	padding: 30px !important;
+	height: auto !important;
+}
+.menu-button {
+	padding: 0px !important;
+	margin-top: 16px !important;
+	margin-right: 0px !important;
+}
+.set {
+	font-size: 40px !important;
+	color: #78D0EE;
+}
+.navset {
+	width: 100%;
+	padding: 0px !important;
+}
+.banner {
+	background: url(images/bg.jpg) no-repeat 0% 0% / 100% 100%;
+	padding: 140px 0px;
+}
+.form-group {
+	margin-bottom: 9px !important;
+}
+.form-control {
+	border: none !important;
+	box-shadow: none !important;
+	resize: none;
+	height: 40px !important;
+}
+textarea.form-control {
+	height: auto !important;
+}
+.appointment {
+	background-color: #78D0EE;
+	padding: 20px;
+	min-height: 270px !important;
+}
+.schbox-title h2 {
+	font-family: "Ubuntu", sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 20px;
+	margin: 0px !important;
+	padding: 0px 0px 20px;
+}
+.working {
+	background-color: #F8DA73;
+	padding: 20px;
+	min-height: 270px !important;
+}
+.timing {
+	text-align: left !important;
+	border-right: 1px solid #fff;
+}
+.timing h6 {
+	color: #84784C;
+}
+.tlinks{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
+.emergency {
+}
+.emergency p {
+	color: #84784c;
+}
+.address {
+	color: #84784c;
+}
+.white {
+	color: #78D0EE !important;
+}
+.emer {
+	font-size: 35px;
+	font-family: "Ubuntu", sans-serif;
+	font-weight: 700;
+	color: #2c2c2c !important;
+}
+.addressdiv {
+	background: #ccc;
+}
+.addressdiv p {
+	padding: 6px;
+	text-transform: uppercase;
+	font-size: 12px;
+	letter-spacing: 1px;
+}
+.orange {
+	background-color: #F6772C;
+	display: inline-block;
+	color: #FFF;
+	padding: 5px 30px !important;
+	margin-top: 10px;
+}
+.top-head {
+	padding: 0px 0px 50px;
+	text-align: center;
+	font-family: "Ubuntu", sans-serif;
+	font-weight: 700;
+	color: #2c2c2c !important;
+	font-size: 20px;
+	text-transform: uppercase;
+}
+.features {
+	background-color: #fff;
+	padding: 50px 0px;
+}
+.servicebox h4 {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 600;
+}
+.servicebox p {
+	font-family: 'Source Sans Pro', sans-serif;
+	width: 85%;
+	margin: 0 auto;
+}
+.about {
+	padding: 50px 0px;
+	background-color: #78D0EE;
+}
+.image img {
+	width : 100%;
+}
+.panel-heading {
+	padding: 0px !important;
+}
+.toggletab {
+	padding: 10px 15px;
+	display: block;
+	text-decoration: none !important;
+	outline: none !important;
+	color: #78D0EE !important;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+.panel-group {
+	margin-bottom: 0px !important;
+	padding-left: 20px;
+}
+.panel-title {
+	font-size: 24px !important;
+}
+.panel-body {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 16px !important;
+}
+.desc {
+	font-family: "Source Sans Pro", sans-serif;
+	color: #044054;
+	font-size: 17px;
+	margin-top: 30px;
+	line-height: 30px;
+}
+.doctors {
+	background-color: #fff;
+	padding: 50px 0px;
+}
+.docbox img {
+	width: 100%;
+}
+.docbox h4 {
+	font-family: "Source Sans Pro", sans-serif;
+	color: #242424;
+	font-weight: 600;
+	margin-bottom: 5px !important;
+	text-align: center;
+}
+.docbox p {
+	font-family: "Source Sans Pro", sans-serif;
+	color: #CCC;
+	font-style: italic;
+	font-size: 12px;
+	text-align: center;
+}
+.testimonial {
+	background-color: #F8DA73;
+	padding: 50px 0px 20px;
+}
+.testbox {
+	background-color: #fff;
+	padding: 20px;
+	margin-bottom: 30px;
+}
+.clientimg {
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	margin: 0 auto;
+}
+.clientimg img {
+	width: 100%;
+	border-radius: 50%;
+}
+.test p {
+	font-family: "Source Sans Pro", sans-serif;
+	padding-top: 15px;
+}
+.footer {
+	background-color: #3d4045;
+	padding: 50px 0px;
+}
+.footerh {
+	color: #fff;
+	font-family: "Ubuntu", sans-serif;
+}
+.footer-social {
+	list-style: none;
+	float: left;
+	padding-left: 0px;
+}
+.footer-social li {
+	display: inline-block;
+}
+.footer-social li a i {
+	color: #fff;
+	font-size: 24px;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	background-color: #78D0EE;
+	border-radius: 3px;
+	transition: all 0.8s ease-in 0s;
+}
+.quicklinks ul {
+	list-style: none;
+	padding-left: 0px;
+}
+.quicklinks ul li {
+	margin-bottom: 10px;
+}
+.quicklinks ul li i {
+	color: #fff;
+}
+.quicklinks ul li a {
+	color: #78D0EE;
+	font-family: "Source Sans Pro", sans-serif;
+}
+.quickcontact ul {
+	list-style: none;
+	padding-left: 0px;
+}
+.quickcontact ul li {
+	color: #78D0EE;
+	margin-bottom: 10px;
+	font-family: "Source Sans Pro", sans-serif;
+}
+.quickcontact ul li i {
+	color: #fff;
+	width: 20px;
+}
+.quickcontact ul li {
+}
+footer {
+	background-color: #242424;
+}
+footer p {
+	text-align: center;
+	color: #fff;
+	font-family: "Source Sans Pro", sans-serif;
+	padding: 15px 0px !important;
+	margin-bottom: 0px !important;
+}
+footer p a {
+	color: #78d0ee;
+}
+@media (min-width: 200px) and (max-width: 767px) {
+	.navb {
+		background-color: #78D0EE;
+		width: 100%;
+	}
+	.navb a {
+		padding: 15px !important;
+	}
+	.banner {
+		background: transparent url("images/bg.jpg") no-repeat scroll 0% 0% / 100% 100%;
+		padding: 20px 0px;
+	}
+	.timing {
+		text-align: center !important;
+		border-right: none;
+	}
+	.timing h6 {
+		color: #84784C;
+	}
+	.servicebox {
+		margin-bottom: 20px;
+	}
+	.panel-group {
+		padding-left: 0px;
+		margin-top: 20px;
+	}
+	.follow {
+		text-align: center;
+	}
+	.footer-social {
+		float: none;
+	}
+	.quicklinks {
+		text-align: center;
+	}
+	.quickcontact {
+		text-align: center;
+	}
+}
+@media (min-width: 768px) and (max-width: 990px) {
+	.banner {
+		background: transparent url("images/bg.jpg") no-repeat scroll 0% 0% / 100% 100%;
+		padding: 20px 0px;
+	}
+}

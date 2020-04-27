@@ -1,11 +1,18 @@
 package com.uhms.uhms.test;
 
 import com.uhms.uhms.UhmsApplication;
+import com.uhms.uhms.dao.dao.ChangeHospitalDao;
+import com.uhms.uhms.dao.dao.DoctorDao;
+import com.uhms.uhms.dao.dao.PatientDao;
+import com.uhms.uhms.dao.dao.WatchListDao;
 import com.uhms.uhms.dto.DoctorDto;
 import com.uhms.uhms.dto.PatientDto;
 import com.uhms.uhms.entity.ChangeHospitalEntity;
 import com.uhms.uhms.entity.DoctorEntity;
 import com.uhms.uhms.entity.PatientEntity;
+import com.uhms.uhms.entity.WatchListEntity;
+import com.uhms.uhms.enums.DayWeekEnum;
+import com.uhms.uhms.enums.DivisionTypeEnum;
 import com.uhms.uhms.enums.SexEnum;
 import com.uhms.uhms.service.service.ChangeHospitalService;
 import com.uhms.uhms.service.service.DoctorService;
@@ -19,38 +26,101 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes= UhmsApplication.class)
 public class InitDataTest {
     @Autowired
-    private DoctorService doctorService;
-    DoctorDto doctorDto=new DoctorDto();
+    private DoctorDao doctorDao;
+    DoctorEntity doctorEntity=new DoctorEntity();
     @Autowired
-    private PatientService patientService;
-    PatientDto patientDto=new PatientDto();
-
+    private PatientDao patientDao;
+    PatientEntity patientEntity=new PatientEntity();
     @Autowired
-    private ChangeHospitalService changeHospitalService;
+    private ChangeHospitalDao changeHospitalDao;
     ChangeHospitalEntity changeHospitalEntity=new ChangeHospitalEntity();
+    @Autowired
+    private WatchListDao watchListDao;
+    WatchListEntity watchListEntity=new WatchListEntity();
     /**
      * 创建10条医生信息
      */
     @Test
     public void createDoctor()
     {
-//        for(int i=0;i<=9;i++){
-//            doctorDto.setName("张三"+i);
-//            doctorDto.setSex(SexEnum.MAN.getType());
-//            doctorDto.setDivision("骨科");
-//            doctorDto.setAge(20+i);
-//            doctorDto.setStartWorkDate(DateUtils.getCurrentDate());
-//            doctorDto.setPhoneNumber(i+"**********");
-//            doctorDto.setUsername(i+"123");
-//            doctorDto.setPassword(i+"123");
-//            doctorDto.setEmail(i+"10086@qq.com");
-//            doctorService.insert(doctorDto);
-//        }
+        for(int i=0;i<=2;i++){
+            doctorEntity.setName("内科-张三-"+i);
+            doctorEntity.setSex(SexEnum.MAN.getType());
+            doctorEntity.setDivision(DivisionTypeEnum.getTypeByName("内科"));
+            doctorEntity.setAge(20+i);
+            doctorEntity.setStartWorkDate(DateUtils.getCurrentDate());
+            doctorEntity.setPhoneNumber(i+"**********");
+            doctorEntity.setUsername("nk"+i+"123");
+            doctorEntity.setPassword("nk"+i+"123");
+            doctorEntity.setEmail(i+"10086@qq.com");
+            doctorDao.insert(doctorEntity);
+        }
+        for(int i=0;i<=2;i++){
+            doctorEntity.setName("外科-张三-"+i);
+            doctorEntity.setSex(SexEnum.MAN.getType());
+            doctorEntity.setDivision(DivisionTypeEnum.getTypeByName("外科"));
+            doctorEntity.setAge(20+i);
+            doctorEntity.setStartWorkDate(DateUtils.getCurrentDate());
+            doctorEntity.setPhoneNumber(i+"**********");
+            doctorEntity.setUsername("wk"+i+"123");
+            doctorEntity.setPassword("wk"+i+"123");
+            doctorEntity.setEmail(i+"10086@qq.com");
+            doctorDao.insert(doctorEntity);
+        }
+        for(int i=0;i<=2;i++){
+            doctorEntity.setName("妇科-张三-"+i);
+            doctorEntity.setSex(SexEnum.MAN.getType());
+            doctorEntity.setDivision(DivisionTypeEnum.getTypeByName("妇科"));
+            doctorEntity.setAge(20+i);
+            doctorEntity.setStartWorkDate(DateUtils.getCurrentDate());
+            doctorEntity.setPhoneNumber(i+"**********");
+            doctorEntity.setUsername("fk"+i+"123");
+            doctorEntity.setPassword("fk"+i+"123");
+            doctorEntity.setEmail(i+"10086@qq.com");
+            doctorDao.insert(doctorEntity);
+        }
+        for(int i=0;i<=2;i++){
+            doctorEntity.setName("骨科-张三-"+i);
+            doctorEntity.setSex(SexEnum.MAN.getType());
+            doctorEntity.setDivision(DivisionTypeEnum.getTypeByName("骨科"));
+            doctorEntity.setAge(20+i);
+            doctorEntity.setStartWorkDate(DateUtils.getCurrentDate());
+            doctorEntity.setPhoneNumber(i+"**********");
+            doctorEntity.setUsername("gk"+i+"123");
+            doctorEntity.setPassword("gk"+i+"123");
+            doctorEntity.setEmail(i+"10086@qq.com");
+            doctorDao.insert(doctorEntity);
+        }
+        for(int i=0;i<=2;i++){
+            doctorEntity.setName("五官科-张三-"+i);
+            doctorEntity.setSex(SexEnum.MAN.getType());
+            doctorEntity.setDivision(DivisionTypeEnum.getTypeByName("五官科"));
+            doctorEntity.setAge(20+i);
+            doctorEntity.setStartWorkDate(DateUtils.getCurrentDate());
+            doctorEntity.setPhoneNumber(i+"**********");
+            doctorEntity.setUsername("wgk"+i+"123");
+            doctorEntity.setPassword("wgk"+i+"123");
+            doctorEntity.setEmail(i+"10086@qq.com");
+            doctorDao.insert(doctorEntity);
+        }
+        for(int i=0;i<=2;i++){
+            doctorEntity.setName("皮肤科-张三-"+i);
+            doctorEntity.setSex(SexEnum.MAN.getType());
+            doctorEntity.setDivision(DivisionTypeEnum.getTypeByName("皮肤科"));
+            doctorEntity.setAge(20+i);
+            doctorEntity.setStartWorkDate(DateUtils.getCurrentDate());
+            doctorEntity.setPhoneNumber(i+"**********");
+            doctorEntity.setUsername("pfk"+i+"123");
+            doctorEntity.setPassword("pfk"+i+"123");
+            doctorEntity.setEmail(i+"10086@qq.com");
+            doctorDao.insert(doctorEntity);
+        }
     }
     /**
      * 创建10条病人信息
@@ -58,16 +128,16 @@ public class InitDataTest {
     @Test
     public void createPatient()
     {
-//        for(int i=0;i<=9;i++){
-//            patientEntity.setName("李四"+i);
-//            patientEntity.setSex(SexEnum.WOMAN.getType());
-//            patientEntity.setAge(20+i);
-//            patientEntity.setUsername(i+"123");
-//            patientEntity.setPassword(i+"123");
-//            patientEntity.setPhoneNumber("10086****"+i);
-//            patientEntity.setAddress("###########"+i);
-//            patientService.insert(patientEntity);
-//        }
+        for(int i=0;i<=9;i++){
+            patientEntity.setName("李四"+i);
+            patientEntity.setSex(SexEnum.WOMAN.getType());
+            patientEntity.setAge(20+i);
+            patientEntity.setUsername(i+"123");
+            patientEntity.setPassword(i+"123");
+            patientEntity.setPhoneNumber("10086****"+i);
+            patientEntity.setAddress("###########"+i);
+            patientDao.insert(patientEntity);
+        }
     }
 
 
@@ -82,8 +152,87 @@ public class InitDataTest {
             changeHospitalEntity.setPatientId(IdUtils.createID("patient"));
             changeHospitalEntity.setChangeHospitalDate(DateUtils.getCurrentDate());
             changeHospitalEntity.setChangeHospitalName("河南省第"+i+1+"甲医院");
-//            changeHospitalService.insert(changeHospitalEntity);
+            changeHospitalDao.insert(changeHospitalEntity);
         }
     }
+
+    /**
+     * 创建值班表
+     */
+    @Test
+    public void createWatchList()
+    {
+        List<DoctorEntity> physician = doctorDao.selectByDivision("physician");
+        List<DoctorEntity> surgery = doctorDao.selectByDivision("surgery");
+        List<DoctorEntity> gynecology = doctorDao.selectByDivision("gynecology");
+        List<DoctorEntity> orthopedics = doctorDao.selectByDivision("orthopedics");
+        List<DoctorEntity> ophthalmology = doctorDao.selectByDivision("ophthalmology");
+        List<DoctorEntity> dermatology = doctorDao.selectByDivision("dermatology");
+        //周一
+        watchListEntity.setDayWeek(DayWeekEnum.getTypeByName("星期一"));
+        watchListEntity.setNkDoctorId(physician.get(0).getDoctorId());
+        watchListEntity.setWkDoctorId(surgery.get(0).getDoctorId());
+        watchListEntity.setFkDoctorId(gynecology.get(0).getDoctorId());
+        watchListEntity.setGkDoctorId(orthopedics.get(0).getDoctorId());
+        watchListEntity.setWgkDoctorId(ophthalmology.get(0).getDoctorId());
+        watchListEntity.setPfkDoctorId(dermatology.get(0).getDoctorId());
+        watchListDao.insert(watchListEntity);
+        //周二
+        watchListEntity.setDayWeek(DayWeekEnum.getTypeByName("星期二"));
+        watchListEntity.setNkDoctorId(physician.get(1).getDoctorId());
+        watchListEntity.setWkDoctorId(surgery.get(1).getDoctorId());
+        watchListEntity.setFkDoctorId(gynecology.get(1).getDoctorId());
+        watchListEntity.setGkDoctorId(orthopedics.get(1).getDoctorId());
+        watchListEntity.setWgkDoctorId(ophthalmology.get(1).getDoctorId());
+        watchListEntity.setPfkDoctorId(dermatology.get(1).getDoctorId());
+        watchListDao.insert(watchListEntity);
+        //周三
+        watchListEntity.setDayWeek(DayWeekEnum.getTypeByName("星期三"));
+        watchListEntity.setNkDoctorId(physician.get(2).getDoctorId());
+        watchListEntity.setWkDoctorId(surgery.get(2).getDoctorId());
+        watchListEntity.setFkDoctorId(gynecology.get(2).getDoctorId());
+        watchListEntity.setGkDoctorId(orthopedics.get(2).getDoctorId());
+        watchListEntity.setWgkDoctorId(ophthalmology.get(2).getDoctorId());
+        watchListEntity.setPfkDoctorId(dermatology.get(2).getDoctorId());
+        watchListDao.insert(watchListEntity);
+        //周四
+        watchListEntity.setDayWeek(DayWeekEnum.getTypeByName("星期四"));
+        watchListEntity.setNkDoctorId(physician.get(0).getDoctorId());
+        watchListEntity.setWkDoctorId(surgery.get(0).getDoctorId());
+        watchListEntity.setFkDoctorId(gynecology.get(0).getDoctorId());
+        watchListEntity.setGkDoctorId(orthopedics.get(0).getDoctorId());
+        watchListEntity.setWgkDoctorId(ophthalmology.get(0).getDoctorId());
+        watchListEntity.setPfkDoctorId(dermatology.get(0).getDoctorId());
+        watchListDao.insert(watchListEntity);
+        //周五
+        watchListEntity.setDayWeek(DayWeekEnum.getTypeByName("星期五"));
+        watchListEntity.setNkDoctorId(physician.get(1).getDoctorId());
+        watchListEntity.setWkDoctorId(surgery.get(1).getDoctorId());
+        watchListEntity.setFkDoctorId(gynecology.get(1).getDoctorId());
+        watchListEntity.setGkDoctorId(orthopedics.get(1).getDoctorId());
+        watchListEntity.setWgkDoctorId(ophthalmology.get(1).getDoctorId());
+        watchListEntity.setPfkDoctorId(dermatology.get(1).getDoctorId());
+        watchListDao.insert(watchListEntity);
+        //周六
+        watchListEntity.setDayWeek(DayWeekEnum.getTypeByName("星期六"));
+        watchListEntity.setNkDoctorId(physician.get(2).getDoctorId());
+        watchListEntity.setWkDoctorId(surgery.get(2).getDoctorId());
+        watchListEntity.setFkDoctorId(gynecology.get(2).getDoctorId());
+        watchListEntity.setGkDoctorId(orthopedics.get(2).getDoctorId());
+        watchListEntity.setWgkDoctorId(ophthalmology.get(2).getDoctorId());
+        watchListEntity.setPfkDoctorId(dermatology.get(2).getDoctorId());
+        watchListDao.insert(watchListEntity);
+        //周日
+        watchListEntity.setDayWeek(DayWeekEnum.getTypeByName("星期日"));
+        watchListEntity.setNkDoctorId(physician.get(0).getDoctorId());
+        watchListEntity.setWkDoctorId(surgery.get(0).getDoctorId());
+        watchListEntity.setFkDoctorId(gynecology.get(0).getDoctorId());
+        watchListEntity.setGkDoctorId(orthopedics.get(0).getDoctorId());
+        watchListEntity.setWgkDoctorId(ophthalmology.get(0).getDoctorId());
+        watchListEntity.setPfkDoctorId(dermatology.get(0).getDoctorId());
+        watchListDao.insert(watchListEntity);
+    }
+
+
 
 }

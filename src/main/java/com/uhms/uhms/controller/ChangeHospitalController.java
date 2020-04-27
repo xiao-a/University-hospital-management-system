@@ -31,13 +31,13 @@ public class ChangeHospitalController {
         model.addAttribute("doctor",doctorDto);
         model.addAttribute("changeHospitalList",changeHospitalList);
         model.addAttribute("msg",null);
-        return "/changeHospitalSelect";
+        return "doctor/changeHospitalSelect";
     }
     @RequestMapping(value = "/add_change_hospital/{doctorId}" ,method = RequestMethod.GET)
     public String selectDetailPatient(@PathVariable("doctorId")String doctorId,Model model){
         DoctorDto doctorDto = doctorService.getById(doctorId);
         model.addAttribute("doctor",doctorDto);
-        return "/changeHospitalInsert";
+        return "doctor/changeHospitalInsert";
     }
     @RequestMapping(value = "/change_hospital_insert_submission" ,method = RequestMethod.POST)
     public String selectDetailPatientSubmission(ChangeHospitalDto changeHospitalDto, Model model){
@@ -47,7 +47,7 @@ public class ChangeHospitalController {
         model.addAttribute("doctor",doctorDto);
         model.addAttribute("changeHospitalList",changeHospitalList);
         model.addAttribute("msg",null);
-        return "/changeHospitalSelect";
+        return "doctor/changeHospitalSelect";
     }
 
 }

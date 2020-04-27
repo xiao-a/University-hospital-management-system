@@ -13,4 +13,5 @@ public interface DoctorDao {
     void update(String id, DoctorEntity doctorEntity);
 
     DoctorEntity login(String username,String password);
+    List<DoctorEntity> selectByDivision(String division);
 }
