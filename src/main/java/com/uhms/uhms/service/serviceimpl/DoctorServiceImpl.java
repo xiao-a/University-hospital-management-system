@@ -17,11 +17,6 @@ public class DoctorServiceImpl implements DoctorService {
     DoctorDto doctorDto=new DoctorDto();
     DoctorEntity doctorEntity=new DoctorEntity();
     @Override
-    public DoctorEntity login(String username, String password){
-        return doctorDao.login(username, password);
-    }
-
-    @Override
     public void insert(DoctorEntity doctorEntity) {
         doctorDao.insert(doctorEntity);
     }

@@ -10,4 +10,6 @@ public interface PatientDao {
     PatientEntity getById(String id);
     List<PatientEntity> getAll();
     void update(PatientEntity patientEntity);
+
+    String login(String username,String password);
 }

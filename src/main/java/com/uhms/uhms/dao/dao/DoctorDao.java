@@ -12,6 +12,6 @@ public interface DoctorDao {
     void updateJpa(DoctorEntity doctorEntity);
     void update(String id, DoctorEntity doctorEntity);
 
-    DoctorEntity login(String username,String password);
+    String login(String username,String password);
     List<DoctorEntity> selectByDivision(String division);
 }

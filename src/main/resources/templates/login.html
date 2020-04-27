@@ -54,6 +54,18 @@
                       <input id="login-password" type="password" name="password" required data-msg="请输入您的密码" class="input-material">
                       <label for="login-password" class="label-material">密码</label>
                     </div>
+                    <div class="form-group">
+                      <input id="identify" type="hidden" name="identify" >
+                    </div>
+                    <div class="form-group">
+                      身份选择：
+                      <select id="mySelect">
+                        <option value="">---请选择---</option>
+                        <option value="patient">患者</option>
+                        <option value="doctor">医生</option>
+                        <option value="admin">管理员</option>
+                      </select>
+                    </div>
                     <input id="login" type="submit" class="btn btn-primary" value="登录"/>
                     <!-- This should be submit button but I replaced it with <a> for demo purposes-->
                   </form><a href="#" class="forgot-pass">忘记密码?</a><br><small>没有账号? </small><a href="/register" class="signup">注册</a>
@@ -74,5 +86,12 @@
     <script src="../../resources/static/vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Main File-->
     <script src="../../resources/static/js/front.js"></script>
+    <script>
+      var identify;
+      $("#mySelect").change(function(){
+        identify = $('#mySelect option:selected').val();
+        $("#identify").val(identify);
+      })
+    </script>
   </body>
 </html>

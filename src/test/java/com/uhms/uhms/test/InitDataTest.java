@@ -1,16 +1,10 @@
 package com.uhms.uhms.test;
 
 import com.uhms.uhms.UhmsApplication;
-import com.uhms.uhms.dao.dao.ChangeHospitalDao;
-import com.uhms.uhms.dao.dao.DoctorDao;
-import com.uhms.uhms.dao.dao.PatientDao;
-import com.uhms.uhms.dao.dao.WatchListDao;
+import com.uhms.uhms.dao.dao.*;
 import com.uhms.uhms.dto.DoctorDto;
 import com.uhms.uhms.dto.PatientDto;
-import com.uhms.uhms.entity.ChangeHospitalEntity;
-import com.uhms.uhms.entity.DoctorEntity;
-import com.uhms.uhms.entity.PatientEntity;
-import com.uhms.uhms.entity.WatchListEntity;
+import com.uhms.uhms.entity.*;
 import com.uhms.uhms.enums.DayWeekEnum;
 import com.uhms.uhms.enums.DivisionTypeEnum;
 import com.uhms.uhms.enums.SexEnum;
@@ -43,6 +37,9 @@ public class InitDataTest {
     @Autowired
     private WatchListDao watchListDao;
     WatchListEntity watchListEntity=new WatchListEntity();
+    @Autowired
+    private AdminDao adminDao;
+    AdminEntity adminEntity=new AdminEntity();
     /**
      * 创建10条医生信息
      */
@@ -137,6 +134,24 @@ public class InitDataTest {
             patientEntity.setPhoneNumber("10086****"+i);
             patientEntity.setAddress("###########"+i);
             patientDao.insert(patientEntity);
+        }
+    }
+
+    /**
+     * 创建10条管理员信息
+     */
+    @Test
+    public void createAdmin()
+    {
+        for(int i=0;i<=9;i++){
+            adminEntity.setName("王五"+i);
+            adminEntity.setSex(SexEnum.WOMAN.getType());
+            adminEntity.setAge(20+i);
+            adminEntity.setUsername(i+"123");
+            adminEntity.setPassword(i+"123");
+            adminEntity.setPhoneNumber("10086****"+i);
+            adminEntity.setAddress("###########"+i);
+            adminDao.insert(adminEntity);
         }
     }
 

@@ -10,8 +10,8 @@ import java.util.List;
 
 @Repository
 public interface DoctorRepository extends JpaRepository<DoctorEntity,String> {
-    @Query(value = "select * from t_doctor where username= ?1 and password=?2 " ,nativeQuery = true)
-    DoctorEntity login(String username,String password);
+    @Query(value = "select doctor_id from t_doctor where username= ?1 and password=?2 " ,nativeQuery = true)
+    String login(String username,String password);
 //    @Modifying
 //    @Query(value = "update from t_doctor set where username= ?1 and password=?2 " ,nativeQuery = true)
 //    void updateById(String id);

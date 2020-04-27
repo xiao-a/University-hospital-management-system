@@ -45,4 +45,9 @@ public class PatientDaoImpl implements PatientDao {
         patientRepository.save(patientEntity);
     }
 
+    @Override
+    public String login(String username, String password) {
+        return patientRepository.login(username,password);
+    }
+
 }

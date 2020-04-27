@@ -50,7 +50,7 @@ public class DoctorDaoImpl implements DoctorDao {
     }
 
     @Override
-    public DoctorEntity login(String username, String password) {
+    public String login(String username, String password) {
         return doctorRepository.login(username,password);
     }
 

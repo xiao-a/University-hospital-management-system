@@ -43,20 +43,32 @@
             <div class="schbox-title">
               <h2>预约挂号</h2>
             </div>
-            <form role="form" class="appointform">
+            <form id="formId">
               <div class="col-md-12 col-sm-12 col-xs-12">
+                <!--<div class="form-group">-->
+                  <!--<input type="text" class="form-control" name="division" id="division" placeholder="预约科室">-->
+                <!--</div>-->
                 <div class="form-group">
-                  <input type="text" class="form-control" id="division" placeholder="预约科室">
+                  <select id="mySelect" name="division" class="form-control">
+                    <option value="">---请选择预约科室---</option>
+                    <option value="physician">内科</option>
+                    <option value="surgery">外科</option>
+                    <option value="gynecology">妇科</option>
+                    <option value="orthopedics">骨科</option>
+                    <option value="ophthalmology">五官科</option>
+                    <option value="dermatology">皮肤科</option>
+                  </select>
                 </div>
                 <div class="form-group">
-                  <input type="date" class="form-control" id="date" placeholder="预约日期">
+                  <input type="date" class="form-control" name="date" id="date" placeholder="预约日期">
                 </div>
                 <div class="form-group">
-                  <textarea class="form-control" id="message" placeholder="附加信息" rows="3"></textarea>
+                  <textarea class="form-control" id="message" name="msg" placeholder="附加信息" rows="3"></textarea>
                 </div>
+
               </div>
               <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-                <button type="submit" class="btn orange">预约</button>
+                <button id="submission" type="button" class="btn orange">预约</button>
               </div>
             </form>
           </div>
@@ -176,5 +188,37 @@
   </div>
 </footer>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="application/javascript">
+  //发送表单ajax请求
+  $("#submission").click(function(){
+    $.ajax({
+      url:"appointment/submission",
+      type:"POST",
+      data:JSON.stringify($('#formId').serializeObject()),
+      contentType:"application/json",  //缺失会出现URL编码，无法转成json对象
+      success:function(){
+        alert("成功");
+      }
+    });
+  });
+  /**
+   * 自动将form表单封装成json对象
+   */
+  $.fn.serializeObject = function() {
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+      if (o[this.name]) {
+        if (!o[this.name].push) {
+          o[this.name] = [ o[this.name] ];
+        }
+        o[this.name].push(this.value || '');
+      } else {
+        o[this.name] = this.value || '';
+      }
+    });
+    return o;
+  };
+</script>
 </body>
 </html>
