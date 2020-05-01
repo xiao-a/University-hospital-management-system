@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface WatchListRepository extends JpaRepository<WatchListEntity,String> {
     @Query(value = "select * from t_watch_list where day_week=?1" ,nativeQuery = true)
     WatchListEntity getWatchListEntityByDayWeek(String dayWeek);
+    @Query(value = "select * from t_watch_list where day_week=?1" ,nativeQuery = true)
+    WatchListEntity getDoctorId(String dayWeek);
 }

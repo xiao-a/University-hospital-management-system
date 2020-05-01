@@ -23,7 +23,7 @@ public class DateUtils {
         return new Date();// new Date()为获取当前系统时间
     }
     /**
-     * 显示年月日
+     * 显示当前时间的年月日
      */
     public static String  showYearMonthDayStr(){
         Date date = new Date();
@@ -74,5 +74,20 @@ public class DateUtils {
             w = 0;
         return weekDays[w];
     }
+    /**
+     * 将Date类型转成String
+     */
+    public static String DateToString(Date date, String format) {
+        return new SimpleDateFormat(format).format(date);
+    }
+
+    public static String DateToStrHH(Date date) {
+        return DateToString(date, "yyyy-MM-dd HH:mm:ss");
+    }
+
+    public static String DateToStr(Date date) {
+        return DateToString(date, "yyyy-MM-dd");
+    }
+
 
 }

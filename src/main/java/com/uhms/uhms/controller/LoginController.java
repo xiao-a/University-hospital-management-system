@@ -1,10 +1,13 @@
 package com.uhms.uhms.controller;
 
 import com.uhms.uhms.dto.DoctorDto;
+import com.uhms.uhms.dto.PatientDto;
 import com.uhms.uhms.entity.DoctorEntity;
+import com.uhms.uhms.entity.PatientEntity;
 import com.uhms.uhms.enums.IdentifyEnum;
 import com.uhms.uhms.service.service.DoctorService;
 import com.uhms.uhms.service.service.LoginService;
+import com.uhms.uhms.service.service.PatientService;
 import com.uhms.uhms.service.service.patient.TodayWorkDoctorService;
 import com.uhms.uhms.utils.DateUtils;
 import com.uhms.uhms.utils.EmptyUtils;
@@ -25,11 +28,16 @@ public class LoginController{
     private TodayWorkDoctorService todayWorkDoctorService;
     @Autowired
     private LoginService loginService;
+    @Autowired
+    private PatientService patientService;
 
     @RequestMapping(value = {"/index","/",""})
     public String index(Model model) {
         model.addAttribute("todayWorkDoctor",todayWorkDoctorService.getDayWordDoctor());
         model.addAttribute("date", DateUtils.showYearMonthDayStr());
+        PatientDto patientDto = new PatientDto();
+        patientDto.setName("登录");
+        model.addAttribute("patient",patientDto);
         return "index";
     }
     @RequestMapping("/login")
@@ -48,8 +56,11 @@ public class LoginController{
             return "/loginFail";
         }else {
             if(IdentifyEnum.PATIENT.getType().equals(identify)){
+                PatientEntity patient= patientService.getById(id);
                 model.addAttribute("todayWorkDoctor",todayWorkDoctorService.getDayWordDoctor());
                 model.addAttribute("date", DateUtils.showYearMonthDayStr());
+                LogUtils.info(patient+"");
+                model.addAttribute("patient",patient);
                 return "/index";
             }else if(IdentifyEnum.DOCTOR.getType().equals(identify)){
                 DoctorDto dto = doctorService.getById(id);

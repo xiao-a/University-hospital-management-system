@@ -1,18 +1,23 @@
 package com.uhms.uhms.controller.patient;
 
-import com.uhms.uhms.service.service.DoctorService;
-import com.uhms.uhms.service.service.PatientService;
+
+import com.uhms.uhms.service.service.patient.AppointmentService;
+import com.uhms.uhms.utils.JsonUtils;
 import com.uhms.uhms.utils.LogUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/login")
+@RequestMapping("login")
 public class PatientsController {
+    @Autowired
+    private AppointmentService appointmentService;
     @RequestMapping(value = "/appointment/submission",method =RequestMethod.POST,produces = "application/json")
     @ResponseBody
     public String selectPatient(@RequestBody String o) {
+        appointmentService.appointmentSubmit(o);
         LogUtils.info("msg:"+o);
-        return o+"123456";
+        String msg="预约提交成功，医生确认中!";
+        return JsonUtils.objectToJson(msg);
     }
 }

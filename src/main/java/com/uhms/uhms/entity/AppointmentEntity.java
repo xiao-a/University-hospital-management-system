@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 @Data
 @Entity
@@ -18,8 +18,11 @@ public class AppointmentEntity  implements Serializable {
     private String appointmentId;
     private String patientId;
     private String doctorId;
+    private String division;
+    private String doctorName;
     private Date appointmentDate;
     private String msg;
+    private String appointmentStatus;
     private String status;
     private Date createDate;
     private Date updateDate;

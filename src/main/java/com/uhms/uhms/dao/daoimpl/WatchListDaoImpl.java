@@ -49,4 +49,9 @@ public class WatchListDaoImpl implements WatchListDao {
     public WatchListEntity getWatchListEntityByDayWeek(String dayWeek) {
         return watchListRepository.getWatchListEntityByDayWeek(dayWeek);
     }
+
+    @Override
+    public WatchListEntity getDoctorId(String dayWeek) {
+        return watchListRepository.getDoctorId(dayWeek);
+    }
 }

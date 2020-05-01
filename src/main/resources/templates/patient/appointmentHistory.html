@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,7 +24,7 @@
         <div class="navdiv">
           <nav class="collapse navbar-collapse navset" id="myNavbar" role="navigation">
             <ul class="nav navbar-nav navbar-right navstyle navb">
-              <li><a href="/login" class="page-scroll active">登录</a></li>
+              <li><a href="/login" class="page-scroll active" th:text="${patient.name}">登录</a></li>
               <li><a href="#features" class="page-scroll">个人中心</a></li>
               <li><a href="#about" class="page-scroll">预约历史</a></li>
             </ul>
@@ -34,163 +34,33 @@
     </div>
   </div>
 </div>
-<div class="banner" style="background: url(../../resources/static/img/images/bg.jpg) no-repeat 0% 0% / 100% 100%;padding: 140px 0px;">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-        <div class="schbox">
-          <div class="col-md-6 col-sm-12 col-xs-12 appointment">
-            <div class="schbox-title">
-              <h2>预约挂号</h2>
-            </div>
-            <form role="form" class="appointform">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="division" placeholder="预约科室">
-                </div>
-                <div class="form-group">
-                  <input type="date" class="form-control" id="date" placeholder="预约日期">
-                </div>
-                <div class="form-group">
-                  <textarea class="form-control" id="message" placeholder="附加信息" rows="3"></textarea>
-                </div>
-              </div>
-              <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-                <button type="submit" class="btn orange">预约</button>
-              </div>
-            </form>
-          </div>
-          <div class="col-md-6 col-sm-12 col-xs-12 working">
-            <div class="schbox-title">
-              <h2>工作时间</h2>
-            </div>
-            <div class="col-md-5 col-sm-5 col-xs-12">
-              <div class="timing">
-                <h6>周一 - 周五</h6>
-                <p><strong>10 点 - 18 点</strong></p>
-                <h6>周六 - 周日</h6>
-                <p><strong>10 点 - 14 点</strong></p>
-              </div>
-            </div>
-            <div class="col-md-7 col-sm-7 col-xs-12">
-              <div class="emergency">
-                <p>咨询电话</p>
-                <p class="emer"><i class="fa fa-phone white"></i>123-456-789</p>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <p class="address">地址</p>
-              <div class="addressdiv">
-                <p>河南省郑州市新郑市XXX镇XXX路XXX号</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="doctors">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 col-sm-12 col-xs-12">
-        <h3 class="top-head">2020-18-20值班医生</h3>
-      </div>
-      <div class="col-md-12 col-xs-12 col-sm-12">
-        <div class="col-md-2 col-sm-6 col-xs-6">
-          <div class="docbox"> <img src="../../resources/static/img/images/team-img-01.jpg"/>
-            <h4>张三</h4>
-            <p>内科医生</p>
-          </div>
-        </div>
-        <div class="col-md-2 col-sm-6 col-xs-6">
-          <div class="docbox"> <img src="../../resources/static/img/images/team-img-02.jpg"/>
-            <h4>李四</h4>
-            <p>外科医生</p>
-          </div>
-        </div>
-        <div class="col-md-2 col-sm-6 col-xs-6">
-          <div class="docbox"> <img src="../../resources/static/img/images/team-img-03.jpg"/>
-            <h4>王麻子</h4>
-            <p>妇科医生</p>
-          </div>
-        </div>
-        <div class="col-md-2 col-sm-6 col-xs-6">
-          <div class="docbox"> <img src="../../resources/static/img/images/team-img-02.jpg"/>
-            <h4>王五</h4>
-            <p>骨科医生</p>
-          </div>
-        </div>
-		<div class="col-md-2 col-sm-6 col-xs-6">
-          <div class="docbox"> <img src="../../resources/static/img/images/team-img-02.jpg"/>
-            <h4>赵六</h4>
-            <p>五官科医生</p>
-          </div>
-        </div>
-		<div class="col-md-2 col-sm-6 col-xs-6">
-          <div class="docbox"> <img src="../../resources/static/img/images/team-img-02.jpg"/>
-            <h4>赖皮蛇</h4>
-            <p>皮肤科医生</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="testimonial">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 col-sm-12 col-xs-12">
-        <h3 class="top-head">新闻</h3>
-      </div>
-    </div>
-    <div class="col-md-12 col-sm-12 col-xs-12">
-      <div class="col-md-6 col-sm-6 col-xs-12">
-        <div class="testbox">
-          <div class="clientimg"> <img src="../../resources/static/img/images/team-img-02.jpg"/> </div>
-          <div class="test">
-            <p>Nam commodo quam ac luctus sagittis. Donec quam dui, facilisis a placerat at, pretium vitae metus. Pellentesque tincidunt ex quis suscipit pellentesque. Curabitur eu mauris nisl.</p>
-          </div>
-          <div class="clientname">
-            <p>Angela Mathew</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-6 col-xs-12">
-        <div class="testbox">
-          <div class="clientimg"> <img src="../../resources/static/img/images/team-img-01.jpg"/> </div>
-          <div class="test">
-            <p>Nam commodo quam ac luctus sagittis. Donec quam dui, facilisis a placerat at, pretium vitae metus. Pellentesque tincidunt ex quis suscipit pellentesque. Curabitur eu mauris nisl.</p>
-          </div>
-          <div class="clientname">
-            <p>Angela Mathew</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-12 col-sm-12 col-xs-12">
-      <div class="col-md-6 col-sm-6 col-xs-12">
-        <div class="testbox">
-          <div class="clientimg"> <img src="../../resources/static/img/images/team-img-03.jpg"/> </div>
-          <div class="test">
-            <p>Nam commodo quam ac luctus sagittis. Donec quam dui, facilisis a placerat at, pretium vitae metus. Pellentesque tincidunt ex quis suscipit pellentesque. Curabitur eu mauris nisl.</p>
-          </div>
-          <div class="clientname">
-            <p>Angela Mathew</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-6 col-xs-12">
-        <div class="testbox">
-          <div class="clientimg"> <img src="../../resources/static/img/images/team-img-02.jpg"/> </div>
-          <div class="test">
-            <p>Nam commodo quam ac luctus sagittis. Donec quam dui, facilisis a placerat at, pretium vitae metus. Pellentesque tincidunt ex quis suscipit pellentesque. Curabitur eu mauris nisl.</p>
-          </div>
-          <div class="clientname">
-            <p>Angela Mathew</p>
-          </div>
-        </div>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h4>预约历史数据显示</h4>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>预约科室</th>
+          <th>医生姓名</th>
+          <th>附加信息</th>
+          <th>预约状态</th>
+          <th>预约时间</th>
+          <th>提交时间</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="appointment:${appointmentList}">
+          <th scope="row" th:text="${appointment.division}"></th>
+          <th scope="row" th:text="${appointment.doctorName}"></th>
+          <th scope="row" th:text="${appointment.msg}"></th>
+          <th scope="row" th:text="${appointment.appointmentStatus}"></th>
+          <th scope="row" th:text="${appointment.appointmentDate}"></th>
+          <th scope="row" th:text="${appointment.submitDate}"></th>
+
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
@@ -204,5 +74,42 @@
   </div>
 </footer>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="application/javascript">
+  //发送表单ajax请求
+  $("#submission").click(function(){
+    $.ajax({
+        url:"appointment/submission",
+        type:"POST",
+        data:JSON.stringify($('#formId').serializeObject()),
+        dataType:"text",
+        contentType:"application/json",  //缺失会出现URL编码，无法转成json对象
+        success:function(data){
+            console.log("success:"+data);
+            $('#msg').text(data);
+        },
+        error:function(data){
+            console.log("error:"+data);
+        }
+    });
+  });
+  /**
+   * 自动将form表单封装成json对象
+   */
+  $.fn.serializeObject = function() {
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+      if (o[this.name]) {
+        if (!o[this.name].push) {
+          o[this.name] = [ o[this.name] ];
+        }
+        o[this.name].push(this.value || '');
+      } else {
+        o[this.name] = this.value || '';
+      }
+    });
+    return o;
+  };
+</script>
 </body>
 </html>

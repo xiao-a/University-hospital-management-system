@@ -11,4 +11,5 @@ public interface WatchListDao {
     List<WatchListEntity> getAll();
     void update(WatchListEntity watchListEntity);
     WatchListEntity getWatchListEntityByDayWeek(String dayWeek);
+    WatchListEntity getDoctorId(String dayWeek);
 }

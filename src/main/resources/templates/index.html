@@ -24,9 +24,9 @@
         <div class="navdiv">
           <nav class="collapse navbar-collapse navset" id="myNavbar" role="navigation">
             <ul class="nav navbar-nav navbar-right navstyle navb">
-              <li><a href="/login" class="page-scroll active">登录</a></li>
+              <li><a href="/login" class="page-scroll active" th:text="${patient.name}">登录</a></li>
               <li><a href="#features" class="page-scroll">个人中心</a></li>
-              <li><a href="#about" class="page-scroll">预约历史</a></li>
+              <li><a th:href="@{/appointment/history/} + ${patient.patientId}" class="page-scroll">预约历史</a></li>
             </ul>
           </nav>
         </div>
@@ -45,9 +45,9 @@
             </div>
             <form id="formId">
               <div class="col-md-12 col-sm-12 col-xs-12">
-                <!--<div class="form-group">-->
-                  <!--<input type="text" class="form-control" name="division" id="division" placeholder="预约科室">-->
-                <!--</div>-->
+                <div class="form-group">
+                  <input type="hidden" class="form-control" name="patientId" th:value="${patient.patientId}">
+                </div>
                 <div class="form-group">
                   <select id="mySelect" name="division" class="form-control">
                     <option value="">---请选择预约科室---</option>
@@ -60,7 +60,7 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <input type="date" class="form-control" name="date" id="date" placeholder="预约日期">
+                  <input type="date" class="form-control" name="appointmentDate" id="date" placeholder="预约日期">
                 </div>
                 <div class="form-group">
                   <textarea class="form-control" id="message" name="msg" placeholder="附加信息" rows="3"></textarea>
@@ -71,6 +71,9 @@
                 <button id="submission" type="button" class="btn orange">预约</button>
               </div>
             </form>
+            <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+              <h5 id="msg" style="color: red"></h5>
+            </div>
           </div>
           <div class="col-md-6 col-sm-12 col-xs-12 working">
             <div class="schbox-title">
@@ -192,13 +195,18 @@
   //发送表单ajax请求
   $("#submission").click(function(){
     $.ajax({
-      url:"appointment/submission",
-      type:"POST",
-      data:JSON.stringify($('#formId').serializeObject()),
-      contentType:"application/json",  //缺失会出现URL编码，无法转成json对象
-      success:function(){
-        alert("成功");
-      }
+        url:"appointment/submission",
+        type:"POST",
+        data:JSON.stringify($('#formId').serializeObject()),
+        dataType:"text",
+        contentType:"application/json",  //缺失会出现URL编码，无法转成json对象
+        success:function(data){
+            console.log("success:"+data);
+            $('#msg').text(data);
+        },
+        error:function(data){
+            console.log("error:"+data);
+        }
     });
   });
   /**

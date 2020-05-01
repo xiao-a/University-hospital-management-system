@@ -8,5 +8,7 @@ public interface AppointmentDao {
     void deleteById(String id);
     AppointmentEntity getById(String id);
     List<AppointmentEntity> getAll();
+    List<AppointmentEntity> getAllByPatientId(String patientId);
     void update(String id, AppointmentEntity appointmentEntity);
+
 }
