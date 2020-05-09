@@ -53,8 +53,8 @@ public class InitDataTest {
             doctorEntity.setAge(20+i);
             doctorEntity.setStartWorkDate(DateUtils.getCurrentDate());
             doctorEntity.setPhoneNumber(i+"**********");
-            doctorEntity.setUsername("nk"+i+"123");
-            doctorEntity.setPassword("nk"+i+"123");
+            doctorEntity.setUsername("nk"+i);
+            doctorEntity.setPassword("nk"+i);
             doctorEntity.setEmail(i+"10086@qq.com");
             doctorDao.insert(doctorEntity);
         }
@@ -65,8 +65,8 @@ public class InitDataTest {
             doctorEntity.setAge(20+i);
             doctorEntity.setStartWorkDate(DateUtils.getCurrentDate());
             doctorEntity.setPhoneNumber(i+"**********");
-            doctorEntity.setUsername("wk"+i+"123");
-            doctorEntity.setPassword("wk"+i+"123");
+            doctorEntity.setUsername("wk"+i);
+            doctorEntity.setPassword("wk"+i);
             doctorEntity.setEmail(i+"10086@qq.com");
             doctorDao.insert(doctorEntity);
         }
@@ -77,8 +77,8 @@ public class InitDataTest {
             doctorEntity.setAge(20+i);
             doctorEntity.setStartWorkDate(DateUtils.getCurrentDate());
             doctorEntity.setPhoneNumber(i+"**********");
-            doctorEntity.setUsername("fk"+i+"123");
-            doctorEntity.setPassword("fk"+i+"123");
+            doctorEntity.setUsername("fk"+i);
+            doctorEntity.setPassword("fk"+i);
             doctorEntity.setEmail(i+"10086@qq.com");
             doctorDao.insert(doctorEntity);
         }
@@ -89,8 +89,8 @@ public class InitDataTest {
             doctorEntity.setAge(20+i);
             doctorEntity.setStartWorkDate(DateUtils.getCurrentDate());
             doctorEntity.setPhoneNumber(i+"**********");
-            doctorEntity.setUsername("gk"+i+"123");
-            doctorEntity.setPassword("gk"+i+"123");
+            doctorEntity.setUsername("gk"+i);
+            doctorEntity.setPassword("gk"+i);
             doctorEntity.setEmail(i+"10086@qq.com");
             doctorDao.insert(doctorEntity);
         }
@@ -101,8 +101,8 @@ public class InitDataTest {
             doctorEntity.setAge(20+i);
             doctorEntity.setStartWorkDate(DateUtils.getCurrentDate());
             doctorEntity.setPhoneNumber(i+"**********");
-            doctorEntity.setUsername("wgk"+i+"123");
-            doctorEntity.setPassword("wgk"+i+"123");
+            doctorEntity.setUsername("wgk"+i);
+            doctorEntity.setPassword("wgk"+i);
             doctorEntity.setEmail(i+"10086@qq.com");
             doctorDao.insert(doctorEntity);
         }
@@ -113,8 +113,8 @@ public class InitDataTest {
             doctorEntity.setAge(20+i);
             doctorEntity.setStartWorkDate(DateUtils.getCurrentDate());
             doctorEntity.setPhoneNumber(i+"**********");
-            doctorEntity.setUsername("pfk"+i+"123");
-            doctorEntity.setPassword("pfk"+i+"123");
+            doctorEntity.setUsername("pfk"+i);
+            doctorEntity.setPassword("pfk"+i);
             doctorEntity.setEmail(i+"10086@qq.com");
             doctorDao.insert(doctorEntity);
         }
@@ -129,8 +129,8 @@ public class InitDataTest {
             patientEntity.setName("李四"+i);
             patientEntity.setSex(SexEnum.WOMAN.getType());
             patientEntity.setAge(20+i);
-            patientEntity.setUsername(i+"123");
-            patientEntity.setPassword(i+"123");
+            patientEntity.setUsername("patient"+i);
+            patientEntity.setPassword("patient"+i);
             patientEntity.setPhoneNumber("10086****"+i);
             patientEntity.setAddress("###########"+i);
             patientDao.insert(patientEntity);
@@ -147,8 +147,8 @@ public class InitDataTest {
             adminEntity.setName("王五"+i);
             adminEntity.setSex(SexEnum.WOMAN.getType());
             adminEntity.setAge(20+i);
-            adminEntity.setUsername(i+"123");
-            adminEntity.setPassword(i+"123");
+            adminEntity.setUsername("admin"+i);
+            adminEntity.setPassword("admin"+i);
             adminEntity.setPhoneNumber("10086****"+i);
             adminEntity.setAddress("###########"+i);
             adminDao.insert(adminEntity);

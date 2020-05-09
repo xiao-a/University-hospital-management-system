@@ -23,7 +23,7 @@ public class AppointmentDaoImpl  implements AppointmentDao {
         appointmentEntity.setCreateDate(DateUtils.getCurrentDate());
         appointmentEntity.setUpdateDate(DateUtils.getCurrentDate());
         appointmentEntity.setStatus(DataStatusEnum.VALID.getType());
-        appointmentEntity.setAppointmentStatus(AppointmentStatusEnum.CONFIRMED.getType());
+        appointmentEntity.setAppointmentStatus(AppointmentStatusEnum.UNCONFIRM.getType());
         appointmentRepository.save(appointmentEntity);
     }
 
@@ -52,4 +52,17 @@ public class AppointmentDaoImpl  implements AppointmentDao {
 //        AppointmentEntity entity = appointmentRepository.getOne(id);
         appointmentRepository.save(appointmentEntity);
     }
+
+
+    //*********************************************************************医生
+    @Override
+    public List<AppointmentEntity> getAllByDoctorId(String doctorId) {
+        return appointmentRepository.getAppointmentEntityByDoctorId(doctorId);
+    }
+    @Override
+    public void changeAppointmentStatus(AppointmentEntity appointment) {
+        appointmentRepository.save(appointment);
+    }
+
+
 }

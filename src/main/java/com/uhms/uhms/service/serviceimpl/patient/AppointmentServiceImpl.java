@@ -2,12 +2,15 @@ package com.uhms.uhms.service.serviceimpl.patient;
 
 import com.uhms.uhms.dao.dao.AppointmentDao;
 import com.uhms.uhms.dao.dao.DoctorDao;
+import com.uhms.uhms.dao.dao.PatientDao;
 import com.uhms.uhms.dao.dao.WatchListDao;
 import com.uhms.uhms.dto.AppointmentDto;
 import com.uhms.uhms.dto.AppointmentHistoryDto;
 import com.uhms.uhms.entity.AppointmentEntity;
 import com.uhms.uhms.entity.WatchListEntity;
+import com.uhms.uhms.enums.AppointmentStatusEnum;
 import com.uhms.uhms.enums.DayWeekEnum;
+import com.uhms.uhms.enums.DivisionTypeEnum;
 import com.uhms.uhms.service.service.patient.AppointmentService;
 import com.uhms.uhms.utils.DateUtils;
 import com.uhms.uhms.utils.JsonUtils;
@@ -27,22 +30,21 @@ public class AppointmentServiceImpl implements AppointmentService {
     WatchListDao watchListDao;
     @Autowired
     DoctorDao doctorDao;
+    @Autowired
+    PatientDao patientDao;
     AppointmentEntity appointmentEntity=new AppointmentEntity();
-    AppointmentHistoryDto appointmentHistoryDto=new AppointmentHistoryDto();
+
+
+    /**
+     * 插入预约信息
+     * @param appointmentJson
+     */
     @Override
     public void appointmentSubmit(String appointmentJson) {
 //        AppointmentDto(patientId=158830267825621258989_patient, division=gynecology, appointmentDate=2020-05-19, msg=多少分开垃圾堆上开了房间)
         AppointmentDto entity = JsonUtils.jsonToPojo(appointmentJson, AppointmentDto.class);
         LogUtils.info(entity+"");
         WatchListEntity watchListEntity = watchListDao.getDoctorId(DayWeekEnum.getTypeByName(DateUtils.getWeekOfDate()));
-
-
-//        PHYSICIAN("physician","内科"),
-//        SURGERY("surgery","外科"),
-//        GYNECOLOGY("gynecology","妇科"),
-//        ORTHOPEDICS("orthopedics","骨科"),
-//        OPHTHALMOLOGY("ophthalmology","五官科"),
-//        DERMATOLOGY("dermatology","皮肤科");
         switch(entity.getDivision()){
             case "physician" :
                 appointmentEntity.setDoctorId(watchListEntity.getNkDoctorId());
@@ -68,26 +70,37 @@ public class AppointmentServiceImpl implements AppointmentService {
         appointmentEntity.setDivision(entity.getDivision());
         appointmentEntity.setDoctorName(doctorDao.getById(appointmentEntity.getDoctorId()).getName());
         appointmentEntity.setPatientId(entity.getPatientId());
+        appointmentEntity.setPatientName(patientDao.getById(entity.getPatientId()).getName());
         appointmentEntity.setAppointmentDate(DateUtils.StringToDate(entity.getAppointmentDate()));
         appointmentEntity.setMsg(entity.getMsg());
         appointmentDao.insert(appointmentEntity);
     }
 
+    /**
+     * 传入患者Id，查看预约历史
+     * @param patientId
+     * @return
+     */
     @Override
     public List<AppointmentHistoryDto> getAllByPatientId(String patientId) {
-        LogUtils.info(appointmentDao.getAllByPatientId(patientId)+"");
+        LogUtils.info("before:"+appointmentDao.getAllByPatientId(patientId));
         List<AppointmentEntity> entityList = appointmentDao.getAllByPatientId(patientId);
         List<AppointmentHistoryDto> appointmentHistoryDtoList =new ArrayList<>();
         for(int i=0;i<entityList.size();i++) {
+            AppointmentHistoryDto appointmentHistoryDto=new AppointmentHistoryDto();
+             LogUtils.info("appointmentEntity："+i+":"+entityList.get(i));
              appointmentHistoryDto.setPatientId(entityList.get(i).getPatientId());
-             appointmentHistoryDto.setDivision(entityList.get(i).getDivision());
+             appointmentHistoryDto.setDivision(DivisionTypeEnum.getNameByType(entityList.get(i).getDivision()));
              appointmentHistoryDto.setDoctorName(entityList.get(i).getDoctorName());
-             appointmentHistoryDto.setAppointmentStatus(entityList.get(i).getAppointmentStatus());
+             appointmentHistoryDto.setAppointmentStatus(AppointmentStatusEnum.getNameByType(entityList.get(i).getAppointmentStatus()));
              appointmentHistoryDto.setAppointmentDate(DateUtils.DateToStrHH(entityList.get(i).getAppointmentDate()));
              appointmentHistoryDto.setSubmitDate(DateUtils.DateToStrHH(entityList.get(i).getCreateDate()));
              appointmentHistoryDto.setMsg(entityList.get(i).getMsg());
+            LogUtils.info("appointmentDto："+i+":"+appointmentHistoryDto);
              appointmentHistoryDtoList.add(appointmentHistoryDto);
+            LogUtils.info("appointmentHistoryDtoList："+i+":"+appointmentHistoryDtoList);
         }
+        LogUtils.info("after:"+appointmentHistoryDtoList);
         return appointmentHistoryDtoList;
     }
 }

@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface AppointmentService {
     void appointmentSubmit(String appointmentJson);
-    List<AppointmentHistoryDto> getAllByPatientId(String patientId);}
+    List<AppointmentHistoryDto> getAllByPatientId(String patientId);
+}

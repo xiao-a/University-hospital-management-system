@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 @Data
 public class AppointmentDto implements Serializable {
+    private String appointmentId;
     private String patientId;
     private String division;
     private String appointmentDate;

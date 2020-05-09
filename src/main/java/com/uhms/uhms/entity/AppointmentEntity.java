@@ -20,6 +20,7 @@ public class AppointmentEntity  implements Serializable {
     private String doctorId;
     private String division;
     private String doctorName;
+    private String patientName;
     private Date appointmentDate;
     private String msg;
     private String appointmentStatus;
