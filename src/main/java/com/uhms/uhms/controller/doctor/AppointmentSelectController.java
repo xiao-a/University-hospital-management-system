@@ -23,7 +23,7 @@ public class AppointmentSelectController {
     private AppointmentDoctorService appointmentDoctorService;
     @Autowired
     private DoctorService doctorService;
-    @RequestMapping(value = "appointment/select/{doctorId}" ,method = RequestMethod.GET)
+    @RequestMapping(value = "/appointment/select/{doctorId}" ,method = RequestMethod.GET)
     public String appointmentSelect(@PathVariable("doctorId")String doctorId, Model model){
         List<AppointmentEntity> appointmentEntityList= appointmentDoctorService.getAllByDoctorId(doctorId);
         DoctorDto doctorDto = doctorService.getById(doctorId);

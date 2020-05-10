@@ -1,13 +1,16 @@
 package com.uhms.uhms.controller;
 
+import com.uhms.uhms.dao.dao.AdminDao;
 import com.uhms.uhms.dto.DoctorDto;
 import com.uhms.uhms.dto.PatientDto;
+import com.uhms.uhms.entity.AdminEntity;
 import com.uhms.uhms.entity.DoctorEntity;
 import com.uhms.uhms.entity.PatientEntity;
 import com.uhms.uhms.enums.IdentifyEnum;
 import com.uhms.uhms.service.service.DoctorService;
 import com.uhms.uhms.service.service.LoginService;
 import com.uhms.uhms.service.service.PatientService;
+import com.uhms.uhms.service.service.admin.AdminService;
 import com.uhms.uhms.service.service.patient.TodayWorkDoctorService;
 import com.uhms.uhms.utils.DateUtils;
 import com.uhms.uhms.utils.EmptyUtils;
@@ -30,6 +33,8 @@ public class LoginController{
     private LoginService loginService;
     @Autowired
     private PatientService patientService;
+    @Autowired
+    private AdminService adminService;
 
     @RequestMapping(value = {"/index","/",""})
     public String index(Model model) {
@@ -67,6 +72,8 @@ public class LoginController{
                 model.addAttribute("doctor",dto);
                 return "doctor/main";
             }else {
+                AdminEntity adminEntity = adminService.getById(id);
+                model.addAttribute("admin",adminEntity);
                 return "admin/main";
             }
 

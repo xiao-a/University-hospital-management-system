@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>后台管理系统主页面</title>
+    <title>修改我的个人信息</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
@@ -113,31 +113,33 @@
           <div class="sidebar-header d-flex align-items-center">
             <div class="avatar"><img src="../../resources/static/img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
             <div class="title">
-              <h1 class="h4" th:text="${doctor.name}">王麻子</h1>
-              <p th:inline="text">[[${doctor.division}]]精神科主治医师</p>
+              <h1 class="h4" th:text="${admin.name}">王麻子</h1>
             </div>
           </div>
           <ul class="list-unstyled">
-              <li class="active"><a th:href="@{/main/} + ${doctor.doctorId}"> <i class="icon-home"></i>首页 </a></li>
-              <li><a href="#changeHospital" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>转院信息管理</a>
-                <ul id="changeHospital" class="collapse list-unstyled ">
-                  <li ><a th:href="@{/select_change_hospital_list/} + ${doctor.doctorId}">转院信息列表</a></li>
-                  <li><a th:href="@{/add_change_hospital/} + ${doctor.doctorId}">添加转院信息</a></li>
-                </ul>
-              </li>
-              <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>患者信息管理</a>
-                <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                  <li ><a th:href="@{/select_patient/} + ${doctor.doctorId}">患者信息列表</a></li>
-                  <!--<li><a th:href="@{/add_patient/} + ${doctor.doctorId}">添加患者信息</a></li>-->
-                  <!--<li><a th:href="@{/update_patient/} + ${doctor.doctorId}">修改患者信息</a></li>-->
-                  <!--<li><a th:href="@{/delete_patient/} + ${doctor.doctorId}">删除患者信息</a></li>-->
-                </ul>
-              </li>
-            <li><a th:href="@{/appointment/select/} + ${doctor.doctorId}"> <i class="icon-home"></i>预约信息</a></li>
+            <li ><a href="#"> <i class="icon-home"></i>首页 </a></li>
+            <li><a href="#personal" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>医生管理</a>
+              <ul id="doctorInfoManager" class="collapse list-unstyled ">
+                <li><a  href="">医生信息管理</a></li>
+              </ul>
+            </li>
+            <li><a href="#personal" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>患者管理</a>
+              <ul id="patientInfoManager" class="collapse list-unstyled ">
+                <li><a  href="#">查看患者信息</a></li>
+                <!--<li><a th:href="@{/add_patient/} + ${doctor.doctorId}">添加患者信息</a></li>-->
+                <!--<li><a th:href="@{/update_patient/} + ${doctor.doctorId}">修改患者信息</a></li>-->
+                <!--<li><a th:href="@{/delete_patient/} + ${doctor.doctorId}">删除患者信息</a></li>-->
+              </ul>
+            </li>
+            <li><a href="#personal" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>网站管理</a>
+              <ul id="webManager" class="collapse list-unstyled ">
+                <li><a  href="#">修改新闻信息</a></li>
+              </ul>
+            </li>
             <li><a href="#personal" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>我的</a>
               <ul id="personal" class="collapse list-unstyled ">
-                <li><a th:href="@{/my_info/} + ${doctor.doctorId}"> 个人信息显示</a></li>
-                <li><a th:href="@{/update_my_info/} + ${doctor.doctorId}">修改个人信息</a></li>
+                <li><a  th:href="@{/admin/show_personal/} + ${admin.adminId}"> 个人信息显示</a></li>
+                <li class="active"><a  th:href="@{/admin/update_personal/} + ${admin.adminId}">修改个人信息</a></li>
               </ul>
             </li>
           </ul>
@@ -146,17 +148,77 @@
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom" name="id" th:text="${doctor.doctorId}">个人首页</h2>
+              <h2 class="no-margin-bottom" name="id" th:text="${admin.adminId}">修改个人信息</h2>
             </div>
           </header>
-          <!-- Dashboard Counts Section-->
-          <section class="dashboard-counts no-padding-bottom">
+          <section class="forms">
             <div class="container-fluid">
-              <div class="row bg-white has-shadow">
-                <!-- Item -->
-                <div class="col-xl-12 col-sm-12">
-                  <div class="item d-flex align-items-center">
-                    <h1>欢迎使用河南职业技术学院校医院管理系统</h1>
+              <div class="row">
+                <!-- Horizontal Form-->
+                <div class="col-lg-12">
+                  <div class="card">
+                    <div class="card-close">
+                      <div class="dropdown">
+                        <button type="button" id="closeCard2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                        <div aria-labelledby="closeCard2" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                      </div>
+                    </div>
+                    <div class="card-header d-flex align-items-center">
+                      <h3 class="h4">个人信息修改</h3>
+                    </div>
+                    <div class="card-body">
+                      <p>填写下列信息完成修改</p>
+                      <form class="form-horizontal" method="post" action="/admin/update_myinfo_submission">
+                        <div class="form-group row">
+                          <label class="col-sm-2 form-control-label">姓名</label>
+                          <div class="col-sm-8">
+                            <input name="adminId" type="hidden" th:value="${admin.adminId}"/>
+                            <input id="name" type="text" name="name" placeholder="姓名" class="form-control form-control-success" th:value="${admin.name}">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-sm-2 form-control-label">性别</label>
+                          <div class="col-sm-8">
+                            <input id="sex" type="text" name="sex" placeholder="性别" class="form-control form-control-warning" th:value="${admin.sex}">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-sm-2 form-control-label">年龄</label>
+                          <div class="col-sm-8">
+                            <input id="age" type="text" name="age" placeholder="年龄" class="form-control form-control-warning" th:value="${admin.age}">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-sm-2 form-control-label">手机号码</label>
+                          <div class="col-sm-8">
+                            <input id="phoneNumber" type="text" name="phoneNumber" placeholder="手机号码" class="form-control form-control-warning" th:value="${admin.phoneNumber}">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-sm-2 form-control-label">用户名</label>
+                          <div class="col-sm-8">
+                            <input id="username" type="text" name="username" placeholder="用户名" class="form-control form-control-success" th:value="${admin.username}">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-sm-2 form-control-label">密码</label>
+                          <div class="col-sm-8">
+                            <input id="password" type="text" name="password" placeholder="密码" class="form-control form-control-warning" th:value="${admin.password}">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-sm-2 form-control-label">地址</label>
+                          <div class="col-sm-8">
+                            <input id="address" type="text" name="address" placeholder="地址" class="form-control form-control-warning" th:value="${admin.address}">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <div class="col-sm-9 offset-sm-3">
+                            <input type="submit" value="修改" class="btn btn-primary">
+                          </div>
+                        </div>
+                      </form>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -165,10 +227,8 @@
           <!-- Page Footer-->
           <footer class="main-footer">
             <div class="container-fluid">
-              <div class="row">
-                <div class="col-sm-12" align="center">
-                  <p>版本V0.1.</p>
-                </div>
+              <div class="col-sm-12" align="center">
+                <p>版本V0.1.</p>
               </div>
             </div>
           </footer>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>后台管理系统主页面</title>
+    <title>查询患者信息</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
@@ -41,7 +41,7 @@
             <div class="navbar-holder d-flex align-items-center justify-content-between">
               <!-- Navbar Header-->
               <div class="navbar-header">
-                <!-- Navbar Brand --><a href="main.html" class="navbar-brand d-none d-sm-inline-block">
+                <!-- Navbar Brand --><a href="../doctor/main.html" class="navbar-brand d-none d-sm-inline-block">
                   <div class="brand-text d-none d-lg-inline-block"><span>河南职业技术学院校医院 </span></div>
                   <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>校医院</strong></div></a>
                 <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
@@ -100,7 +100,7 @@
                   </ul>
                 </li>
                 <!-- Logout    -->
-                <li class="nav-item"><a href="main.html" class="nav-link logout"> <span class="d-none d-sm-inline">退出登录</span><i class="fa fa-sign-out"></i></a></li>
+                <li class="nav-item"><a href="../doctor/main.html" class="nav-link logout"> <span class="d-none d-sm-inline">退出登录</span><i class="fa fa-sign-out"></i></a></li>
               </ul>
             </div>
           </div>
@@ -114,32 +114,31 @@
             <div class="avatar"><img src="../../resources/static/img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
             <div class="title">
               <h1 class="h4" th:text="${doctor.name}">王麻子</h1>
-              <p th:inline="text">[[${doctor.division}]]精神科主治医师</p>
+              <p th:inline="text">[[${doctor.division}]]主治医师</p>
             </div>
           </div>
           <ul class="list-unstyled">
-              <li class="active"><a th:href="@{/main/} + ${doctor.doctorId}"> <i class="icon-home"></i>首页 </a></li>
-              <li><a href="#changeHospital" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>转院信息管理</a>
-                <ul id="changeHospital" class="collapse list-unstyled ">
-                  <li ><a th:href="@{/select_change_hospital_list/} + ${doctor.doctorId}">转院信息列表</a></li>
-                  <li><a th:href="@{/add_change_hospital/} + ${doctor.doctorId}">添加转院信息</a></li>
-                </ul>
-              </li>
-              <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>患者信息管理</a>
-                <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                  <li ><a th:href="@{/select_patient/} + ${doctor.doctorId}">患者信息列表</a></li>
-                  <!--<li><a th:href="@{/add_patient/} + ${doctor.doctorId}">添加患者信息</a></li>-->
-                  <!--<li><a th:href="@{/update_patient/} + ${doctor.doctorId}">修改患者信息</a></li>-->
-                  <!--<li><a th:href="@{/delete_patient/} + ${doctor.doctorId}">删除患者信息</a></li>-->
-                </ul>
-              </li>
-            <li><a th:href="@{/appointment/select/} + ${doctor.doctorId}"> <i class="icon-home"></i>预约信息</a></li>
-            <li><a href="#personal" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>我的</a>
-              <ul id="personal" class="collapse list-unstyled ">
-                <li><a th:href="@{/my_info/} + ${doctor.doctorId}"> 个人信息显示</a></li>
-                <li><a th:href="@{/update_my_info/} + ${doctor.doctorId}">修改个人信息</a></li>
-              </ul>
-            </li>
+                <li ><a th:href="@{/main/} + ${doctor.doctorId}"> <i class="icon-home"></i>首页 </a></li>
+                  <li><a href="#changeHospital" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>转院信息管理</a>
+                      <ul id="changeHospital" class="collapse list-unstyled ">
+                          <li ><a th:href="@{/select_change_hospital_list/} + ${doctor.doctorId}">转院信息列表</a></li>
+                          <li><a th:href="@{/add_change_hospital/} + ${doctor.doctorId}">添加转院信息</a></li>
+                      </ul>
+                  </li>
+                    <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>患者信息管理</a>
+                      <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+                          <li class="active"><a th:href="@{/select_patient/} + ${doctor.doctorId}">患者信息列表</a></li>
+                          <li><a th:href="@{/add_patient/} + ${doctor.doctorId}">添加患者信息</a></li>
+                          <li><a th:href="@{/update_patient/} + ${doctor.doctorId}">修改患者信息</a></li>
+                          <li><a th:href="@{/delete_patient/} + ${doctor.doctorId}">删除患者信息</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#personal" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>我的</a>
+                      <ul id="personal" class="collapse list-unstyled ">
+                        <li><a th:href="@{/my_info/} + ${doctor.doctorId}"> 个人信息显示</a></li>
+                        <li><a th:href="@{/update_my_info/} + ${doctor.doctorId}">修改个人信息</a></li>
+                      </ul>
+                    </li>
           </ul>
         </nav>
         <div class="content-inner">
@@ -149,14 +148,51 @@
               <h2 class="no-margin-bottom" name="id" th:text="${doctor.doctorId}">个人首页</h2>
             </div>
           </header>
-          <!-- Dashboard Counts Section-->
           <section class="dashboard-counts no-padding-bottom">
-            <div class="container-fluid">
-              <div class="row bg-white has-shadow">
-                <!-- Item -->
-                <div class="col-xl-12 col-sm-12">
-                  <div class="item d-flex align-items-center">
-                    <h1>欢迎使用河南职业技术学院校医院管理系统</h1>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card">
+                  <div class="card-close">
+                    <div class="dropdown">
+                      <button type="button" id="closeCard1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                      <div aria-labelledby="closeCard1" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                    </div>
+                  </div>
+                  <div class="card-header d-flex align-items-center">
+                    <h3 class="h4">病人信息表</h3>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table">
+                          <tr>
+                             <td>编号</td><td scope="row" th:text="${patient.patientId}"></td>
+                          </tr>
+                          <tr>
+                            <td>姓名</td><td scope="row" th:text="${patient.name}"></td>
+                          </tr>
+                          <tr>
+                            <td>性别</td><td scope="row" th:text="${patient.sex}"></td>
+                          </tr>
+                          <tr>
+                            <td>年龄</td><td scope="row" th:text="${patient.age}"></td>
+                          </tr>
+                          <tr>
+                            <td>用户名</td><td scope="row" th:text="${patient.username}"></td>
+                          </tr>
+                          <tr>
+                            <td>手机号</td><td scope="row" th:text="${patient.phoneNumber}"></td>
+                          </tr>
+                          <tr>
+                            <td>地址</td><td scope="row" th:text="${patient.address}"></td>
+                          </tr>
+                          <tr>
+                            <td>创建时间</td><td scope="row" th:text="${patient.createDate}"></td>
+                          </tr>
+                          <tr>
+                            <td>修改时间</td><td scope="row" th:text="${patient.updateDate}"></td>
+                          </tr>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>

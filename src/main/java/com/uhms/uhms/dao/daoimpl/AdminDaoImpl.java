@@ -18,7 +18,7 @@ public class AdminDaoImpl implements AdminDao {
 
     @Override
     public void insert(AdminEntity AdminEntity) {
-        AdminEntity.setAdminId(IdUtils.createID("Admin"));
+        AdminEntity.setAdminId(IdUtils.createID("admin"));
         AdminEntity.setCreateDate(DateUtils.getCurrentDate());
         AdminEntity.setUpdateDate( DateUtils.getCurrentDate());
         AdminEntity.setStatus(DataStatusEnum.VALID.getType());
@@ -41,7 +41,15 @@ public class AdminDaoImpl implements AdminDao {
     }
 
     @Override
-    public void update(AdminEntity AdminEntity) {
+    public void update(AdminEntity adminEntity) {
+        AdminEntity AdminEntity = getById(adminEntity.getAdminId());
+        AdminEntity.setName(adminEntity.getName());
+        AdminEntity.setSex(adminEntity.getSex());
+        AdminEntity.setAge(adminEntity.getAge());
+        AdminEntity.setUsername(adminEntity.getUsername());
+        AdminEntity.setAddress(adminEntity.getAddress());
+        AdminEntity.setPhoneNumber(adminEntity.getPhoneNumber());
+        AdminEntity.setUpdateDate(DateUtils.getCurrentDate());
         AdminRepository.save(AdminEntity);
     }
 

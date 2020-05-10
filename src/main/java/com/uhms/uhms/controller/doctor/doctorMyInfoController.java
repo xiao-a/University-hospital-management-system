@@ -1,4 +1,4 @@
-package com.uhms.uhms.controller;
+package com.uhms.uhms.controller.doctor;
 
 import com.uhms.uhms.dto.DoctorDto;
 import com.uhms.uhms.entity.DoctorEntity;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-public class MyinfoController {
+public class doctorMyInfoController {
     @Autowired
     private DoctorService doctorService;
     @RequestMapping("/my_info/{doctorId}")

@@ -22,7 +22,7 @@ public class PatientController {
     @Autowired
     private DoctorService doctorService;
     @RequestMapping("/select_patient/{doctorId}")
-    public String selectPatient(@PathVariable("doctorId")String doctorId,Model model){
+    public String doctorSelectPatient(@PathVariable("doctorId")String doctorId,Model model){
         DoctorDto doctorDto = doctorService.getById(doctorId);
         List<PatientEntity> patientList = patientService.findAll();
         model.addAttribute("doctor",doctorDto);
@@ -31,7 +31,7 @@ public class PatientController {
         return "admin/patientSelect";
     }
     @RequestMapping(value = "/select_patient_detail/{doctorId}/{patientId}" ,method = RequestMethod.GET)
-    public String selectDetailPatient(@PathVariable("doctorId")String doctorId,@PathVariable("patientId")String patientId,Model model){
+    public String doctorSelectDetailPatient(@PathVariable("doctorId")String doctorId,@PathVariable("patientId")String patientId,Model model){
         DoctorDto doctorDto = doctorService.getById(doctorId);
         PatientEntity patient = patientService.getById(patientId);
         System.out.println(patient);
@@ -39,53 +39,4 @@ public class PatientController {
         model.addAttribute("patient",patient);
         return "admin/patientDetailSelect";
     }
-    @RequestMapping(value = "/update_patient/{doctorId}/{patientId}",method = RequestMethod.GET)
-    public String updatePatient(@PathVariable("doctorId")String doctorId,@PathVariable("patientId")String patientId,Model model){
-        DoctorDto doctorDto = doctorService.getById(doctorId);
-        PatientEntity patient = patientService.getById(patientId);
-        System.out.println(patient);
-        model.addAttribute("doctor",doctorDto);
-        model.addAttribute("patient",patient);
-        return "admin/patientUpdate";
-    }
-
-    @RequestMapping(value = "/patient_update_submission" ,method = RequestMethod.POST)
-    public String patientUpadateSubmission(PatientDto patientDto, Model model, HttpServletRequest request) {
-        patientService.updateJpa(patientDto);
-        System.out.println("1111111111"+patientDto);
-        PatientEntity patientEntity = patientService.getById(patientDto.getPatientId());
-        DoctorDto doctorEntity = doctorService.getById(patientDto.getDoctorId());
-        System.out.println("222222222"+patientEntity);
-        model.addAttribute("doctor",doctorEntity);
-        model.addAttribute("patient",patientEntity);
-        System.out.println(patientEntity);
-        return "admin/patientUpdate";
-    }
-    @RequestMapping(value = "/delete_patient/{doctorId}/{patientId}",method = RequestMethod.GET)
-    public String deletePatient(@PathVariable("doctorId")String doctorId,@PathVariable("patientId")String patientId,Model model){
-        patientService.deleteById(patientId);
-        DoctorDto doctorDto = doctorService.getById(doctorId);
-        List<PatientEntity> patientList = patientService.findAll();
-        model.addAttribute("doctor",doctorDto);
-        model.addAttribute("patientList",patientList);
-        model.addAttribute("msg",null);
-        return "admin/patientSelect";
-    }
-    @RequestMapping(value = "/patient_insert/{doctorId}" ,method = RequestMethod.GET)
-    public String selectDetailPatient(@PathVariable("doctorId")String doctorId,Model model){
-        DoctorDto doctorDto = doctorService.getById(doctorId);
-        model.addAttribute("doctor",doctorDto);
-        return "admin/patientInsert";
-    }
-    @RequestMapping(value = "/patient_insert_submission" ,method = RequestMethod.POST)
-    public String selectDetailPatientSubmission(PatientDto patientDto,Model model){
-        DoctorDto doctorDto = doctorService.getById(patientDto.getDoctorId());
-        patientService.insert(patientDto);
-        List<PatientEntity> patientList = patientService.findAll();
-        model.addAttribute("doctor",doctorDto);
-        model.addAttribute("patientList",patientList);
-        model.addAttribute("msg",null);
-        return "admin/patientSelect";
-    }
-
 }

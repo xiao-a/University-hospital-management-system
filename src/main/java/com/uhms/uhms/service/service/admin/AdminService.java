@@ -1,4 +1,4 @@
-package com.uhms.uhms.service.service;
+package com.uhms.uhms.service.service.admin;
 
 import com.uhms.uhms.dto.AdminDto;
 import com.uhms.uhms.entity.AdminEntity;
@@ -10,5 +10,5 @@ public interface AdminService {
     void insert(AdminDto AdminDto);
     AdminEntity getById(String id);
     void deleteById(String id);
-    void updateJpa(AdminDto AdminDto);
+    void updateJpa(AdminEntity adminEntity);
 }
