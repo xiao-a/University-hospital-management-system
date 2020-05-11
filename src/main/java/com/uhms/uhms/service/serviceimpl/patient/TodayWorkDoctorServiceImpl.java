@@ -1,16 +1,11 @@
 package com.uhms.uhms.service.serviceimpl.patient;
 
 import com.uhms.uhms.dao.dao.DoctorDao;
-import com.uhms.uhms.dao.dao.PatientDao;
 import com.uhms.uhms.dao.dao.WatchListDao;
-import com.uhms.uhms.dto.PatientDto;
 import com.uhms.uhms.entity.DoctorEntity;
-import com.uhms.uhms.entity.PatientEntity;
 import com.uhms.uhms.entity.WatchListEntity;
-import com.uhms.uhms.enums.DataStatusEnum;
 import com.uhms.uhms.enums.DayWeekEnum;
 import com.uhms.uhms.enums.DivisionTypeEnum;
-import com.uhms.uhms.service.service.PatientService;
 import com.uhms.uhms.service.service.patient.TodayWorkDoctorService;
 import com.uhms.uhms.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;

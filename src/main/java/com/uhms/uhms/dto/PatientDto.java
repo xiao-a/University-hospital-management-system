@@ -8,6 +8,7 @@ import java.sql.Date;
 @Data
 public class PatientDto implements Serializable {
     private String patientId;
+    private String adminId;
     private String doctorId;
     private String name;
     private String sex;

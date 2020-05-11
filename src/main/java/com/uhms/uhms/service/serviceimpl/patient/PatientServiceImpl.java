@@ -1,12 +1,11 @@
-package com.uhms.uhms.service.serviceimpl;
+package com.uhms.uhms.service.serviceimpl.patient;
 
 import com.uhms.uhms.dao.dao.PatientDao;
 import com.uhms.uhms.dto.PatientDto;
-import com.uhms.uhms.entity.BedEntity;
 import com.uhms.uhms.entity.PatientEntity;
 import com.uhms.uhms.enums.DataStatusEnum;
-import com.uhms.uhms.service.service.BedService;
-import com.uhms.uhms.service.service.PatientService;
+import com.uhms.uhms.enums.SexEnum;
+import com.uhms.uhms.service.service.patient.PatientService;
 import com.uhms.uhms.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,16 +18,20 @@ public class PatientServiceImpl implements PatientService {
     private PatientDao patientDao;
     @Override
     public List<PatientEntity> findAll() {
-        return patientDao.getAll();
+        List<PatientEntity> patientEntityList = patientDao.getAll();
+        for(int i=0;i<patientEntityList.size();i++){
+            patientEntityList.get(i).setSex(SexEnum.getNameByType(patientEntityList.get(i).getSex()));
+        }
+        return patientEntityList;
     }
 
     @Override
     public void insert(PatientDto patientDto) {
         PatientEntity patientEntity=new PatientEntity();
         patientEntity.setName(patientDto.getName());
-        patientEntity.setSex(patientDto.getSex());
+        patientEntity.setSex(SexEnum.getTypeByName(patientDto.getSex()));
         patientEntity.setAge(patientDto.getAge());
-        patientEntity.setUsername(patientDto.getName());
+        patientEntity.setUsername(patientDto.getUsername());
         patientEntity.setAddress(patientDto.getAddress());
         patientEntity.setPhoneNumber(patientDto.getPhoneNumber());
         patientEntity.setStatus(DataStatusEnum.VALID.getType());
@@ -36,7 +39,9 @@ public class PatientServiceImpl implements PatientService {
     }
     @Override
     public PatientEntity getById(String id) {
-        return patientDao.getById(id);
+        PatientEntity patientEntity = patientDao.getById(id);
+        patientEntity.setSex(SexEnum.getNameByType(patientEntity.getSex()));
+        return patientEntity;
     }
 
     @Override
@@ -50,7 +55,7 @@ public class PatientServiceImpl implements PatientService {
         patientEntity.setName(patientDto.getName());
         patientEntity.setSex(patientDto.getSex());
         patientEntity.setAge(patientDto.getAge());
-        patientEntity.setUsername(patientDto.getName());
+        patientEntity.setUsername(patientDto.getUsername());
         patientEntity.setAddress(patientDto.getAddress());
         patientEntity.setPhoneNumber(patientDto.getPhoneNumber());
         patientEntity.setUpdateDate(DateUtils.getCurrentDate());

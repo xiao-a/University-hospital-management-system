@@ -8,7 +8,7 @@ import com.uhms.uhms.entity.PatientEntity;
 import com.uhms.uhms.enums.IdentifyEnum;
 import com.uhms.uhms.service.service.doctor.DoctorService;
 import com.uhms.uhms.service.service.LoginService;
-import com.uhms.uhms.service.service.PatientService;
+import com.uhms.uhms.service.service.patient.PatientService;
 import com.uhms.uhms.service.service.admin.AdminService;
 import com.uhms.uhms.service.service.patient.TodayWorkDoctorService;
 import com.uhms.uhms.utils.DateUtils;

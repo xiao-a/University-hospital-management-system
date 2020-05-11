@@ -3,7 +3,7 @@ package com.uhms.uhms.controller;
 import com.uhms.uhms.dto.DoctorDto;
 import com.uhms.uhms.entity.PatientEntity;
 import com.uhms.uhms.service.service.doctor.DoctorService;
-import com.uhms.uhms.service.service.PatientService;
+import com.uhms.uhms.service.service.patient.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

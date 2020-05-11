@@ -126,7 +126,7 @@
                 </li>
                 <li><a href="#patientInfoManager" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>患者管理</a>
                     <ul id="patientInfoManager" class="collapse list-unstyled ">
-                        <li><a  href="#">查看患者信息</a></li>
+                        <li><a  th:href="@{/admin/select_patient/} + ${admin.adminId}">查看患者信息</a></li>
                         <!--<li><a th:href="@{/add_patient/} + ${doctor.doctorId}">添加患者信息</a></li>-->
                         <!--<li><a th:href="@{/update_patient/} + ${doctor.doctorId}">修改患者信息</a></li>-->
                         <!--<li><a th:href="@{/delete_patient/} + ${doctor.doctorId}">删除患者信息</a></li>-->

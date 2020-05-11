@@ -1,4 +1,4 @@
-package com.uhms.uhms.service.service;
+package com.uhms.uhms.service.service.patient;
 
 import com.uhms.uhms.dto.PatientDto;
 import com.uhms.uhms.entity.PatientEntity;

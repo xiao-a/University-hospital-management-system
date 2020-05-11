@@ -112,8 +112,7 @@
           <div class="sidebar-header d-flex align-items-center">
             <div class="avatar"><img src="../../resources/static/img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
             <div class="title">
-              <h1 class="h4" th:text="${doctor.name}">王麻子</h1>
-              <p th:inline="text">[[${doctor.division}]]主治医师</p>
+              <h1 class="h4" th:text="${admin.name}">王麻子</h1>
             </div>
           </div>
           <ul class="list-unstyled">
@@ -125,7 +124,7 @@
             </li>
             <li><a href="#patientInfoManager" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>患者管理</a>
               <ul id="patientInfoManager" class="collapse list-unstyled ">
-                <li><a  href="#">查看患者信息</a></li>
+                <li><a  th:href="@{/admin/select_patient/} + ${admin.adminId}">查看患者信息</a></li>
                 <!--<li><a th:href="@{/add_patient/} + ${doctor.doctorId}">添加患者信息</a></li>-->
                 <!--<li><a th:href="@{/update_patient/} + ${doctor.doctorId}">修改患者信息</a></li>-->
                 <!--<li><a th:href="@{/delete_patient/} + ${doctor.doctorId}">删除患者信息</a></li>-->
@@ -148,7 +147,7 @@
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom" name="id" th:text="${doctor.doctorId}">个人首页</h2>
+              <h2 class="no-margin-bottom" name="id" th:text="${admin.adminId}">个人首页</h2>
             </div>
           </header>
           <section class="dashboard-counts no-padding-bottom">
@@ -163,8 +162,8 @@
                   </div>
                   <div class="card-header d-flex align-items-center">
                     <div class="row">
-                      <h3 class="h4">病人信息表</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4 th:text="${msg}"></h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a th:href="@{'/print_patient_list/'+${doctor.doctorId}}" class="btn btn-primary">打印</a>
-                      &nbsp;&nbsp;&nbsp;&nbsp;<a th:href="@{'/patient_insert/'+${doctor.doctorId}}" class="btn btn-primary">新增</a>
+                      <h3 class="h4">病人信息表</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4 th:text="${msg}"></h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a th:href="@{'/print_patient_list/'+${admin.adminId}}" class="btn btn-primary">打印</a>
+                      &nbsp;&nbsp;&nbsp;&nbsp;<a th:href="@{'/patient_insert/'+${admin.adminId}}" class="btn btn-primary">新增</a>
                     </div>
                   </div>
                   <div class="card-body">
@@ -179,8 +178,6 @@
                           <th>用户名</th>
                           <th>手机号</th>
                           <th>地址</th>
-                          <th>创建时间</th>
-                          <th>修改时间</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -192,11 +189,9 @@
                           <th scope="row" th:text="${patient.username}"></th>
                           <th scope="row" th:text="${patient.phoneNumber}"></th>
                           <th scope="row" th:text="${patient.address}"></th>
-                          <th scope="row" th:text="${patient.createDate}"></th>
-                          <th scope="row" th:text="${patient.updateDate}"></th>
-                          <th scope="row"><a th:href="@{'/select_patient_detail/'+${doctor.doctorId}+'/'+${patient.patientId}}" class="btn btn-primary">查看</a></th>
-                          <th scope="row"><a th:href="@{/update_patient/} + ${doctor.doctorId}+'/'+${patient.patientId}" class="btn btn-primary">修改</a></th>
-                          <th scope="row"><a th:href="@{/delete_patient/} + ${doctor.doctorId}+'/'+${patient.patientId}" class="btn btn-primary">删除</a></th>
+                          <th scope="row"><a th:href="@{'/admin_select_patient_detail/'+${admin.adminId}+'/'+${patient.patientId}}" class="btn btn-primary">查看</a></th>
+                          <th scope="row"><a th:href="@{'/update_patient/'+ ${admin.adminId}+'/'+${patient.patientId}}" class="btn btn-primary">修改</a></th>
+                          <th scope="row"><a th:href="@{'/delete_patient/'+ ${admin.adminId}+'/'+${patient.patientId}}" class="btn btn-primary">删除</a></th>
                         </tr>
                         </tbody>
                       </table>

@@ -2,7 +2,7 @@ package com.uhms.uhms.controller.patient;
 
 import com.uhms.uhms.dto.AppointmentHistoryDto;
 import com.uhms.uhms.entity.PatientEntity;
-import com.uhms.uhms.service.service.PatientService;
+import com.uhms.uhms.service.service.patient.PatientService;
 import com.uhms.uhms.service.service.patient.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

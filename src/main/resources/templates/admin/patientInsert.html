@@ -113,8 +113,7 @@
           <div class="sidebar-header d-flex align-items-center">
             <div class="avatar"><img src="../../resources/static/img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
             <div class="title">
-              <h1 class="h4" th:text="${doctor.name}">王麻子</h1>
-              <p th:inline="text">[[${doctor.division}]]主治医师</p>
+              <h1 class="h4" th:text="${admin.name}">王麻子</h1>
             </div>
           </div>
           <ul class="list-unstyled">
@@ -126,7 +125,7 @@
             </li>
             <li><a href="#patientInfoManager" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>患者管理</a>
               <ul id="patientInfoManager" class="collapse list-unstyled ">
-                <li><a  href="#">查看患者信息</a></li>
+                <li><a th:href="@{/admin/select_patient/} + ${admin.adminId}">查看患者信息</a></li>
                 <!--<li><a th:href="@{/add_patient/} + ${doctor.doctorId}">添加患者信息</a></li>-->
                 <!--<li><a th:href="@{/update_patient/} + ${doctor.doctorId}">修改患者信息</a></li>-->
                 <!--<li><a th:href="@{/delete_patient/} + ${doctor.doctorId}">删除患者信息</a></li>-->
@@ -149,7 +148,7 @@
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom" name="id" th:text="${doctor.doctorId}">个人首页</h2>
+              <h2 class="no-margin-bottom" name="id" th:text="${admin.adminId}">个人首页</h2>
             </div>
           </header>
           <section class="forms">
@@ -172,7 +171,7 @@
                         <div class="form-group row">
                           <label class="col-sm-2 form-control-label">姓名</label>
                           <div class="col-sm-8">
-                            <input name="doctorId" type="hidden" th:value="${doctor.doctorId}"/>
+                            <input name="adminId" type="hidden" th:value="${admin.adminId}"/>
                             <input id="name" type="text" name="name" placeholder="姓名" class="form-control form-control-success">
 
                           </div>
@@ -199,6 +198,12 @@
                           <label class="col-sm-2 form-control-label">用户名</label>
                           <div class="col-sm-8">
                             <input id="username" type="text" name="username" placeholder="用户名" class="form-control form-control-success">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-sm-2 form-control-label">密码</label>
+                          <div class="col-sm-8">
+                            <input id="password" type="text" name="password" placeholder="密码" class="form-control form-control-success">
                           </div>
                         </div>
                         <div class="form-group row">
