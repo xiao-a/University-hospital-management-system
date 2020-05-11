@@ -45,7 +45,8 @@ public class LoginController{
         return "index";
     }
     @RequestMapping("/login")
-    public String login() {
+    public String login(Model model) {
+        model.addAttribute("msg",null);
         return "/login";
     }
     @RequestMapping(value ={ "/login/submit"} ,method = RequestMethod.POST)
@@ -57,7 +58,8 @@ public class LoginController{
         String id = loginService.Login(username, password, identify);
         LogUtils.info("ID:"+id);
         if(EmptyUtils.isEmpty(id)){
-            return "/loginFail";
+            model.addAttribute("msg","用户名或密码错误，请重新填写！");
+            return "/login";
         }else {
             if(IdentifyEnum.PATIENT.getType().equals(identify)){
                 PatientEntity patient= patientService.getById(id);

@@ -2,15 +2,10 @@ package com.uhms.uhms.test;
 
 import com.uhms.uhms.UhmsApplication;
 import com.uhms.uhms.dao.dao.*;
-import com.uhms.uhms.dto.DoctorDto;
-import com.uhms.uhms.dto.PatientDto;
 import com.uhms.uhms.entity.*;
 import com.uhms.uhms.enums.DayWeekEnum;
 import com.uhms.uhms.enums.DivisionTypeEnum;
 import com.uhms.uhms.enums.SexEnum;
-import com.uhms.uhms.service.service.ChangeHospitalService;
-import com.uhms.uhms.service.service.DoctorService;
-import com.uhms.uhms.service.service.PatientService;
 import com.uhms.uhms.utils.DateUtils;
 import com.uhms.uhms.utils.IdUtils;
 import org.junit.Test;
@@ -19,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -56,6 +50,7 @@ public class InitDataTest {
             doctorEntity.setUsername("nk"+i);
             doctorEntity.setPassword("nk"+i);
             doctorEntity.setEmail(i+"10086@qq.com");
+            doctorEntity.setAddress("内科"+i+"号");
             doctorDao.insert(doctorEntity);
         }
         for(int i=0;i<=2;i++){
@@ -68,6 +63,7 @@ public class InitDataTest {
             doctorEntity.setUsername("wk"+i);
             doctorEntity.setPassword("wk"+i);
             doctorEntity.setEmail(i+"10086@qq.com");
+            doctorEntity.setAddress("外科"+i+"号");
             doctorDao.insert(doctorEntity);
         }
         for(int i=0;i<=2;i++){
@@ -80,6 +76,7 @@ public class InitDataTest {
             doctorEntity.setUsername("fk"+i);
             doctorEntity.setPassword("fk"+i);
             doctorEntity.setEmail(i+"10086@qq.com");
+            doctorEntity.setAddress("妇科"+i+"号");
             doctorDao.insert(doctorEntity);
         }
         for(int i=0;i<=2;i++){
@@ -92,6 +89,7 @@ public class InitDataTest {
             doctorEntity.setUsername("gk"+i);
             doctorEntity.setPassword("gk"+i);
             doctorEntity.setEmail(i+"10086@qq.com");
+            doctorEntity.setAddress("骨科"+i+"号");
             doctorDao.insert(doctorEntity);
         }
         for(int i=0;i<=2;i++){
@@ -104,6 +102,7 @@ public class InitDataTest {
             doctorEntity.setUsername("wgk"+i);
             doctorEntity.setPassword("wgk"+i);
             doctorEntity.setEmail(i+"10086@qq.com");
+            doctorEntity.setAddress("五官科"+i+"号");
             doctorDao.insert(doctorEntity);
         }
         for(int i=0;i<=2;i++){
@@ -116,6 +115,7 @@ public class InitDataTest {
             doctorEntity.setUsername("pfk"+i);
             doctorEntity.setPassword("pfk"+i);
             doctorEntity.setEmail(i+"10086@qq.com");
+            doctorEntity.setAddress("皮肤科"+i+"号");
             doctorDao.insert(doctorEntity);
         }
     }

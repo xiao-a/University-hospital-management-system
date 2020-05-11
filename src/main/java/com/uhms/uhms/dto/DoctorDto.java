@@ -12,6 +12,7 @@ import java.util.Date;
 
 @Data
 public class DoctorDto implements Serializable {
+    private String adminId;
     private String doctorId;
     private String name;
     private String sex;
@@ -22,5 +23,6 @@ public class DoctorDto implements Serializable {
     private String username;
     private String password;
     private String email;
+    private String address;
     private String status;
 }

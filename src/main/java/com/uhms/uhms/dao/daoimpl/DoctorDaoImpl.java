@@ -20,6 +20,7 @@ public class DoctorDaoImpl implements DoctorDao {
         doctorEntity.setDoctorId(IdUtils.createID("doctor"));
         doctorEntity.setCreateDate(DateUtils.getCurrentDate());
         doctorEntity.setUpdateDate( DateUtils.getCurrentDate());
+        doctorEntity.setStartWorkDate(DateUtils.getCurrentDate());
         doctorEntity.setStatus(DataStatusEnum.VALID.getType());
         doctorRepository.save(doctorEntity);
     }

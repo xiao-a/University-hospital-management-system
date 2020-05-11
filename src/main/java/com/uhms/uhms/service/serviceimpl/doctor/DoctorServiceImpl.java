@@ -24,18 +24,34 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
+    public void insert(DoctorDto doctorDto) {
+        DoctorEntity doctorEntity = new DoctorEntity();
+        doctorEntity.setAddress(doctorDto.getAddress());
+        doctorEntity.setDivision(doctorDto.getDivision());
+        doctorEntity.setEmail(doctorDto.getEmail());
+        doctorEntity.setAge(doctorDto.getAge());
+        doctorEntity.setUsername(doctorDto.getUsername());
+        doctorEntity.setPassword(doctorDto.getPassword());
+        doctorEntity.setPhoneNumber(doctorDto.getPhoneNumber());
+        doctorEntity.setName(doctorDto.getName());
+        doctorEntity.setSex(doctorDto.getSex());
+        doctorDao.insert(doctorEntity);
+    }
+
+    @Override
     public DoctorDto getById(String id) {
         DoctorEntity entity = doctorDao.getById(id);
         doctorDto.setDoctorId(entity.getDoctorId());
         doctorDto.setName(entity.getName());
         doctorDto.setSex(SexEnum.getNameByType(entity.getSex()));
-        doctorDto.setDivision(entity.getDivision());
+        doctorDto.setDivision(DivisionTypeEnum.getNameByType(entity.getDivision()));
         doctorDto.setAge(entity.getAge());
         doctorDto.setStartWorkDateStr(entity.getStartWorkDate()+"");
         doctorDto.setPhoneNumber(entity.getPhoneNumber());
         doctorDto.setUsername(entity.getUsername());
         doctorDto.setPassword(entity.getPassword());
         doctorDto.setEmail(entity.getEmail());
+        doctorDto.setAddress(entity.getAddress());
         return doctorDto;
     }
 
@@ -51,6 +67,7 @@ public class DoctorServiceImpl implements DoctorService {
         doctorEntity.setUsername(doctorDto.getUsername());
         doctorEntity.setPassword(doctorDto.getPassword());
         doctorEntity.setEmail(doctorDto.getEmail());
+        doctorEntity.setAddress(doctorDto.getAddress());
         doctorDao.updateJpa(doctorEntity);
     }
 
@@ -72,5 +89,10 @@ public class DoctorServiceImpl implements DoctorService {
             doctorDtoList.add(doctorDto);
         }
         return doctorDtoList;
+    }
+
+    @Override
+    public void deleteById(String doctorId) {
+        doctorDao.deleteById(doctorId);
     }
 }
