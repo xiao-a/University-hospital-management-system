@@ -1,13 +1,10 @@
 package com.uhms.uhms.controller.doctor;
 
 
-import com.uhms.uhms.dao.dao.DoctorDao;
 import com.uhms.uhms.dto.DoctorDto;
 import com.uhms.uhms.entity.AppointmentEntity;
-import com.uhms.uhms.entity.PatientEntity;
-import com.uhms.uhms.service.service.DoctorService;
+import com.uhms.uhms.service.service.doctor.DoctorService;
 import com.uhms.uhms.service.service.doctor.AppointmentDoctorService;
-import com.uhms.uhms.utils.JsonUtils;
 import com.uhms.uhms.utils.LogUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

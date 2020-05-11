@@ -1,14 +1,16 @@
-package com.uhms.uhms.service.serviceimpl;
+package com.uhms.uhms.service.serviceimpl.doctor;
 
 import com.uhms.uhms.dao.dao.DoctorDao;
 import com.uhms.uhms.dto.DoctorDto;
-import com.uhms.uhms.entity.BedEntity;
 import com.uhms.uhms.entity.DoctorEntity;
+import com.uhms.uhms.enums.DivisionTypeEnum;
 import com.uhms.uhms.enums.SexEnum;
-import com.uhms.uhms.service.service.BedService;
-import com.uhms.uhms.service.service.DoctorService;
+import com.uhms.uhms.service.service.doctor.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class DoctorServiceImpl implements DoctorService {
@@ -50,5 +52,25 @@ public class DoctorServiceImpl implements DoctorService {
         doctorEntity.setPassword(doctorDto.getPassword());
         doctorEntity.setEmail(doctorDto.getEmail());
         doctorDao.updateJpa(doctorEntity);
+    }
+
+    @Override
+    public List<DoctorDto> getAll() {
+        List<DoctorEntity> doctorEntityList = doctorDao.getAll();
+        List<DoctorDto> doctorDtoList=new ArrayList<>();
+        for(int i=0;i<doctorEntityList.size();i++){
+            DoctorDto doctorDto=new DoctorDto();
+            doctorDto.setDoctorId(doctorEntityList.get(i).getDoctorId());
+            doctorDto.setName(doctorEntityList.get(i).getName());
+            doctorDto.setAge(doctorEntityList.get(i).getAge());
+            doctorDto.setDivision(DivisionTypeEnum.getNameByType(doctorEntityList.get(i).getDivision()));
+            doctorDto.setSex(SexEnum.getNameByType(doctorEntityList.get(i).getSex()));
+            doctorDto.setPhoneNumber(doctorEntityList.get(i).getPhoneNumber());
+            doctorDto.setEmail(doctorEntityList.get(i).getEmail());
+            doctorDto.setUsername(doctorEntityList.get(i).getUsername());
+            doctorDto.setPassword(doctorEntityList.get(i).getPassword());
+            doctorDtoList.add(doctorDto);
+        }
+        return doctorDtoList;
     }
 }

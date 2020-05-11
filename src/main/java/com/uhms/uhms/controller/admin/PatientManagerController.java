@@ -3,7 +3,7 @@ package com.uhms.uhms.controller.admin;
 import com.uhms.uhms.dto.DoctorDto;
 import com.uhms.uhms.dto.PatientDto;
 import com.uhms.uhms.entity.PatientEntity;
-import com.uhms.uhms.service.service.DoctorService;
+import com.uhms.uhms.service.service.doctor.DoctorService;
 import com.uhms.uhms.service.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/admin")
+@RequestMapping(value = "/admin/patient")
 public class PatientManagerController {
     @Autowired
     private PatientService patientService;

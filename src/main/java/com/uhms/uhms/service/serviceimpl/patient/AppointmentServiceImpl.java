@@ -88,17 +88,14 @@ public class AppointmentServiceImpl implements AppointmentService {
         List<AppointmentHistoryDto> appointmentHistoryDtoList =new ArrayList<>();
         for(int i=0;i<entityList.size();i++) {
             AppointmentHistoryDto appointmentHistoryDto=new AppointmentHistoryDto();
-             LogUtils.info("appointmentEntity："+i+":"+entityList.get(i));
-             appointmentHistoryDto.setPatientId(entityList.get(i).getPatientId());
-             appointmentHistoryDto.setDivision(DivisionTypeEnum.getNameByType(entityList.get(i).getDivision()));
-             appointmentHistoryDto.setDoctorName(entityList.get(i).getDoctorName());
-             appointmentHistoryDto.setAppointmentStatus(AppointmentStatusEnum.getNameByType(entityList.get(i).getAppointmentStatus()));
-             appointmentHistoryDto.setAppointmentDate(DateUtils.DateToStrHH(entityList.get(i).getAppointmentDate()));
-             appointmentHistoryDto.setSubmitDate(DateUtils.DateToStrHH(entityList.get(i).getCreateDate()));
-             appointmentHistoryDto.setMsg(entityList.get(i).getMsg());
-            LogUtils.info("appointmentDto："+i+":"+appointmentHistoryDto);
-             appointmentHistoryDtoList.add(appointmentHistoryDto);
-            LogUtils.info("appointmentHistoryDtoList："+i+":"+appointmentHistoryDtoList);
+            appointmentHistoryDto.setPatientId(entityList.get(i).getPatientId());
+            appointmentHistoryDto.setDivision(DivisionTypeEnum.getNameByType(entityList.get(i).getDivision()));
+            appointmentHistoryDto.setDoctorName(entityList.get(i).getDoctorName());
+            appointmentHistoryDto.setAppointmentStatus(AppointmentStatusEnum.getNameByType(entityList.get(i).getAppointmentStatus()));
+            appointmentHistoryDto.setAppointmentDate(DateUtils.DateToStrHH(entityList.get(i).getAppointmentDate()));
+            appointmentHistoryDto.setSubmitDate(DateUtils.DateToStrHH(entityList.get(i).getCreateDate()));
+            appointmentHistoryDto.setMsg(entityList.get(i).getMsg());
+            appointmentHistoryDtoList.add(appointmentHistoryDto);
         }
         LogUtils.info("after:"+appointmentHistoryDtoList);
         return appointmentHistoryDtoList;

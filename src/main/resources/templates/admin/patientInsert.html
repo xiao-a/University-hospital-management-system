@@ -118,27 +118,31 @@
             </div>
           </div>
           <ul class="list-unstyled">
-                         <li ><a th:href="@{/main/} + ${doctor.doctorId}"> <i class="icon-home"></i>首页 </a></li>
-                      <li><a href="#changeHospital" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>转院信息管理</a>
-                          <ul id="changeHospital" class="collapse list-unstyled ">
-                              <li ><a th:href="@{/select_change_hospital_list/} + ${doctor.doctorId}">转院信息列表</a></li>
-                              <li><a th:href="@{/add_change_hospital/} + ${doctor.doctorId}">添加转院信息</a></li>
-                          </ul>
-                      </li>
-                    <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>患者信息管理</a>
-                      <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                        <li><a th:href="@{/select_patient/} + ${doctor.doctorId}">患者信息列表</a></li>
-                        <li class="active"><a th:href="@{/add_patient/} + ${doctor.doctorId}">添加患者信息</a></li>
-                        <li><a th:href="@{/update_patient/} + ${doctor.doctorId}">修改患者信息</a></li>
-                        <li><a th:href="@{/delete_patient/} + ${doctor.doctorId}">删除患者信息</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="#personal" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>我的</a>
-                      <ul id="personal" class="collapse list-unstyled ">
-                        <li><a th:href="@{/my_info/} + ${doctor.doctorId}"> 个人信息显示</a></li>
-                        <li><a th:href="@{/update_my_info/} + ${doctor.doctorId}">修改个人信息</a></li>
-                      </ul>
-                    </li>
+            <li><a th:href="@{/admin/main/} + ${admin.adminId}"> <i class="icon-home"></i>首页 </a></li>
+            <li><a href="#doctorInfoManager" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>医生管理</a>
+              <ul id="doctorInfoManager" class="collapse list-unstyled ">
+                <li><a  href="">医生信息管理</a></li>
+              </ul>
+            </li>
+            <li><a href="#patientInfoManager" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>患者管理</a>
+              <ul id="patientInfoManager" class="collapse list-unstyled ">
+                <li><a  href="#">查看患者信息</a></li>
+                <!--<li><a th:href="@{/add_patient/} + ${doctor.doctorId}">添加患者信息</a></li>-->
+                <!--<li><a th:href="@{/update_patient/} + ${doctor.doctorId}">修改患者信息</a></li>-->
+                <!--<li><a th:href="@{/delete_patient/} + ${doctor.doctorId}">删除患者信息</a></li>-->
+              </ul>
+            </li>
+            <li><a href="#webManager" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>网站管理</a>
+              <ul id="webManager" class="collapse list-unstyled ">
+                <li><a  href="#">修改新闻信息</a></li>
+              </ul>
+            </li>
+            <li><a href="#personal" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>我的</a>
+              <ul id="personal" class="collapse list-unstyled ">
+                <li class="active"><a th:href="@{/admin/show_personal/} + ${admin.adminId}"> 个人信息显示</a></li>
+                <li><a  th:href="@{/admin/update_personal/} + ${admin.adminId}">修改个人信息</a></li>
+              </ul>
+            </li>
           </ul>
         </nav>
         <div class="content-inner">

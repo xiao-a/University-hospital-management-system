@@ -1,13 +1,10 @@
 package com.uhms.uhms.controller;
 
-import cn.afterturn.easypoi.excel.ExcelExportUtil;
-import cn.afterturn.easypoi.excel.entity.ExportParams;
 import com.uhms.uhms.dto.DoctorDto;
 import com.uhms.uhms.entity.PatientEntity;
-import com.uhms.uhms.service.service.DoctorService;
+import com.uhms.uhms.service.service.doctor.DoctorService;
 import com.uhms.uhms.service.service.PatientService;
 import com.uhms.uhms.utils.ExcelUtils;
-import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 

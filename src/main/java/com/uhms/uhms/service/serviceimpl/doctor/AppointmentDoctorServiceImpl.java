@@ -11,12 +11,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-
-//<th scope="row" th:text="${appointment.patientId}"></th>
-//<th scope="row" th:text="${appointment.msg}"></th>
-//<th scope="row" th:text="${appointment.appointmentStatus}"></th>
-//<th scope="row" th:text="${appointment.appointmentDate}"></th>
-//<th scope="row" th:text="${appointment.createDate}"></th>
 @Service
 public class AppointmentDoctorServiceImpl implements AppointmentDoctorService {
     @Autowired

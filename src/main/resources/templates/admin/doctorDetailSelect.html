@@ -2,7 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
-    <title>查询患者信息</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>查询医生详细信息</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
@@ -52,17 +53,17 @@
                 <!-- Notifications-->
                 <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell-o"></i><span class="badge bg-red badge-corner">12</span></a>
                   <ul aria-labelledby="notifications" class="dropdown-menu">
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item">
                         <div class="notification">
                           <div class="notification-content"><i class="fa fa-envelope bg-green"></i>你有1条新的信息</div>
                           <div class="notification-time"><small>1分钟前</small></div>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item">
                         <div class="notification">
                           <div class="notification-content"><i class="fa fa-twitter bg-blue"></i>你有2条新的信息</div>
                           <div class="notification-time"><small>2分钟前</small></div>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item">
                         <div class="notification">
                           <div class="notification-content"><i class="fa fa-twitter bg-blue"></i>你有3条新的信息</div>
                           <div class="notification-time"><small>3分钟前</small></div>
@@ -73,17 +74,17 @@
                 <!-- Messages                        -->
                 <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope-o"></i><span class="badge bg-orange badge-corner">10</span></a>
                   <ul aria-labelledby="notifications" class="dropdown-menu">
-                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
                         <div class="msg-profile"> <img src="../../resources/static/img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="msg-body">
                           <h3 class="h5">张三</h3><span>Sent You Message</span>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
                         <div class="msg-profile"> <img src="../../resources/static/img/avatar-2.jpg" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="msg-body">
                           <h3 class="h5">李四</h3><span>Sent You Message</span>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
                         <div class="msg-profile"> <img src="../../resources/static/img/avatar-3.jpg" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="msg-body">
                           <h3 class="h5">王麻子</h3><span>Sent You Message</span>
@@ -105,7 +106,7 @@
           </div>
         </nav>
       </header>
-      <div class="page-content d-flex align-items-stretch"> 
+      <div class="page-content d-flex align-items-stretch">
         <!-- Side Navbar -->
         <nav class="side-navbar">
           <!-- Sidebar Header-->
@@ -116,39 +117,39 @@
               <p th:inline="text">[[${doctor.division}]]主治医师</p>
             </div>
           </div>
-          <ul class="list-unstyled">
-            <li><a th:href="@{/admin/main/} + ${admin.adminId}"> <i class="icon-home"></i>首页 </a></li>
-            <li><a href="#doctorInfoManager" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>医生管理</a>
-              <ul id="doctorInfoManager" class="collapse list-unstyled ">
-                <li><a  href="">医生信息管理</a></li>
-              </ul>
-            </li>
-            <li><a href="#patientInfoManager" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>患者管理</a>
-              <ul id="patientInfoManager" class="collapse list-unstyled ">
-                <li><a  href="#">查看患者信息</a></li>
-                <!--<li><a th:href="@{/add_patient/} + ${doctor.doctorId}">添加患者信息</a></li>-->
-                <!--<li><a th:href="@{/update_patient/} + ${doctor.doctorId}">修改患者信息</a></li>-->
-                <!--<li><a th:href="@{/delete_patient/} + ${doctor.doctorId}">删除患者信息</a></li>-->
-              </ul>
-            </li>
-            <li><a href="#webManager" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>网站管理</a>
-              <ul id="webManager" class="collapse list-unstyled ">
-                <li><a  href="#">修改新闻信息</a></li>
-              </ul>
-            </li>
-            <li><a href="#personal" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>我的</a>
-              <ul id="personal" class="collapse list-unstyled ">
-                <li class="active"><a th:href="@{/admin/show_personal/} + ${admin.adminId}"> 个人信息显示</a></li>
-                <li><a  th:href="@{/admin/update_personal/} + ${admin.adminId}">修改个人信息</a></li>
-              </ul>
-            </li>
-          </ul>
+            <ul class="list-unstyled">
+                <li><a th:href="@{/admin/main/} + ${admin.adminId}"> <i class="icon-home"></i>首页 </a></li>
+                <li><a href="#doctorInfoManager" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>医生管理</a>
+                    <ul id="doctorInfoManager" class="collapse list-unstyled ">
+                        <li><a  href="">医生信息管理</a></li>
+                    </ul>
+                </li>
+                <li><a href="#patientInfoManager" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>患者管理</a>
+                    <ul id="patientInfoManager" class="collapse list-unstyled ">
+                        <li><a  href="#">查看患者信息</a></li>
+                        <!--<li><a th:href="@{/add_patient/} + ${doctor.doctorId}">添加患者信息</a></li>-->
+                        <!--<li><a th:href="@{/update_patient/} + ${doctor.doctorId}">修改患者信息</a></li>-->
+                        <!--<li><a th:href="@{/delete_patient/} + ${doctor.doctorId}">删除患者信息</a></li>-->
+                    </ul>
+                </li>
+                <li><a href="#webManager" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>网站管理</a>
+                    <ul id="webManager" class="collapse list-unstyled ">
+                        <li><a  href="#">修改新闻信息</a></li>
+                    </ul>
+                </li>
+                <li><a href="#personal" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>我的</a>
+                    <ul id="personal" class="collapse list-unstyled ">
+                        <li class="active"><a th:href="@{/admin/show_personal/} + ${admin.adminId}"> 个人信息显示</a></li>
+                        <li><a  th:href="@{/admin/update_personal/} + ${admin.adminId}">修改个人信息</a></li>
+                    </ul>
+                </li>
+            </ul>
         </nav>
         <div class="content-inner">
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom" name="id" th:text="${doctor.doctorId}">个人首页</h2>
+              <h2 class="no-margin-bottom" name="id" th:text="${admin.adminId}">个人首页</h2>
             </div>
           </header>
           <section class="dashboard-counts no-padding-bottom">
@@ -162,43 +163,38 @@
                     </div>
                   </div>
                   <div class="card-header d-flex align-items-center">
-                    <div class="row">
-                      <h3 class="h4">病人信息表</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4 th:text="${msg}"></h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a th:href="@{'/print_patient_list/'+${doctor.doctorId}}" class="btn btn-primary">打印</a>
-                      &nbsp;&nbsp;&nbsp;&nbsp;<a th:href="@{'/patient_insert/'+${doctor.doctorId}}" class="btn btn-primary">新增</a>
-                    </div>
+                    <h3 class="h4">病人信息表</h3>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
                       <table class="table">
-                        <thead>
-                        <tr>
-                          <th>编号</th>
-                          <th>姓名</th>
-                          <th>性别</th>
-                          <th>年龄</th>
-                          <th>用户名</th>
-                          <th>手机号</th>
-                          <th>地址</th>
-                          <th>创建时间</th>
-                          <th>修改时间</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="patient:${patientList}">
-                          <th scope="row" th:text="${patient.patientId}"></th>
-                          <th scope="row" th:text="${patient.name}"></th>
-                          <th scope="row" th:text="${patient.sex}"></th>
-                          <th scope="row" th:text="${patient.age}"></th>
-                          <th scope="row" th:text="${patient.username}"></th>
-                          <th scope="row" th:text="${patient.phoneNumber}"></th>
-                          <th scope="row" th:text="${patient.address}"></th>
-                          <th scope="row" th:text="${patient.createDate}"></th>
-                          <th scope="row" th:text="${patient.updateDate}"></th>
-                          <th scope="row"><a th:href="@{'/select_patient_detail/'+${doctor.doctorId}+'/'+${patient.patientId}}" class="btn btn-primary">查看</a></th>
-                          <th scope="row"><a th:href="@{/update_patient/} + ${doctor.doctorId}+'/'+${patient.patientId}" class="btn btn-primary">修改</a></th>
-                          <th scope="row"><a th:href="@{/delete_patient/} + ${doctor.doctorId}+'/'+${patient.patientId}" class="btn btn-primary">删除</a></th>
-                        </tr>
-                        </tbody>
+                          <tr>
+                             <td>编号</td><td scope="row" th:text="${admin.adminId}"></td>
+                          </tr>
+                          <tr>
+                            <td>姓名</td><td scope="row" th:text="${admin.name}"></td>
+                          </tr>
+                          <tr>
+                            <td>性别</td><td scope="row" th:text="${admin.sex}"></td>
+                          </tr>
+                          <tr>
+                            <td>年龄</td><td scope="row" th:text="${admin.age}"></td>
+                          </tr>
+                          <tr>
+                            <td>用户名</td><td scope="row" th:text="${admin.username}"></td>
+                          </tr>
+                          <tr>
+                            <td>手机号</td><td scope="row" th:text="${admin.phoneNumber}"></td>
+                          </tr>
+                          <!--<tr>-->
+                            <!--<td>地址</td><td scope="row" th:text="${admin.address}"></td>-->
+                          <!--</tr>-->
+                          <!--<tr>-->
+                            <!--<td>创建时间</td><td scope="row" th:text="${admin.createDate}"></td>-->
+                          <!--</tr>-->
+                          <!--<tr>-->
+                            <!--<td>修改时间</td><td scope="row" th:text="${admin.updateDate}"></td>-->
+                          <!--</tr>-->
                       </table>
                     </div>
                   </div>

@@ -3,13 +3,8 @@ package com.uhms.uhms.service.serviceimpl;
 import com.uhms.uhms.dao.dao.AdminDao;
 import com.uhms.uhms.dao.dao.DoctorDao;
 import com.uhms.uhms.dao.dao.PatientDao;
-import com.uhms.uhms.entity.BedEntity;
 import com.uhms.uhms.enums.IdentifyEnum;
-import com.uhms.uhms.service.service.BedService;
-import com.uhms.uhms.service.service.DoctorService;
 import com.uhms.uhms.service.service.LoginService;
-import com.uhms.uhms.service.service.PatientService;
-import com.uhms.uhms.utils.EmptyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

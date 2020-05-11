@@ -117,13 +117,13 @@
             </div>
           </div>
           <ul class="list-unstyled">
-            <li><a href="#"> <i class="icon-home"></i>首页 </a></li>
-            <li><a href="#personal" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>医生管理</a>
+            <li><a th:href="@{/admin/main/} + ${admin.adminId}"> <i class="icon-home"></i>首页 </a></li>
+            <li><a href="#doctorInfoManager" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>医生管理</a>
               <ul id="doctorInfoManager" class="collapse list-unstyled ">
                 <li><a  href="">医生信息管理</a></li>
               </ul>
             </li>
-            <li><a href="#personal" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>患者管理</a>
+            <li><a href="#patientInfoManager" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>患者管理</a>
               <ul id="patientInfoManager" class="collapse list-unstyled ">
                 <li><a  href="#">查看患者信息</a></li>
                 <!--<li><a th:href="@{/add_patient/} + ${doctor.doctorId}">添加患者信息</a></li>-->
@@ -131,7 +131,7 @@
                 <!--<li><a th:href="@{/delete_patient/} + ${doctor.doctorId}">删除患者信息</a></li>-->
               </ul>
             </li>
-            <li><a href="#personal" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>网站管理</a>
+            <li><a href="#webManager" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>网站管理</a>
               <ul id="webManager" class="collapse list-unstyled ">
                 <li><a  href="#">修改新闻信息</a></li>
               </ul>
