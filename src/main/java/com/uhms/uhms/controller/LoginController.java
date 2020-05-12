@@ -3,9 +3,9 @@ package com.uhms.uhms.controller;
 import com.uhms.uhms.dto.DoctorDto;
 import com.uhms.uhms.dto.PatientDto;
 import com.uhms.uhms.entity.AdminEntity;
-import com.uhms.uhms.entity.DoctorEntity;
 import com.uhms.uhms.entity.PatientEntity;
 import com.uhms.uhms.enums.IdentifyEnum;
+import com.uhms.uhms.service.service.admin.NewsService;
 import com.uhms.uhms.service.service.doctor.DoctorService;
 import com.uhms.uhms.service.service.LoginService;
 import com.uhms.uhms.service.service.patient.PatientService;
@@ -34,7 +34,8 @@ public class LoginController{
     private PatientService patientService;
     @Autowired
     private AdminService adminService;
-
+    @Autowired
+    private NewsService newsService;
     @RequestMapping(value = {"/index","/",""})
     public String index(Model model) {
         model.addAttribute("todayWorkDoctor",todayWorkDoctorService.getDayWordDoctor());
@@ -42,6 +43,7 @@ public class LoginController{
         PatientDto patientDto = new PatientDto();
         patientDto.setName("登录");
         model.addAttribute("patient",patientDto);
+        model.addAttribute("newsList",newsService.getAll());
         return "index";
     }
     @RequestMapping("/login")
@@ -67,6 +69,7 @@ public class LoginController{
                 model.addAttribute("date", DateUtils.showYearMonthDayStr());
                 LogUtils.info(patient+"");
                 model.addAttribute("patient",patient);
+                model.addAttribute("newsList",newsService.getAll());
                 return "/index";
             }else if(IdentifyEnum.DOCTOR.getType().equals(identify)){
                 DoctorDto dto = doctorService.getById(id);
@@ -89,14 +92,15 @@ public class LoginController{
 
 
 
-    @RequestMapping("/register")
-    public String hello() {
-        return "/register";
-    }
-    @RequestMapping(value = "/register/submit",method = RequestMethod.POST)
-    public String registerSubmission(DoctorEntity entity) {
-        doctorService.insert(entity);
-        return "/index";
-    }
+//    @RequestMapping("/register")
+//    public String hello() {
+//        return "/register";
+//    }
+//    @RequestMapping(value = "/register/submit",method = RequestMethod.POST)
+//    public String registerSubmission(DoctorEntity entity,Model model) {
+//        doctorService.insert(entity);
+//        model.addAttribute("newsList",newsService.getAll());
+//        return "/index";
+//    }
 
 }

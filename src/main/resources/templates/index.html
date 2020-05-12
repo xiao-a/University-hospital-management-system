@@ -131,50 +131,15 @@
         <h3 class="top-head">新闻</h3>
       </div>
     </div>
-    <div class="col-md-12 col-sm-12 col-xs-12">
-      <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-md-12 col-sm-12 col-xs-12" >
+      <div class="col-md-6 col-sm-6 col-xs-12" th:each="news:${newsList}">
         <div class="testbox">
           <div class="clientimg"> <img src="../../resources/static/img/images/team-img-02.jpg"/> </div>
           <div class="test">
-            <p>Nam commodo quam ac luctus sagittis. Donec quam dui, facilisis a placerat at, pretium vitae metus. Pellentesque tincidunt ex quis suscipit pellentesque. Curabitur eu mauris nisl.</p>
+            <p th:text="${news.newsText}">Nam commodo quam ac luctus sagittis. Donec quam dui, facilisis a placerat at, pretium vitae metus. Pellentesque tincidunt ex quis suscipit pellentesque. Curabitur eu mauris nisl.</p>
           </div>
           <div class="clientname">
-            <p>Angela Mathew</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-6 col-xs-12">
-        <div class="testbox">
-          <div class="clientimg"> <img src="../../resources/static/img/images/team-img-01.jpg"/> </div>
-          <div class="test">
-            <p>Nam commodo quam ac luctus sagittis. Donec quam dui, facilisis a placerat at, pretium vitae metus. Pellentesque tincidunt ex quis suscipit pellentesque. Curabitur eu mauris nisl.</p>
-          </div>
-          <div class="clientname">
-            <p>Angela Mathew</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-12 col-sm-12 col-xs-12">
-      <div class="col-md-6 col-sm-6 col-xs-12">
-        <div class="testbox">
-          <div class="clientimg"> <img src="../../resources/static/img/images/team-img-03.jpg"/> </div>
-          <div class="test">
-            <p>Nam commodo quam ac luctus sagittis. Donec quam dui, facilisis a placerat at, pretium vitae metus. Pellentesque tincidunt ex quis suscipit pellentesque. Curabitur eu mauris nisl.</p>
-          </div>
-          <div class="clientname">
-            <p>Angela Mathew</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-6 col-xs-12">
-        <div class="testbox">
-          <div class="clientimg"> <img src="../../resources/static/img/images/team-img-02.jpg"/> </div>
-          <div class="test">
-            <p>Nam commodo quam ac luctus sagittis. Donec quam dui, facilisis a placerat at, pretium vitae metus. Pellentesque tincidunt ex quis suscipit pellentesque. Curabitur eu mauris nisl.</p>
-          </div>
-          <div class="clientname">
-            <p>Angela Mathew</p>
+            <p th:text="${news.createDate}">Angela Mathew</p>
           </div>
         </div>
       </div>

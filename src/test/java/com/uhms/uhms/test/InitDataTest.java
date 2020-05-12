@@ -34,6 +34,9 @@ public class InitDataTest {
     @Autowired
     private AdminDao adminDao;
     AdminEntity adminEntity=new AdminEntity();
+    @Autowired
+    private NewsDao newsDao;
+    NewsEntity newsEntity=new NewsEntity();
     /**
      * 创建10条医生信息
      */
@@ -246,6 +249,21 @@ public class InitDataTest {
         watchListEntity.setWgkDoctorId(ophthalmology.get(0).getDoctorId());
         watchListEntity.setPfkDoctorId(dermatology.get(0).getDoctorId());
         watchListDao.insert(watchListEntity);
+    }
+
+
+    /**
+     * 创建4条新闻信息
+     */
+    @Test
+    public void createNews()
+    {
+        for(int i=0;i<=3;i++){
+            newsEntity.setNewsImg("///"+i+"...");
+            newsEntity.setNewsText("JJJJJJJJJJJ>"+i+"<KKKKKKKKKKK");
+            newsEntity.setNewsTitle("Title>"+i+"<Title");
+            newsDao.insert(newsEntity);
+        }
     }
 
 

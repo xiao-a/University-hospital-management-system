@@ -17,6 +17,7 @@ public class NewsEntity {
     private String newsId;
     private String newsImg;
     private String newsText;
+    private String newsTitle;
     private String status;
     private Date createDate;
     private Date updateDate;

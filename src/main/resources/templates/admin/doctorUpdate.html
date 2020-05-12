@@ -125,7 +125,7 @@
             </li>
             <li><a href="#patientInfoManager" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>患者管理</a>
               <ul id="patientInfoManager" class="collapse list-unstyled ">
-                <li><a  href="#">查看患者信息</a></li>
+                <li><a  th:href="@{/admin/select_patient/} + ${admin.adminId}">查看患者信息</a></li>
                 <!--<li><a th:href="@{/add_doctor/} + ${doctor.doctorId}">添加患者信息</a></li>-->
                 <!--<li><a th:href="@{/update_doctor/} + ${doctor.doctorId}">修改患者信息</a></li>-->
                 <!--<li><a th:href="@{/delete_doctor/} + ${doctor.doctorId}">删除患者信息</a></li>-->
@@ -133,7 +133,7 @@
             </li>
             <li><a href="#webManager" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>网站管理</a>
               <ul id="webManager" class="collapse list-unstyled ">
-                <li><a  th:href="@{/admin/select_patient/} + ${admin.adminId}">修改新闻信息</a></li>
+                <li><a  th:href="@{/get_news_list/} + ${admin.adminId}">修改新闻信息</a></li>
               </ul>
             </li>
             <li><a href="#personal" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>我的</a>
