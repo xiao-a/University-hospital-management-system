@@ -30,4 +30,5 @@ public class DoctorEntity  implements Serializable {
     private String status;
     private Date createDate;
     private Date updateDate;
+    private String headUrl;
 }

@@ -38,4 +38,6 @@ public class AdminEntity implements Serializable {
     private Date createDate;
     @Excel(name = "修改日期", orderNum = "11")
     private Date updateDate;
+    @Excel(name = "头像Url", orderNum = "12")
+    private String headUrl;
 }

@@ -52,6 +52,7 @@ public class DoctorServiceImpl implements DoctorService {
         doctorDto.setPassword(entity.getPassword());
         doctorDto.setEmail(entity.getEmail());
         doctorDto.setAddress(entity.getAddress());
+        doctorDto.setHeadUrl(entity.getHeadUrl());
         return doctorDto;
     }
 

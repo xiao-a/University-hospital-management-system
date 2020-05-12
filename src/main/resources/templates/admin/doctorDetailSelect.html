@@ -111,10 +111,9 @@
         <nav class="side-navbar">
           <!-- Sidebar Header-->
           <div class="sidebar-header d-flex align-items-center">
-            <div class="avatar"><img src="../../resources/static/img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
+            <div class="avatar"><img th:src="${admin.headUrl}" alt="..." class="img-fluid rounded-circle"></div>
             <div class="title">
-              <h1 class="h4" th:text="${doctor.name}">王麻子</h1>
-              <p th:inline="text">[[${doctor.division}]]主治医师</p>
+              <h1 class="h4" th:text="${admin.name}">王麻子</h1>
             </div>
           </div>
             <ul class="list-unstyled">
@@ -186,15 +185,6 @@
                           <tr>
                             <td>手机号</td><td scope="row" th:text="${admin.phoneNumber}"></td>
                           </tr>
-                          <!--<tr>-->
-                            <!--<td>地址</td><td scope="row" th:text="${admin.address}"></td>-->
-                          <!--</tr>-->
-                          <!--<tr>-->
-                            <!--<td>创建时间</td><td scope="row" th:text="${admin.createDate}"></td>-->
-                          <!--</tr>-->
-                          <!--<tr>-->
-                            <!--<td>修改时间</td><td scope="row" th:text="${admin.updateDate}"></td>-->
-                          <!--</tr>-->
                       </table>
                     </div>
                   </div>

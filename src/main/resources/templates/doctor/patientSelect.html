@@ -110,7 +110,7 @@
         <nav class="side-navbar">
           <!-- Sidebar Header-->
           <div class="sidebar-header d-flex align-items-center">
-            <div class="avatar"><img src="../../resources/static/img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
+            <div class="avatar"><img th:src="${doctor.headUrl}" alt="..." class="img-fluid rounded-circle"></div>
             <div class="title">
               <h1 class="h4" th:text="${doctor.name}">王麻子</h1>
               <p th:inline="text">[[${doctor.division}]]主治医师</p>
@@ -191,8 +191,8 @@
                           <th scope="row" th:text="${patient.createDate}"></th>
                           <th scope="row" th:text="${patient.updateDate}"></th>
                           <th scope="row"><a th:href="@{'/select_patient_detail/'+${doctor.doctorId}+'/'+${patient.patientId}}" class="btn btn-primary">查看</a></th>
-                          <th scope="row"><a th:href="@{/update_patient/} + ${doctor.doctorId}+'/'+${patient.patientId}" class="btn btn-primary">修改</a></th>
-                          <th scope="row"><a th:href="@{/delete_patient/} + ${doctor.doctorId}+'/'+${patient.patientId}" class="btn btn-primary">删除</a></th>
+                          <!--<th scope="row"><a th:href="@{/update_patient/} + ${doctor.doctorId}+'/'+${patient.patientId}" class="btn btn-primary">修改</a></th>-->
+                          <!--<th scope="row"><a th:href="@{/delete_patient/} + ${doctor.doctorId}+'/'+${patient.patientId}" class="btn btn-primary">删除</a></th>-->
                         </tr>
                         </tbody>
                       </table>

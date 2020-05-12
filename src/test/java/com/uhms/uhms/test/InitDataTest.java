@@ -47,6 +47,7 @@ public class InitDataTest {
             doctorEntity.setName("内科-张三-"+i);
             doctorEntity.setSex(SexEnum.MAN.getType());
             doctorEntity.setDivision(DivisionTypeEnum.getTypeByName("内科"));
+            doctorEntity.setHeadUrl("/file/20160821230024_MyCYK.thumb.700_0.jpeg");
             doctorEntity.setAge(20+i);
             doctorEntity.setStartWorkDate(DateUtils.getCurrentDate());
             doctorEntity.setPhoneNumber(i+"**********");
@@ -60,6 +61,7 @@ public class InitDataTest {
             doctorEntity.setName("外科-张三-"+i);
             doctorEntity.setSex(SexEnum.MAN.getType());
             doctorEntity.setDivision(DivisionTypeEnum.getTypeByName("外科"));
+            doctorEntity.setHeadUrl("/file/20160821230024_MyCYK.thumb.700_0.jpeg");
             doctorEntity.setAge(20+i);
             doctorEntity.setStartWorkDate(DateUtils.getCurrentDate());
             doctorEntity.setPhoneNumber(i+"**********");
@@ -73,6 +75,7 @@ public class InitDataTest {
             doctorEntity.setName("妇科-张三-"+i);
             doctorEntity.setSex(SexEnum.MAN.getType());
             doctorEntity.setDivision(DivisionTypeEnum.getTypeByName("妇科"));
+            doctorEntity.setHeadUrl("/file/20160821230024_MyCYK.thumb.700_0.jpeg");
             doctorEntity.setAge(20+i);
             doctorEntity.setStartWorkDate(DateUtils.getCurrentDate());
             doctorEntity.setPhoneNumber(i+"**********");
@@ -86,6 +89,7 @@ public class InitDataTest {
             doctorEntity.setName("骨科-张三-"+i);
             doctorEntity.setSex(SexEnum.MAN.getType());
             doctorEntity.setDivision(DivisionTypeEnum.getTypeByName("骨科"));
+            doctorEntity.setHeadUrl("/file/20160821230024_MyCYK.thumb.700_0.jpeg");
             doctorEntity.setAge(20+i);
             doctorEntity.setStartWorkDate(DateUtils.getCurrentDate());
             doctorEntity.setPhoneNumber(i+"**********");
@@ -99,6 +103,7 @@ public class InitDataTest {
             doctorEntity.setName("五官科-张三-"+i);
             doctorEntity.setSex(SexEnum.MAN.getType());
             doctorEntity.setDivision(DivisionTypeEnum.getTypeByName("五官科"));
+            doctorEntity.setHeadUrl("/file/20160821230024_MyCYK.thumb.700_0.jpeg");
             doctorEntity.setAge(20+i);
             doctorEntity.setStartWorkDate(DateUtils.getCurrentDate());
             doctorEntity.setPhoneNumber(i+"**********");
@@ -111,6 +116,7 @@ public class InitDataTest {
         for(int i=0;i<=2;i++){
             doctorEntity.setName("皮肤科-张三-"+i);
             doctorEntity.setSex(SexEnum.MAN.getType());
+            doctorEntity.setHeadUrl("/file/20160821230024_MyCYK.thumb.700_0.jpeg");
             doctorEntity.setDivision(DivisionTypeEnum.getTypeByName("皮肤科"));
             doctorEntity.setAge(20+i);
             doctorEntity.setStartWorkDate(DateUtils.getCurrentDate());
@@ -132,6 +138,7 @@ public class InitDataTest {
             patientEntity.setName("李四"+i);
             patientEntity.setSex(SexEnum.WOMAN.getType());
             patientEntity.setAge(20+i);
+            patientEntity.setHeadUrl("/file/20160821230024_MyCYK.thumb.700_0.jpeg");
             patientEntity.setUsername("patient"+i);
             patientEntity.setPassword("patient"+i);
             patientEntity.setPhoneNumber("10086****"+i);
@@ -150,6 +157,7 @@ public class InitDataTest {
             adminEntity.setName("王五"+i);
             adminEntity.setSex(SexEnum.WOMAN.getType());
             adminEntity.setAge(20+i);
+            adminEntity.setHeadUrl("/file/20160821230024_MyCYK.thumb.700_0.jpeg");
             adminEntity.setUsername("admin"+i);
             adminEntity.setPassword("admin"+i);
             adminEntity.setPhoneNumber("10086****"+i);

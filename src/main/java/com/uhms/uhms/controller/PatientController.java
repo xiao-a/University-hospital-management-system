@@ -26,7 +26,7 @@ public class PatientController {
         model.addAttribute("doctor",doctorDto);
         model.addAttribute("patientList",patientList);
         model.addAttribute("msg",null);
-        return "admin/patientSelect";
+        return "doctor/patientSelect";
     }
     @RequestMapping(value = "/select_patient_detail/{doctorId}/{patientId}" ,method = RequestMethod.GET)
     public String doctorSelectDetailPatient(@PathVariable("doctorId")String doctorId,@PathVariable("patientId")String patientId,Model model){
@@ -35,6 +35,6 @@ public class PatientController {
         System.out.println(patient);
         model.addAttribute("doctor",doctorDto);
         model.addAttribute("patient",patient);
-        return "admin/patientDetailSelect";
+        return "doctor/patientDetailSelect";
     }
 }

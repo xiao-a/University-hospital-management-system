@@ -11,7 +11,6 @@
 <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,300,500,700' rel='stylesheet' type='text/css'>
 <script src="../../resources/static/js/jquery.min.js"></script>
 </head>
-
 <body>
 <div class="header">
   <div class="container">
@@ -114,7 +113,7 @@
       <div class="col-md-12 col-xs-12 col-sm-12">
         <div class="col-md-2 col-sm-6 col-xs-6" th:each="todayWorkDoctor:${todayWorkDoctor}">
           <div class="docbox" >
-            <img src="../../resources/static/img/images/team-img-01.jpg"/>
+            <img th:src="${todayWorkDoctor.headUrl}"/>
             <h4 th:text="${todayWorkDoctor.name}">张三</h4>
             <p>[[${todayWorkDoctor.division}]]医生</p>
           </div>

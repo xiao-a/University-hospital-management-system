@@ -110,7 +110,7 @@
         <nav class="side-navbar">
           <!-- Sidebar Header-->
           <div class="sidebar-header d-flex align-items-center">
-            <div class="avatar"><img src="../../resources/static/img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
+            <div class="avatar"><img th:src="${admin.headUrl}" alt="..." class="img-fluid rounded-circle"></div>
             <div class="title">
               <h1 class="h4" th:text="${admin.name}">王麻子</h1>
             </div>
@@ -176,6 +176,7 @@
                           <th>性别</th>
                           <th>年龄</th>
                           <th>用户名</th>
+                          <th>密码</th>
                           <th>手机号</th>
                           <!--<th>地址</th>-->
                           <!--<th>创建时间</th>-->
@@ -189,6 +190,7 @@
                           <th scope="row" th:text="${doctor.sex}"></th>
                           <th scope="row" th:text="${doctor.age}"></th>
                           <th scope="row" th:text="${doctor.username}"></th>
+                          <th scope="row" th:text="${doctor.password}"></th>
                           <th scope="row" th:text="${doctor.phoneNumber}"></th>
                           <!--<th scope="row" th:text="${doctor.address}"></th>-->
                           <!--<th scope="row" th:text="${doctor.createDate}"></th>-->
