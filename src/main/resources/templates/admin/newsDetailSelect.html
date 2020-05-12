@@ -174,7 +174,7 @@
                             <td>新闻标题</td><td scope="row" th:text="${news.newsTitle}"></td>
                           </tr>
                           <tr>
-                            <td>新闻图片</td><td scope="row" th:text="${news.newsImg}"></td>
+                            <td>新闻图片</td><td scope="row"><img class="img-rounded"  style="width: auto;height: auto;max-width: 40%;max-height: 40%" th:src="${news.newsImg}"/></td>
                           </tr>
                           <tr>
                             <td>新闻内容</td><td scope="row" th:text="${news.newsText}"></td>

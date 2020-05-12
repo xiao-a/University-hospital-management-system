@@ -259,7 +259,7 @@ public class InitDataTest {
     public void createNews()
     {
         for(int i=0;i<=3;i++){
-            newsEntity.setNewsImg("///"+i+"...");
+            newsEntity.setNewsImg("/file/20160821230024_MyCYK.thumb.700_0.jpeg");
             newsEntity.setNewsText("JJJJJJJJJJJ>"+i+"<KKKKKKKKKKK");
             newsEntity.setNewsTitle("Title>"+i+"<Title");
             newsDao.insert(newsEntity);

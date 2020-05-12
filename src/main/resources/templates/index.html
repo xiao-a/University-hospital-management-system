@@ -134,7 +134,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12" >
       <div class="col-md-6 col-sm-6 col-xs-12" th:each="news:${newsList}">
         <div class="testbox">
-          <div class="clientimg"> <img src="../../resources/static/img/images/team-img-02.jpg"/> </div>
+          <div align="center"> <img class="img-rounded"  style="height: 40%;width: 40%" th:src="${news.newsImg}"/> </div>
           <div class="test">
             <p th:text="${news.newsText}">Nam commodo quam ac luctus sagittis. Donec quam dui, facilisis a placerat at, pretium vitae metus. Pellentesque tincidunt ex quis suscipit pellentesque. Curabitur eu mauris nisl.</p>
           </div>
