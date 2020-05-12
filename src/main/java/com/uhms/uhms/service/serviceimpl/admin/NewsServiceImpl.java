@@ -6,6 +6,7 @@ import com.uhms.uhms.entity.NewsEntity;
 import com.uhms.uhms.service.service.admin.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import redis.clients.jedis.JedisPool;
 
 import java.util.List;
 
@@ -13,12 +14,17 @@ import java.util.List;
 public class NewsServiceImpl implements NewsService {
     @Autowired
     private NewsDao newsDao;
+    JedisPool jedisPool=new JedisPool();
+    @Autowired
+    private RedisTemplate redisTemplate;
     @Override
     public void insert(NewsDto  newsDto) {
+
         NewsEntity newsEntity=new NewsEntity();
         newsEntity.setNewsTitle(newsDto.getNewsTitle());
         newsEntity.setNewsImg(newsDto.getNewsImg());
         newsEntity.setNewsText(newsDto.getNewsText());
+
         newsDao.insert(newsEntity);
     }
 
