@@ -1,6 +1,5 @@
 package com.uhms.uhms.entity;
 
-import cn.afterturn.easypoi.excel.annotation.Excel;
 import lombok.Data;
 import org.hibernate.annotations.Proxy;
 
@@ -15,6 +14,7 @@ import java.util.Date;
 @Proxy(lazy = false)    //关闭延迟加载，不然测试单元总是报错
 @Table(name ="t_hospital_info")
 public class HospitalInfoEntity implements Serializable {
+    @Id
     private String hospitalInfoId;
     private String commonStartTime;
     private String commonEndTime;

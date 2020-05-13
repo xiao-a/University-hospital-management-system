@@ -9,6 +9,6 @@ public interface HospitalInfoDao {
     void insert(HospitalInfoEntity hospitalInfoEntity);
     void deleteById(String id);
     HospitalInfoEntity getById(String id);
-    List<HospitalInfoEntity> getAll();
     void update(HospitalInfoEntity hospitalInfoEntity);
+    HospitalInfoEntity getHospitalInfo();
 }

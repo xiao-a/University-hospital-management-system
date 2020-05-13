@@ -1,5 +1,6 @@
 package com.uhms.uhms.service.service.admin;
 
+import com.uhms.uhms.dto.HospitalInfoDto;
 import com.uhms.uhms.dto.NewsDto;
 import com.uhms.uhms.entity.HospitalInfoEntity;
 import com.uhms.uhms.entity.NewsEntity;
@@ -10,6 +11,6 @@ public interface HospitalInfoService {
     void insert(HospitalInfoEntity hospitalInfoEntity);
     void deleteById(String id);
     HospitalInfoEntity getById(String id);
-    List<HospitalInfoEntity> getAll();
-    void update(HospitalInfoEntity hospitalInfoEntity);
+    void update(HospitalInfoDto hospitalInfoDto);
+    HospitalInfoEntity getHospitalInfo();
 }

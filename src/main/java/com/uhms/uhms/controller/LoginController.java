@@ -5,6 +5,7 @@ import com.uhms.uhms.dto.PatientDto;
 import com.uhms.uhms.entity.AdminEntity;
 import com.uhms.uhms.entity.PatientEntity;
 import com.uhms.uhms.enums.IdentifyEnum;
+import com.uhms.uhms.service.service.admin.HospitalInfoService;
 import com.uhms.uhms.service.service.admin.NewsService;
 import com.uhms.uhms.service.service.doctor.DoctorService;
 import com.uhms.uhms.service.service.LoginService;
@@ -42,6 +43,8 @@ public class LoginController{
     private AdminService adminService;
     @Autowired
     private NewsService newsService;
+    @Autowired
+    private HospitalInfoService hospitalInfoService;
 
     private String url;   //图片保存路径
     @Value("${com.uhms}") //获取项目使用tomcat端口号
@@ -58,6 +61,7 @@ public class LoginController{
         patientDto.setName("登录");
         model.addAttribute("patient",patientDto);
         model.addAttribute("newsList",newsService.getAll());
+        model.addAttribute("hospitalInfo",hospitalInfoService.getHospitalInfo());
         return "index";
     }
     @RequestMapping("/login")
@@ -84,6 +88,7 @@ public class LoginController{
                 LogUtils.info(patient+"");
                 model.addAttribute("patient",patient);
                 model.addAttribute("newsList",newsService.getAll());
+                model.addAttribute("hospitalInfo",hospitalInfoService.getHospitalInfo());
                 return "/index";
             }else if(IdentifyEnum.DOCTOR.getType().equals(identify)){
                 DoctorDto dto = doctorService.getById(id);
@@ -152,6 +157,7 @@ public class LoginController{
         model.addAttribute("date", DateUtils.showYearMonthDayStr());
         model.addAttribute("patient",patientEntity);
         model.addAttribute("newsList",newsService.getAll());
+        model.addAttribute("hospitalInfo",hospitalInfoService.getHospitalInfo());
         return "/index";
     }
 

@@ -37,6 +37,9 @@ public class InitDataTest {
     @Autowired
     private NewsDao newsDao;
     NewsEntity newsEntity=new NewsEntity();
+    @Autowired
+    private HospitalInfoDao hospitalInfoDao;
+    HospitalInfoEntity hospitalInfoEntity=new HospitalInfoEntity();
     /**
      * 创建10条医生信息
      */
@@ -273,6 +276,22 @@ public class InitDataTest {
             newsDao.insert(newsEntity);
         }
     }
+
+    /**
+     * 初始化网站信息
+     */
+    @Test
+    public void createHospitalInfo()
+    {
+        hospitalInfoEntity.setCommonStartTime("8");
+        hospitalInfoEntity.setCommonEndTime("18");
+        hospitalInfoEntity.setWeekStartTime("8");
+        hospitalInfoEntity.setWeekEndTime("17");
+        hospitalInfoEntity.setAddress("河南省郑州市新郑市龙湖镇");
+        hospitalInfoEntity.setPhoneNumber("10086-10010");
+        hospitalInfoDao.insert(hospitalInfoEntity);
+    }
+
 
 
 

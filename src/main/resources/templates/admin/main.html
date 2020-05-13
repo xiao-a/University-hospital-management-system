@@ -134,6 +134,7 @@
         <li><a href="#webManager" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>网站管理</a>
           <ul id="webManager" class="collapse list-unstyled ">
             <li><a  th:href="@{/get_news_list/} + ${admin.adminId}">修改新闻信息</a></li>
+            <li><a  th:href="@{/admin_select_hospitalInfo/} + ${admin.adminId}">公示信息</a></li>
           </ul>
         </li>
         <li><a href="#personal" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>我的</a>

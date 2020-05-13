@@ -2,6 +2,7 @@ package com.uhms.uhms.service.serviceimpl.admin;
 
 import com.uhms.uhms.dao.dao.HospitalInfoDao;
 import com.uhms.uhms.dao.dao.NewsDao;
+import com.uhms.uhms.dto.HospitalInfoDto;
 import com.uhms.uhms.dto.NewsDto;
 import com.uhms.uhms.entity.HospitalInfoEntity;
 import com.uhms.uhms.entity.NewsEntity;
@@ -11,6 +12,7 @@ import com.uhms.uhms.service.service.admin.HospitalInfoService;
 import com.uhms.uhms.service.service.admin.NewsService;
 import com.uhms.uhms.utils.DateUtils;
 import com.uhms.uhms.utils.IdUtils;
+import com.uhms.uhms.utils.LogUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,14 +42,23 @@ public class HospitalInfoServiceImpl implements HospitalInfoService {
     public HospitalInfoEntity getById(String id) {
         return hospitalInfoDao.getById(id);
     }
-
     @Override
-    public List<HospitalInfoEntity> getAll() {
-        return hospitalInfoDao.getAll();
+    public void update(HospitalInfoDto hospitalInfoDto) {
+        HospitalInfoEntity hospitalInfoEntity = hospitalInfoDao.getHospitalInfo();
+        hospitalInfoEntity.setCommonStartTime(hospitalInfoDto.getCommonStartTime());
+        hospitalInfoEntity.setCommonEndTime(hospitalInfoDto.getCommonEndTime());
+        hospitalInfoEntity.setWeekStartTime(hospitalInfoDto.getWeekStartTime());
+        hospitalInfoEntity.setWeekEndTime(hospitalInfoDto.getWeekEndTime());
+        hospitalInfoEntity.setPhoneNumber(hospitalInfoDto.getPhoneNumber());
+        hospitalInfoEntity.setAddress(hospitalInfoDto.getAddress());
+        LogUtils.info("Service->hospitalInfoEntity:"+hospitalInfoEntity);
+        hospitalInfoDao.update(hospitalInfoEntity);
     }
 
     @Override
-    public void update(HospitalInfoEntity hospitalInfoEntity) {
-        hospitalInfoDao.update(hospitalInfoEntity);
+    public HospitalInfoEntity getHospitalInfo() {
+        HospitalInfoEntity hospitalInfo = hospitalInfoDao.getHospitalInfo();
+        LogUtils.info("hospitalInfo:"+hospitalInfo);
+        return hospitalInfo;
     }
 }

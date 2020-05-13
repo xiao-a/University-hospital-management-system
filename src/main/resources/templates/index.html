@@ -81,21 +81,21 @@
             <div class="col-md-5 col-sm-5 col-xs-12">
               <div class="timing">
                 <h6>周一 - 周五</h6>
-                <p><strong>10 点 - 18 点</strong></p>
+                <p><strong>[[${hospitalInfo.commonStartTime}]] 点 - [[${hospitalInfo.commonEndTime}]] 点</strong></p>
                 <h6>周六 - 周日</h6>
-                <p><strong>10 点 - 14 点</strong></p>
+                <p><strong>[[${hospitalInfo.weekStartTime}]] 点 - [[${hospitalInfo.weekEndTime}]]点</strong></p>
               </div>
             </div>
             <div class="col-md-7 col-sm-7 col-xs-12">
               <div class="emergency">
                 <p>咨询电话</p>
-                <p class="emer"><i class="fa fa-phone white"></i>123-456-789</p>
+                <p class="emer"><i class="fa fa-phone white"></i >[[${hospitalInfo.phoneNumber}]]</p>
               </div>
             </div>
             <div class="col-md-12">
               <p class="address">地址</p>
               <div class="addressdiv">
-                <p>河南省郑州市新郑市XXX镇XXX路XXX号</p>
+                <p th:text="${hospitalInfo.getAddress()}">河南省郑州市新郑市XXX镇XXX路XXX号</p>
               </div>
             </div>
           </div>
