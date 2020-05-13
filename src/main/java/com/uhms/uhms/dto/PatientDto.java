@@ -14,6 +14,8 @@ public class PatientDto implements Serializable {
     private String sex;
     private Integer age;
     private String username;
+    private String password;
     private String phoneNumber;
     private String address;
+    private String headUrl;
 }

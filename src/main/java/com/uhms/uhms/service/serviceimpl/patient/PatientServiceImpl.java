@@ -33,6 +33,8 @@ public class PatientServiceImpl implements PatientService {
         patientEntity.setAge(patientDto.getAge());
         patientEntity.setUsername(patientDto.getUsername());
         patientEntity.setAddress(patientDto.getAddress());
+        patientEntity.setPassword(patientDto.getPassword());
+        patientEntity.setHeadUrl(patientDto.getHeadUrl());
         patientEntity.setPhoneNumber(patientDto.getPhoneNumber());
         patientEntity.setStatus(DataStatusEnum.VALID.getType());
         patientDao.insert(patientEntity);

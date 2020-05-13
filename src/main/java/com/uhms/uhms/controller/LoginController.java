@@ -15,12 +15,18 @@ import com.uhms.uhms.utils.DateUtils;
 import com.uhms.uhms.utils.EmptyUtils;
 import com.uhms.uhms.utils.LogUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 @Controller
 public class LoginController{
@@ -36,6 +42,14 @@ public class LoginController{
     private AdminService adminService;
     @Autowired
     private NewsService newsService;
+
+    private String url;   //图片保存路径
+    @Value("${com.uhms}") //获取项目使用tomcat端口号
+    private  String post;
+    private  String host;   //获取主机名
+    private String rootPath="D:";  //图片根路径
+    private String sonPath="/file/"; //图片子路径
+
     @RequestMapping(value = {"/index","/",""})
     public String index(Model model) {
         model.addAttribute("todayWorkDoctor",todayWorkDoctorService.getDayWordDoctor());
@@ -92,15 +106,53 @@ public class LoginController{
 
 
 
-//    @RequestMapping("/register")
-//    public String hello() {
-//        return "/register";
-//    }
-//    @RequestMapping(value = "/register/submit",method = RequestMethod.POST)
-//    public String registerSubmission(DoctorEntity entity,Model model) {
-//        doctorService.insert(entity);
-//        model.addAttribute("newsList",newsService.getAll());
-//        return "/index";
-//    }
+    @RequestMapping("/register")
+    public String hello() {
+        return "/register";
+    }
+    @RequestMapping(value = "/register/submit",method = RequestMethod.POST)
+    public String registerSubmission(PatientDto patientDto,Model model, @RequestParam("ai_files") MultipartFile file) {
+
+        if (file.isEmpty()) {
+            return "文件为空";
+        }
+        try {
+            host = InetAddress.getLocalHost().getHostAddress();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+            LogUtils.info("get server host Exception e:"+ e);
+        }
+        String fileName = file.getOriginalFilename();
+        String[] strarray=fileName.split("\\\\");
+        String x=strarray[strarray.length-1];
+        String filePath = rootPath + sonPath;
+        LogUtils.info("上传的文件路径：" + fileName);
+        LogUtils.info("整个文件路径：" + host + ":" + post + sonPath + x);
+        //创建文件路径
+        File dest = new File(filePath + x);
+        LogUtils.info("dest：" +dest);
+        LogUtils.info("post：" +post);
+        //
+        //String filesPath = (host + ":" + post + sonPath + x).toString();
+        String filesPath = (sonPath + x).toString();
+        if (!dest.getParentFile().exists()) {
+            dest.getParentFile().mkdirs();
+        }
+        try {
+            file.transferTo(dest);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        patientDto.setHeadUrl(filesPath);
+        patientService.insert(patientDto);
+        String id = loginService.Login(patientDto.getUsername(), patientDto.getPassword(), IdentifyEnum.PATIENT.getType());
+        PatientEntity patientEntity = patientService.getById(id);
+        model.addAttribute("todayWorkDoctor",todayWorkDoctorService.getDayWordDoctor());
+        model.addAttribute("date", DateUtils.showYearMonthDayStr());
+        model.addAttribute("patient",patientEntity);
+        model.addAttribute("newsList",newsService.getAll());
+        return "/index";
+    }
 
 }
