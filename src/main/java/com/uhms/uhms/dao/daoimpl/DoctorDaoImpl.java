@@ -42,12 +42,13 @@ public class DoctorDaoImpl implements DoctorDao {
 
     @Override
     public void updateJpa(DoctorEntity doctorEntity) {
+        doctorEntity.setUpdateDate(DateUtils.getCurrentDate());
         doctorRepository.save(doctorEntity);
     }
 
     @Override
     public void update(String id, DoctorEntity doctorEntity) {
-
+        doctorEntity.setUpdateDate(DateUtils.getCurrentDate());
     }
 
     @Override

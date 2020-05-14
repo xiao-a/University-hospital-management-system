@@ -14,9 +14,5 @@ public class BedServiceImpl implements BedService {
     public void insert(BedEntity bedEntity) {
 
     }
-//    @Autowired
-//    private BedDao bedDao;
-//    public void insert(BedEntity bedEntity){
-//        bedDao.insert(bedEntity);
-//    }
+
 }

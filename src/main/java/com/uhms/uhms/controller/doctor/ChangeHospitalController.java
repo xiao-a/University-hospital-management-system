@@ -1,4 +1,4 @@
-package com.uhms.uhms.controller;
+package com.uhms.uhms.controller.doctor;
 
 import com.uhms.uhms.dto.ChangeHospitalDto;
 import com.uhms.uhms.dto.DoctorDto;

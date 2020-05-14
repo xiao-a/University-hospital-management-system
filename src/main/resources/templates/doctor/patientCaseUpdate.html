@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>查看我的个人信息</title>
+    <title>修改病例信息</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
@@ -41,7 +41,7 @@
             <div class="navbar-holder d-flex align-items-center justify-content-between">
               <!-- Navbar Header-->
               <div class="navbar-header">
-                <!-- Navbar Brand --><a href="main.html" class="navbar-brand d-none d-sm-inline-block">
+                <!-- Navbar Brand --><a href="../doctor/main.html" class="navbar-brand d-none d-sm-inline-block">
                   <div class="brand-text d-none d-lg-inline-block"><span>河南职业技术学院校医院 </span></div>
                   <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>校医院</strong></div></a>
                 <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
@@ -53,17 +53,17 @@
                 <!-- Notifications-->
                 <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell-o"></i><span class="badge bg-red badge-corner">12</span></a>
                   <ul aria-labelledby="notifications" class="dropdown-menu">
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item">
                         <div class="notification">
                           <div class="notification-content"><i class="fa fa-envelope bg-green"></i>你有1条新的信息</div>
                           <div class="notification-time"><small>1分钟前</small></div>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item">
                         <div class="notification">
                           <div class="notification-content"><i class="fa fa-twitter bg-blue"></i>你有2条新的信息</div>
                           <div class="notification-time"><small>2分钟前</small></div>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item">
                         <div class="notification">
                           <div class="notification-content"><i class="fa fa-twitter bg-blue"></i>你有3条新的信息</div>
                           <div class="notification-time"><small>3分钟前</small></div>
@@ -74,17 +74,17 @@
                 <!-- Messages                        -->
                 <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope-o"></i><span class="badge bg-orange badge-corner">10</span></a>
                   <ul aria-labelledby="notifications" class="dropdown-menu">
-                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
                         <div class="msg-profile"> <img src="../../resources/static/img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="msg-body">
                           <h3 class="h5">张三</h3><span>Sent You Message</span>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
                         <div class="msg-profile"> <img src="../../resources/static/img/avatar-2.jpg" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="msg-body">
                           <h3 class="h5">李四</h3><span>Sent You Message</span>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
                         <div class="msg-profile"> <img src="../../resources/static/img/avatar-3.jpg" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="msg-body">
                           <h3 class="h5">王麻子</h3><span>Sent You Message</span>
@@ -100,103 +100,110 @@
                   </ul>
                 </li>
                 <!-- Logout    -->
-                <li class="nav-item"><a href="main.html" class="nav-link logout"> <span class="d-none d-sm-inline">退出登录</span><i class="fa fa-sign-out"></i></a></li>
+                <li class="nav-item"><a href="../doctor/main.html" class="nav-link logout"> <span class="d-none d-sm-inline">退出登录</span><i class="fa fa-sign-out"></i></a></li>
               </ul>
             </div>
           </div>
         </nav>
       </header>
-      <div class="page-content d-flex align-items-stretch"> 
+      <div class="page-content d-flex align-items-stretch">
         <!-- Side Navbar -->
         <nav class="side-navbar">
           <!-- Sidebar Header-->
           <div class="sidebar-header d-flex align-items-center">
-            <div class="avatar"><img th:src="${doctor.headUrl}" alt="..." class="img-fluid rounded-circle"></div>
-            <div class="title">
-              <h1 class="h4" th:text="${doctor.name}">王麻子</h1>
-              <p th:inline="text">[[${doctor.division}]]主治医师</p>
-            </div>
+              <div class="avatar"><img th:src="${doctor.headUrl}" alt="..." class="img-fluid rounded-circle"></div>
+              <div class="title">
+                  <h1 class="h4" th:text="${doctor.name}">王麻子</h1>
+                  <p th:inline="text">[[${doctor.division}]]主治医师</p>
+              </div>
           </div>
-          <ul class="list-unstyled">
-            <li><a th:href="@{/main/} + ${doctor.doctorId}"> <i class="icon-home"></i>首页 </a></li>
-            <li><a href="#changeHospital" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>转院信息管理</a>
-              <ul id="changeHospital" class="collapse list-unstyled ">
-                <li ><a th:href="@{/select_change_hospital_list/} + ${doctor.doctorId}">转院信息列表</a></li>
-                <li><a th:href="@{/add_change_hospital/} + ${doctor.doctorId}">添加转院信息</a></li>
-              </ul>
-            </li>
-            <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>患者信息管理</a>
-              <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                <li class="active"><a th:href="@{/select_patient/} + ${doctor.doctorId}">患者信息列表</a></li>
-                <li ><a th:href="@{/add_patient/} + ${doctor.doctorId}">添加患者信息</a></li>
-                <li><a th:href="@{/update_patient/} + ${doctor.doctorId}">修改患者信息</a></li>
-                <li><a th:href="@{/delete_patient/} + ${doctor.doctorId}">删除患者信息</a></li>
-              </ul>
-            </li>
-            <li><a th:href="@{/appointment/select/} + ${doctor.doctorId}"> <i class="icon-home"></i>预约信息</a></li>
-            <li ><a th:href="@{/doctor_select_patient_case/} + ${doctor.doctorId}"> <i class="icon-home"></i>病例信息</a></li>
-            <li><a href="#personal" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>我的</a>
-              <ul id="personal" class="collapse list-unstyled ">
-                <li class="active"><a th:href="@{/my_info/} + ${doctor.doctorId}"> 个人信息显示</a></li>
-                <li><a th:href="@{/update_my_info/} + ${doctor.doctorId}">修改个人信息</a></li>
-              </ul>
-            </li>
-          </ul>
+            <ul class="list-unstyled">
+                <li><a th:href="@{/main/} + ${doctor.doctorId}"> <i class="icon-home"></i>首页 </a></li>
+                <li><a href="#changeHospital" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>转院信息管理</a>
+                    <ul id="changeHospital" class="collapse list-unstyled ">
+                        <li ><a th:href="@{/select_change_hospital_list/} + ${doctor.doctorId}">转院信息列表</a></li>
+                        <li><a th:href="@{/add_change_hospital/} + ${doctor.doctorId}">添加转院信息</a></li>
+                    </ul>
+                </li>
+                <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>患者信息管理</a>
+                    <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+                        <li ><a th:href="@{/select_patient/} + ${doctor.doctorId}">患者信息列表</a></li>
+                        <!--<li><a th:href="@{/add_patient/} + ${doctor.doctorId}">添加患者信息</a></li>-->
+                        <!--<li><a th:href="@{/update_patient/} + ${doctor.doctorId}">修改患者信息</a></li>-->
+                        <!--<li><a th:href="@{/delete_patient/} + ${doctor.doctorId}">删除患者信息</a></li>-->
+                    </ul>
+                </li>
+                <li><a th:href="@{/appointment/select/} + ${doctor.doctorId}"> <i class="icon-home"></i>预约信息</a></li>
+                <li class="active"><a th:href="@{/doctor_select_patient_case/} + ${doctor.doctorId}"> <i class="icon-home"></i>病例信息</a></li>
+                <li><a href="#personal" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>我的</a>
+                    <ul id="personal" class="collapse list-unstyled ">
+                        <li><a th:href="@{/my_info/} + ${doctor.doctorId}"> 个人信息显示</a></li>
+                        <li><a th:href="@{/update_my_info/} + ${doctor.doctorId}">修改个人信息</a></li>
+                    </ul>
+                </li>
+            </ul>
         </nav>
         <div class="content-inner">
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom" name="id" th:text="${doctor.doctorId}">显示个人信息</h2>
+              <h2 class="no-margin-bottom" name="id" th:text="${doctor.doctorId}">个人首页</h2>
             </div>
           </header>
-          <section class="tables">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="card">
-                    <div class="card-close">
-                      <div class="dropdown">
-                        <button type="button" id="closeCard1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                        <div aria-labelledby="closeCard1" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
-                      </div>
+          <section class="dashboard-counts no-padding-bottom">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card">
+                  <div class="card-close">
+                    <div class="dropdown">
+                      <button type="button" id="closeCard1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                      <div aria-labelledby="closeCard1" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
                     </div>
-                    <div class="card-header d-flex align-items-center">
-                      <h3 class="h4">个人信息</h3>
-                    </div>
-                    <div class="card-body">
-                      <div class="table-responsive">
-                        <table class="table">
-                          <tr>
-                            <td class="font-weight-bold">姓名</td><td th:text="${doctor.name}">张三</td>
-                          </tr>
-                          <tr>
-                            <td class="font-weight-bold">性别</td><td th:text="${doctor.sex}">男</td>
-                          </tr>
-                          <tr>
-                            <td class="font-weight-bold">科室</td><td th:text="${doctor.division}">内科</td>
-                          </tr>
-                          <tr>
-                            <td class="font-weight-bold">年龄</td><td th:text="${doctor.age}">88</td>
-                          </tr>
-                          <tr>
-                            <td class="font-weight-bold">开始工作日期</td><td th:text="${doctor.startWorkDateStr}">2008-10-25</td>
-                          </tr>
-                          <tr>
-                            <td class="font-weight-bold">手机号</td><td th:text="${doctor.phoneNumber}">10086</td>
-                          </tr>
-                          <tr>
-                            <td class="font-weight-bold">用户名</td><td th:text="${doctor.username}">bugaoshuni</td>
-                          </tr>
-                          <tr>
-                            <td class="font-weight-bold">密码</td><td th:text="${doctor.password}">nicai</td>
-                          </tr>
-                          <tr>
-                            <td class="font-weight-bold">邮箱</td><td th:text="${doctor.email}">10086@qq.com</td>
-                          </tr>
-                        </table>
-                      </div>
-                    </div>
+                  </div>
+                  <div class="card-header d-flex align-items-center">
+                    <h3 class="h4">病例信息表</h3>
+                  </div>
+                  <div class="card-body">
+                    <p>填写下列信息完成修改</p>
+                    <form class="form-horizontal" method="POST" action="/doctor_patient_case_update_submission/">
+                        <div class="form-group row">
+                            <label class="col-sm-2 form-control-label">病情描述</label>
+                            <div class="col-sm-8">
+                                <input name="doctorId" type="hidden" th:value="${doctor.doctorId}"/>
+                                <input name="patientCaseId" type="hidden" th:value="${patientCase.patientCaseId}"/>
+                                <input id="patientCaseContext" type="text" name="patientCaseContext" placeholder="病情描述" class="form-control form-control-success" th:value="${patientCase.patientCaseContext}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 form-control-label">检测信息</label>
+                            <div class="col-sm-8">
+                                <input id="examineResult" type="text" name="examineResult" placeholder="检测信息" class="form-control form-control-warning" th:value="${patientCase.examineResult}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 form-control-label">诊断结果</label>
+                            <div class="col-sm-8">
+                                <input id="diagnosisResult" type="text" name="diagnosisResult" placeholder="诊断结果" class="form-control form-control-warning" th:value="${patientCase.diagnosisResult}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 form-control-label">处理建议</label>
+                            <div class="col-sm-8">
+                                <input id="handlingSuggestion" type="text" name="handlingSuggestion" placeholder="处理建议" class="form-control form-control-success" th:value="${patientCase.handlingSuggestion}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 form-control-label">诊断费用</label>
+                            <div class="col-sm-8">
+                                <input id="fee" type="text" name="fee" placeholder="诊断费用" class="form-control form-control-success" th:value="${patientCase.fee}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-9 offset-sm-3">
+                                <input type="submit" value="提交" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -206,9 +213,9 @@
           <footer class="main-footer">
             <div class="container-fluid">
               <div class="row">
-                  <div class="col-sm-12" align="center">
-                      <p>版本V0.1.</p>
-                  </div>
+                <div class="col-sm-12" align="center">
+                  <p>版本V0.1.</p>
+                </div>
               </div>
             </div>
           </footer>

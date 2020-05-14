@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title>查询患者信息</title>
+    <title>查询病例信息</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
@@ -133,7 +133,7 @@
                     </ul>
                 </li>
                 <li><a th:href="@{/appointment/select/} + ${doctor.doctorId}"> <i class="icon-home"></i>预约信息</a></li>
-                <li ><a th:href="@{/doctor_select_patient_case/} + ${doctor.doctorId}"> <i class="icon-home"></i>病例信息</a></li>
+                <li class="active"><a th:href="@{/doctor_select_patient_case/} + ${doctor.doctorId}"> <i class="icon-home"></i>病例信息</a></li>
                 <li><a href="#personal" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>我的</a>
                     <ul id="personal" class="collapse list-unstyled ">
                         <li><a th:href="@{/my_info/} + ${doctor.doctorId}"> 个人信息显示</a></li>
@@ -149,48 +149,43 @@
                     <h2 class="no-margin-bottom" name="id" th:text="${doctor.doctorId}">转院管理</h2>
                 </div>
             </header>
-            <section class="forms">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-close">
-                                    <div class="dropdown">
-                                        <button type="button" id="closeCard2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                                        <div aria-labelledby="closeCard2" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
-                                    </div>
+            <section class="dashboard-counts no-padding-bottom">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-close">
+                                <div class="dropdown">
+                                    <button type="button" id="closeCard1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                                    <div aria-labelledby="closeCard1" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
                                 </div>
-                                <div class="card-header d-flex align-items-center">
-                                    <h3 class="h4">新建转院记录</h3>
+                            </div>
+                            <div class="card-header d-flex align-items-center">
+                                <div class="row">
+                                    <h3 class="h4">病例信息列表</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4 th:text="${msg}"></h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a th:href="@{'/print_change_hospital_list/'+${doctor.doctorId}}" class="btn btn-primary">打印</a>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<a th:href="@{'/change_hospital_insert/'+${doctor.doctorId}}" class="btn btn-primary">新增</a>
                                 </div>
-                                <div class="card-body">
-                                    <p>填写下列信息新建转院记录</p>
-                                    <form class="form-horizontal" method="post" action="/change_hospital_insert_submission">
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 form-control-label">患者编号</label>
-                                            <div class="col-sm-8">
-                                                <input id="patientId" type="text" name="patientId" placeholder="患者编号" class="form-control form-control-success">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 form-control-label">医生编号</label>
-                                            <div class="col-sm-8">
-                                                <input id="doctorId" type="text" name="doctorId" placeholder="医生编号" class="form-control form-control-success">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 form-control-label">所转医院</label>
-                                            <div class="col-sm-8">
-                                                <input id="changeHospitalName" type="text" name="changeHospitalName" placeholder="所转医院" class="form-control form-control-success">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <div class="col-sm-9 offset-sm-3">
-                                                <input type="submit" value="提交" class="btn btn-primary">
-                                            </div>
-                                        </div>
-                                    </form>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>编号</th>
+                                            <th>患者姓名</th>
+                                            <th>创建时间</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="patientCase:${patientCaseList}">
+                                            <th scope="row" th:text="${patientCase.patientCaseId}"></th>
+                                            <th scope="row" th:text="${patientCase.patientName}"></th>
+                                            <th scope="row" th:text="${patientCase.createDate}"></th>
+                                            <th scope="row"><a th:href="@{'/doctor_select_patient_case_detail/'+${doctor.doctorId}+'/'+${patientCase.patientCaseId}}" class="btn btn-primary">查看</a></th>
+                                            <th scope="row"><a th:href="@{'/doctor_update_patient_case/'+ ${doctor.doctorId}+'/'+${patientCase.patientCaseId}}" class="btn btn-primary">修改</a></th>
+                                            <th scope="row"><a th:href="@{'/doctor_delete_patient_case/'+ ${doctor.doctorId}+'/'+${patientCase.patientCaseId}}" class="btn btn-primary">删除</a></th>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

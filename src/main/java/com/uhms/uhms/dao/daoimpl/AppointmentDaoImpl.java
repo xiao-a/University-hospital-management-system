@@ -50,6 +50,7 @@ public class AppointmentDaoImpl  implements AppointmentDao {
     @Override
     public void update(String id, AppointmentEntity appointmentEntity) {
 //        AppointmentEntity entity = appointmentRepository.getOne(id);
+        appointmentEntity.setUpdateDate(DateUtils.getCurrentDate());
         appointmentRepository.save(appointmentEntity);
     }
 

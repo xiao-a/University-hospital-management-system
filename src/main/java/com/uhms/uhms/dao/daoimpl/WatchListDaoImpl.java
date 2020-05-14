@@ -42,7 +42,8 @@ public class WatchListDaoImpl implements WatchListDao {
 
     @Override
     public void update(WatchListEntity watchListEntity) {
-
+        watchListEntity.setUpdateDate(DateUtils.getCurrentDate());
+        watchListRepository.save(watchListEntity);
     }
 
     @Override

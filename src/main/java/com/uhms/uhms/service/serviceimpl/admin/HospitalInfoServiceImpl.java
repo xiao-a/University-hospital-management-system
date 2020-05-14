@@ -51,6 +51,7 @@ public class HospitalInfoServiceImpl implements HospitalInfoService {
         hospitalInfoEntity.setWeekEndTime(hospitalInfoDto.getWeekEndTime());
         hospitalInfoEntity.setPhoneNumber(hospitalInfoDto.getPhoneNumber());
         hospitalInfoEntity.setAddress(hospitalInfoDto.getAddress());
+        hospitalInfoEntity.setUpdateDate(DateUtils.getCurrentDate());
         LogUtils.info("Service->hospitalInfoEntity:"+hospitalInfoEntity);
         hospitalInfoDao.update(hospitalInfoEntity);
     }

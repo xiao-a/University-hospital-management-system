@@ -43,6 +43,7 @@ public class ChangeHospitalDaoImpl implements ChangeHospitalDao {
 
     @Override
     public void update(String id, ChangeHospitalEntity changeHospitalEntity) {
-
+        changeHospitalEntity.setUpdateDate(DateUtils.getCurrentDate());
+        changeHospitalRepository.save(changeHospitalEntity);
     }
 }

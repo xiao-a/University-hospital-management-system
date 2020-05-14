@@ -42,6 +42,7 @@ public class PatientDaoImpl implements PatientDao {
 
     @Override
     public void update(PatientEntity patientEntity) {
+        patientEntity.setUpdateDate(DateUtils.getCurrentDate());
         patientRepository.save(patientEntity);
     }
 

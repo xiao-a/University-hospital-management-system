@@ -20,6 +20,7 @@ public class PatientCaseEntity implements Serializable {
     String patientId;
     String patientName;
     Double fee;
+    String division;
     String patientCaseContext;
     String examineResult;
     String diagnosisResult;

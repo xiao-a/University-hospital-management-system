@@ -40,6 +40,9 @@ public class InitDataTest {
     @Autowired
     private HospitalInfoDao hospitalInfoDao;
     HospitalInfoEntity hospitalInfoEntity=new HospitalInfoEntity();
+    @Autowired
+    private PatientCaseDao patientCaseDao;
+    PatientCaseEntity patientCaseEntity=new PatientCaseEntity();
     /**
      * 创建10条医生信息
      */
@@ -290,6 +293,27 @@ public class InitDataTest {
         hospitalInfoEntity.setAddress("河南省郑州市新郑市龙湖镇");
         hospitalInfoEntity.setPhoneNumber("10086-10010");
         hospitalInfoDao.insert(hospitalInfoEntity);
+    }
+
+    /**
+     * 初始化病例信息
+     */
+    @Test
+    public void createPatientCase()
+    {
+        for (int i=0;i<5;i++)
+        {
+            patientCaseEntity.setPatientId("XXXXXX");
+            patientCaseEntity.setPatientName("赵六"+i);
+            patientCaseEntity.setDiagnosisResult("无");
+            patientCaseEntity.setExamineResult("无");
+            patientCaseEntity.setDivision(DivisionTypeEnum.ORTHOPEDICS.getType());
+            patientCaseEntity.setFee(20.0+i);
+            patientCaseEntity.setHandlingSuggestion("无");
+            patientCaseEntity.setPatientCaseContext("无");
+            patientCaseDao.insert(patientCaseEntity);
+
+        }
     }
 
 

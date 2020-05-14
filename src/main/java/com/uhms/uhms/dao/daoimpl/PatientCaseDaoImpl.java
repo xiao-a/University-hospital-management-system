@@ -43,6 +43,12 @@ public class PatientCaseDaoImpl implements PatientCaseDao {
 
     @Override
     public void update(PatientCaseEntity patientCaseEntity) {
+        patientCaseEntity.setUpdateDate(DateUtils.getCurrentDate());
         patientCaseRepository.save(patientCaseEntity);
+    }
+
+    @Override
+    public List<PatientCaseEntity> getPatientCaseEntitiesByDivision(String division) {
+        return patientCaseRepository.getPatientCaseEntitiesByDivision(division);
     }
 }
