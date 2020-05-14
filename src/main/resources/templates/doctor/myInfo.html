@@ -133,6 +133,7 @@
                 <li><a th:href="@{/delete_patient/} + ${doctor.doctorId}">删除患者信息</a></li>
               </ul>
             </li>
+            <li><a th:href="@{/appointment/select/} + ${doctor.doctorId}"> <i class="icon-home"></i>预约信息</a></li>
             <li><a href="#personal" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>我的</a>
               <ul id="personal" class="collapse list-unstyled ">
                 <li class="active"><a th:href="@{/my_info/} + ${doctor.doctorId}"> 个人信息显示</a></li>
