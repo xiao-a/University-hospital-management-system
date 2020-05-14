@@ -81,7 +81,7 @@ public class PatientCaseController {
         model.addAttribute("patientCase",caseEntity);
         return "doctor/patientCaseUpdate";
     }
-    @RequestMapping(value = "/doctor_delete_patient/{doctorId}/{patientCaseId}",method = RequestMethod.GET)
+    @RequestMapping(value = "/doctor_delete_patient_case/{doctorId}/{patientCaseId}",method = RequestMethod.GET)
     public String deletePatient(@PathVariable("patientCaseId")String patientCaseId,@PathVariable("doctorId")String doctorId,Model model){
         patientCaseService.deleteById(patientCaseId);
         DoctorDto doctorDto = doctorService.getById(doctorId);

@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
@@ -69,8 +70,21 @@ public class LoginController{
         model.addAttribute("msg",null);
         return "/login";
     }
+    @RequestMapping("/exit")
+    public String exit(Model model,HttpSession session) {
+        model.addAttribute("msg",null);
+        session.setAttribute("LoginInfo",null);
+        model.addAttribute("todayWorkDoctor",todayWorkDoctorService.getDayWordDoctor());
+        model.addAttribute("date", DateUtils.showYearMonthDayStr());
+        PatientDto patientDto = new PatientDto();
+        patientDto.setName("登录");
+        model.addAttribute("patient",patientDto);
+        model.addAttribute("newsList",newsService.getAll());
+        model.addAttribute("hospitalInfo",hospitalInfoService.getHospitalInfo());
+        return "/index";
+    }
     @RequestMapping(value ={ "/login/submit"} ,method = RequestMethod.POST)
-    public String loginSubmission(HttpServletRequest request, HttpServletResponse response, Model model) {
+    public String loginSubmission(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession httpSession) {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String identify=request.getParameter("identify");
@@ -89,14 +103,17 @@ public class LoginController{
                 model.addAttribute("patient",patient);
                 model.addAttribute("newsList",newsService.getAll());
                 model.addAttribute("hospitalInfo",hospitalInfoService.getHospitalInfo());
+                httpSession.setAttribute("LoginInfo",id);
                 return "/index";
             }else if(IdentifyEnum.DOCTOR.getType().equals(identify)){
                 DoctorDto dto = doctorService.getById(id);
                 model.addAttribute("doctor",dto);
+                httpSession.setAttribute("LoginInfo",id);
                 return "doctor/main";
             }else {
                 AdminEntity adminEntity = adminService.getById(id);
                 model.addAttribute("admin",adminEntity);
+                httpSession.setAttribute("LoginInfo",id);
                 return "admin/main";
             }
 
