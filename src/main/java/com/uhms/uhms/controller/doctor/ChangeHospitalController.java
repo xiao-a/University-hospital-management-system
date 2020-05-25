@@ -21,7 +21,7 @@ public class ChangeHospitalController {
     @Autowired
     private DoctorService doctorService;
     @RequestMapping("/select_change_hospital_list/{doctorId}")
-    public String selectPatient(@PathVariable("doctorId")String doctorId,Model model){
+    public String doctorSelectChangeHospital(@PathVariable("doctorId")String doctorId,Model model){
         DoctorDto doctorDto = doctorService.getById(doctorId);
         List<ChangeHospitalEntity> changeHospitalList = changeHospitalService.findAll();
         model.addAttribute("doctor",doctorDto);
@@ -30,7 +30,7 @@ public class ChangeHospitalController {
         return "doctor/changeHospitalSelect";
     }
     @RequestMapping(value = "/add_change_hospital/{doctorId}" ,method = RequestMethod.GET)
-    public String selectDetailPatient(@PathVariable("doctorId")String doctorId,Model model){
+    public String doctorSelectDetailChangeHospital(@PathVariable("doctorId")String doctorId,Model model){
         DoctorDto doctorDto = doctorService.getById(doctorId);
         model.addAttribute("doctor",doctorDto);
         return "doctor/changeHospitalInsert";

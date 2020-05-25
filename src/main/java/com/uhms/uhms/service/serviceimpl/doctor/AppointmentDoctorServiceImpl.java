@@ -33,4 +33,9 @@ public class AppointmentDoctorServiceImpl implements AppointmentDoctorService {
         appointmentDao.changeAppointmentStatus(appointmentEntity);
         return appointmentEntity;
     }
+
+    @Override
+    public AppointmentEntity getById(String appointmentId) {
+        return appointmentDao.getById(appointmentId);
+    }
 }

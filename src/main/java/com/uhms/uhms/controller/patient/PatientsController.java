@@ -14,7 +14,7 @@ public class PatientsController {
     private AppointmentService appointmentService;
     @RequestMapping(value = "/appointment/submission",method =RequestMethod.POST,produces = "application/json")
     @ResponseBody
-    public String selectPatient(@RequestBody String o) {
+    public String insertAppointment(@RequestBody String o) {
         appointmentService.appointmentSubmit(o);
         LogUtils.info("msg:"+o);
         String msg="预约提交成功，医生确认中!";

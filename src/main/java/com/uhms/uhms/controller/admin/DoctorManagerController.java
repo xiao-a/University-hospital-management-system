@@ -29,7 +29,7 @@ public class DoctorManagerController {
         return "admin/doctorSelect";
     }
     @RequestMapping(value = "/admin_select_doctor_detail/{adminId}/{doctorId}" ,method = RequestMethod.GET)
-    public String adminSelectDetailPatient(@PathVariable("adminId")String adminId,@PathVariable("doctorId")String doctorId,Model model){
+    public String adminSelectDetailDoctor(@PathVariable("adminId")String adminId,@PathVariable("doctorId")String doctorId,Model model){
         AdminEntity adminEntity = adminService.getById(adminId);
         DoctorDto doctorDto = doctorService.getById(doctorId);
         model.addAttribute("doctor",doctorDto);

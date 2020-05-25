@@ -41,7 +41,7 @@ public class PatientManagerController {
     }
 
     @RequestMapping(value = "/update_patient/{adminId}/{patientId}",method = RequestMethod.GET)
-    public String updatePatient(@PathVariable("adminId")String adminId,@PathVariable("patientId")String patientId,Model model){
+    public String adminUpdatePatient(@PathVariable("adminId")String adminId,@PathVariable("patientId")String patientId,Model model){
         AdminEntity adminEntity = adminService.getById(adminId);
         PatientEntity patient = patientService.getById(patientId);
         model.addAttribute("admin",adminEntity);
@@ -58,7 +58,7 @@ public class PatientManagerController {
         return "admin/patientUpdate";
     }
     @RequestMapping(value = "/delete_patient/{adminId}/{patientId}",method = RequestMethod.GET)
-    public String deletePatient(@PathVariable("adminId")String adminId,@PathVariable("patientId")String patientId,Model model){
+    public String adminDeletePatient(@PathVariable("adminId")String adminId,@PathVariable("patientId")String patientId,Model model){
         patientService.deleteById(patientId);
         AdminEntity adminEntity = adminService.getById(adminId);
         List<PatientEntity> patientList = patientService.findAll();
@@ -68,7 +68,7 @@ public class PatientManagerController {
         return "admin/patientSelect";
     }
     @RequestMapping(value = "/patient_insert/{adminId}" ,method = RequestMethod.GET)
-    public String selectDetailPatient(@PathVariable("adminId")String adminId,Model model){
+    public String adminInsertPatient(@PathVariable("adminId")String adminId,Model model){
         AdminEntity adminEntity = adminService.getById(adminId);
         model.addAttribute("admin",adminEntity);
         return "admin/patientInsert";

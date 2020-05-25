@@ -1,8 +1,10 @@
 package com.uhms.uhms.service.serviceimpl.doctor;
 
+import com.uhms.uhms.dao.dao.AppointmentDao;
 import com.uhms.uhms.dao.dao.DoctorDao;
 import com.uhms.uhms.dao.dao.PatientCaseDao;
 import com.uhms.uhms.dto.PatientCaseDto;
+import com.uhms.uhms.entity.AppointmentEntity;
 import com.uhms.uhms.entity.DoctorEntity;
 import com.uhms.uhms.entity.PatientCaseEntity;
 import com.uhms.uhms.enums.DivisionTypeEnum;
@@ -18,9 +20,12 @@ public class PatientCaseServiceImpl implements PatientCaseService {
     private PatientCaseDao patientCaseDao;
     @Autowired
     private DoctorDao doctorDao;
+    @Autowired
+    private AppointmentDao appointmentDao;
     @Override
     public void insert(PatientCaseDto patientCaseDto) {
         DoctorEntity doctorEntity = doctorDao.getById(patientCaseDto.getDoctorId());
+        AppointmentEntity appointmentEntity = appointmentDao.getById(patientCaseDto.getAppointmentId());
         PatientCaseEntity patientCaseEntity=new PatientCaseEntity();
         patientCaseEntity.setFee(patientCaseDto.getFee());
         patientCaseEntity.setDiagnosisResult(patientCaseDto.getDiagnosisResult());
@@ -28,8 +33,9 @@ public class PatientCaseServiceImpl implements PatientCaseService {
         patientCaseEntity.setHandlingSuggestion(patientCaseDto.getHandlingSuggestion());
         patientCaseEntity.setPatientCaseContext(patientCaseDto.getPatientCaseContext());
         patientCaseEntity.setDivision(doctorEntity.getDivision());
-        patientCaseEntity.setPatientName(patientCaseDto.getPatientName());
-        patientCaseEntity.setPatientId(patientCaseDto.getPatientId());
+        patientCaseEntity.setPatientName(appointmentEntity.getPatientName());
+        patientCaseEntity.setPatientId(appointmentEntity.getPatientId());
+        patientCaseEntity.setAppointmentId(patientCaseDto.getAppointmentId());
         patientCaseDao.insert(patientCaseEntity);
     }
 

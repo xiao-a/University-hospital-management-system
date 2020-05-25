@@ -6,6 +6,7 @@ import lombok.Getter;
 public enum AppointmentStatusEnum {
     UNCONFIRM("unconfirm","确认中"),
     CONFIRMED("confirmed","已确认"),
+    COMPLETE("complete","已完成"),
     OVERDUE("overdue","已过期");
 
     private String type;

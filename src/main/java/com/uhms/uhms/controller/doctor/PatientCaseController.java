@@ -4,8 +4,10 @@ import com.uhms.uhms.dto.DoctorDto;
 import com.uhms.uhms.dto.PatientCaseDto;
 import com.uhms.uhms.entity.AdminEntity;
 import com.uhms.uhms.entity.PatientCaseEntity;
+import com.uhms.uhms.service.service.doctor.AppointmentDoctorService;
 import com.uhms.uhms.service.service.doctor.PatientCaseService;
 import com.uhms.uhms.service.service.doctor.DoctorService;
+import com.uhms.uhms.service.service.patient.AppointmentService;
 import com.uhms.uhms.utils.LogUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,9 +25,11 @@ public class PatientCaseController {
     private DoctorService doctorService;
     @Autowired
     private PatientCaseService patientCaseService;
+    @Autowired
+    private AppointmentDoctorService appointmentDoctorService;
 
     @RequestMapping("/login/doctor_select_patient_case/{doctorId}")
-    public String doctorSelectPatientCase1(@PathVariable("doctorId")String doctorId,Model model){
+    public String doctorSelectPatientCase(@PathVariable("doctorId")String doctorId,Model model){
         DoctorDto doctorDto = doctorService.getById(doctorId);
         List<PatientCaseEntity> patientCaseEntities = patientCaseService.getPatientCaseEntitiesByDivision(doctorDto.getDivision());
         LogUtils.info("Division:"+doctorDto.getDivision());
@@ -56,7 +60,7 @@ public class PatientCaseController {
     }
 
     @RequestMapping(value = "/doctor_select_patient_case_detail/{doctorId}/{patientCaseId}" ,method = RequestMethod.GET)
-    public String adminSelectDetailPatient(@PathVariable("patientCaseId")String patientCaseId,@PathVariable("doctorId")String doctorId,Model model){
+    public String doctorSelectDetailPatientCase(@PathVariable("patientCaseId")String patientCaseId,@PathVariable("doctorId")String doctorId,Model model){
         PatientCaseEntity patientCaseEntity = patientCaseService.getById(patientCaseId);
         DoctorDto doctorDto = doctorService.getById(doctorId);
         model.addAttribute("doctor",doctorDto);
@@ -65,7 +69,7 @@ public class PatientCaseController {
     }
 
     @RequestMapping(value = "/doctor_update_patient_case/{doctorId}/{patientCaseId}",method = RequestMethod.GET)
-    public String adminUpdateDoctor(@PathVariable("patientCaseId")String patientCaseId,@PathVariable("doctorId")String doctorId,Model model){
+    public String doctorUpdatePatientCase(@PathVariable("patientCaseId")String patientCaseId,@PathVariable("doctorId")String doctorId,Model model){
         PatientCaseEntity patientCaseEntity = patientCaseService.getById(patientCaseId);
         DoctorDto doctorDto = doctorService.getById(doctorId);
         model.addAttribute("doctor",doctorDto);
@@ -82,7 +86,7 @@ public class PatientCaseController {
         return "doctor/patientCaseUpdate";
     }
     @RequestMapping(value = "/doctor_delete_patient_case/{doctorId}/{patientCaseId}",method = RequestMethod.GET)
-    public String deletePatient(@PathVariable("patientCaseId")String patientCaseId,@PathVariable("doctorId")String doctorId,Model model){
+    public String doctorDeletePatientCase(@PathVariable("patientCaseId")String patientCaseId,@PathVariable("doctorId")String doctorId,Model model){
         patientCaseService.deleteById(patientCaseId);
         DoctorDto doctorDto = doctorService.getById(doctorId);
         List<PatientCaseEntity> patientCaseEntities = patientCaseService.getPatientCaseEntitiesByDivision(doctorDto.getDivision());
@@ -103,6 +107,24 @@ public class PatientCaseController {
         List<PatientCaseEntity> patientCaseEntities = patientCaseService.getPatientCaseEntitiesByDivision(doctorDto.getDivision());
         model.addAttribute("doctor",doctorDto);
         model.addAttribute("patientCaseList",patientCaseEntities);
+        return "doctor/patientCaseSelect";
+    }
+    @RequestMapping(value = "/patient_case_insert/{doctorId}/{appointmentId}" ,method = RequestMethod.GET)
+    public String patientCaseInsert(@PathVariable("doctorId")String doctorId,@PathVariable("appointmentId")String appointmentId,Model model){
+        DoctorDto doctorDto = doctorService.getById(doctorId);
+        model.addAttribute("doctor",doctorDto);
+        LogUtils.info("appointment"+appointmentId);
+        model.addAttribute("appointmentId",appointmentId);
+        return "doctor/patientCaseInsert";
+    }
+    @RequestMapping(value = "/patient_case_insert_submission" ,method = RequestMethod.POST)
+    public String patientCaseInsertSubmission(PatientCaseDto patientCaseDto, Model model){
+        LogUtils.info("appointment"+patientCaseDto.getAppointmentId());
+        DoctorDto doctorDto = doctorService.getById(patientCaseDto.getDoctorId());
+        patientCaseService.insert(patientCaseDto);
+        List<PatientCaseEntity> all = patientCaseService.getPatientCaseEntitiesByDivision(appointmentDoctorService.getById(patientCaseDto.getAppointmentId()).getDivision());
+        model.addAttribute("doctor",doctorDto);
+        model.addAttribute("patientCaseList",all);
         return "doctor/patientCaseSelect";
     }
 }

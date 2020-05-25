@@ -19,12 +19,15 @@ public class PatientCaseEntity implements Serializable {
     String patientCaseId;
     String patientId;
     String patientName;
+    String doctorId;
+    String doctorName;
+    String appointmentId;
     Double fee;
     String division;
-    String patientCaseContext;
-    String examineResult;
-    String diagnosisResult;
-    String handlingSuggestion;
+    String patientCaseContext;  //病情描述
+    String examineResult;       //检查结果
+    String diagnosisResult;     //诊断结果
+    String handlingSuggestion;  //处理意见
     private String status;
     private Date createDate;
     private Date updateDate;

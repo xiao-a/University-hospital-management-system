@@ -8,4 +8,5 @@ import java.util.List;
 public interface AppointmentDoctorService {
     List<AppointmentEntity> getAllByDoctorId(String doctorId);
     AppointmentEntity changeAppointment(String appointmentId);
+    AppointmentEntity getById(String appointmentId);
 }

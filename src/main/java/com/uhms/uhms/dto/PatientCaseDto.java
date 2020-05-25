@@ -8,6 +8,7 @@ import java.util.Date;
 @Data
 public class PatientCaseDto implements Serializable {
     String patientCaseId;
+    String appointmentId;
     String doctorId;
     String patientId;
     String patientName;

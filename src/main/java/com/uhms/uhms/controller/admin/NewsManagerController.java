@@ -39,7 +39,7 @@ public class NewsManagerController {
     @Autowired
     private NewsService newsService;
     @RequestMapping(value = "/get_news_list/{adminId}" ,method = RequestMethod.GET)
-    public String selectDetailPatient(@PathVariable("adminId")String adminId,Model model){
+    public String selectDetailNews(@PathVariable("adminId")String adminId,Model model){
         AdminEntity adminEntity = adminService.getById(adminId);
         List<NewsEntity> all = newsService.getAll();
         LogUtils.info("NewsList:"+all);
@@ -48,7 +48,7 @@ public class NewsManagerController {
         return "admin/newsSelect";
     }
     @RequestMapping(value = "/get_news_detail/{adminId}/{newsId}" ,method = RequestMethod.GET)
-    public String selectDetailPatient(@PathVariable("adminId")String adminId,@PathVariable("newsId")String newsId,Model model){
+    public String selectDetailNews(@PathVariable("adminId")String adminId,@PathVariable("newsId")String newsId,Model model){
         AdminEntity adminEntity = adminService.getById(adminId);
         NewsEntity newsEntity = newsService.getById(newsId);
         model.addAttribute("admin",adminEntity);
@@ -75,7 +75,7 @@ public class NewsManagerController {
         return "admin/newsUpdate";
     }
     @RequestMapping(value = "/delete_news/{adminId}/{newsId}",method = RequestMethod.GET)
-    public String deletePatient(@PathVariable("adminId")String adminId,@PathVariable("newsId")String newsId,Model model){
+    public String deleteNews(@PathVariable("adminId")String adminId,@PathVariable("newsId")String newsId,Model model){
         newsService.deleteById(newsId);
         AdminEntity admin = adminService.getById(adminId);
         List<NewsEntity> all = newsService.getAll();
