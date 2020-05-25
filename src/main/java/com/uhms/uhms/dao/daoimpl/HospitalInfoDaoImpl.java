@@ -111,7 +111,14 @@ public class HospitalInfoDaoImpl implements HospitalInfoDao {
         }catch (Exception e){
             e.printStackTrace();
         }
-
-        return null;
+        HospitalInfoEntity hospitalInfoEntity = hospitalInfoRepository.findAll().get(0);
+        try{
+            jedis.set(hospitalInfo,JsonUtils.objectToJson(hospitalInfoEntity));
+            LogUtils.info("数据来自MySql数据库!");
+            jedis.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return hospitalInfoEntity;
     }
 }

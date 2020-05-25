@@ -59,7 +59,7 @@ public class HospitalInfoServiceImpl implements HospitalInfoService {
     @Override
     public HospitalInfoEntity getHospitalInfo() {
         HospitalInfoEntity hospitalInfo = hospitalInfoDao.getHospitalInfo();
-        LogUtils.info("hospitalInfo:"+hospitalInfo);
+        LogUtils.info("Service->hospitalInfo:"+hospitalInfo);
         return hospitalInfo;
     }
 }

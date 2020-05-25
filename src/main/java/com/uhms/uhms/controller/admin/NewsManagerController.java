@@ -5,6 +5,7 @@ import com.uhms.uhms.entity.AdminEntity;
 import com.uhms.uhms.entity.NewsEntity;
 import com.uhms.uhms.service.service.admin.NewsService;
 import com.uhms.uhms.service.service.admin.AdminService;
+import com.uhms.uhms.utils.EmptyUtils;
 import com.uhms.uhms.utils.LogUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -66,7 +67,39 @@ public class NewsManagerController {
     }
 
     @RequestMapping(value = "/admin_news_update_submission" ,method = RequestMethod.POST)
-    public String doctorUpdateSubmission(NewsDto newsDto, Model model, HttpServletRequest request) {
+    public String doctorUpdateSubmission(NewsDto newsDto, Model model,@RequestParam("ai_files") MultipartFile file, HttpServletRequest request) {
+        if(EmptyUtils.isNotEmpty(file)) {
+            try {
+                host = InetAddress.getLocalHost().getHostAddress();
+            } catch (UnknownHostException e) {
+                e.printStackTrace();
+                LogUtils.info("get server host Exception e:" + e);
+            }
+            String fileName = file.getOriginalFilename();
+            String[] strarray = fileName.split("\\\\");
+            String x = strarray[strarray.length - 1];
+            String filePath = rootPath + sonPath;
+            LogUtils.info("上传的文件路径：" + fileName);
+            LogUtils.info("整个文件路径：" + host + ":" + post + sonPath + x);
+            //创建文件路径
+            File dest = new File(filePath + x);
+            LogUtils.info("dest：" + dest);
+            LogUtils.info("post：" + post);
+            //
+            //String filesPath = (host + ":" + post + sonPath + x).toString();
+            String filesPath = (sonPath + x).toString();
+            if (!dest.getParentFile().exists()) {
+                dest.getParentFile().mkdirs();
+            }
+            try {
+                file.transferTo(dest);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            newsDto.setNewsImg(filesPath);
+        }else{
+            newsDto.setNewsImg(null);
+        }
         newsService.update(newsDto);
         AdminEntity adminEntity = adminService.getById(newsDto.getAdminId());
         NewsEntity newsEntity = newsService.getById(newsDto.getNewsId());

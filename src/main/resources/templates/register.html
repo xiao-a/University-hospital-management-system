@@ -47,7 +47,7 @@
                 <div class="content">
                   <form class="form-validate" method="post" action="/register/submit" enctype="multipart/form-data">
                     <div class="form-group">
-                      <input id="register-name" type="text" name="name" required data-msg="请输入姓名" class="input-material">
+                      <input id="register-name" type="text" name="name" required data-msg="请输入姓名"   class="input-material">
                       <label for="register-name" class="label-material">姓名</label>
                     </div>
                     <div class="form-group">
@@ -63,12 +63,24 @@
                       <label for="register-email" class="label-material">邮箱地址</label>
                     </div>
                       <div class="form-group">
-                          <input id="register-phoneNumber" type="number" name="phoneNumber" required data-msg="请输入合法的手机号" class="input-material">
+                          <input id="register-phoneNumber" type="number" name="phoneNumber" required data-msg="请输入合法的手机号"  class="input-material">
                           <label for="register-phoneNumber" class="label-material">手机号</label>
                       </div>
                     <div class="form-group">
                       <input id="register-password" type="password" name="password" required data-msg="请输入密码" class="input-material">
                       <label for="register-password" class="label-material">密码</label>
+                    </div>
+                    <div class="form-group-material">
+                      <label class="col-sm-2 form-control-label">性别</label>
+                      <div class="col-sm-8">
+                        <!--<input id="sex" type="text" name="sex" placeholder="性别" required class="input-material" th:value="${admin.sex}">-->
+                        <div>
+                          <input id="optionsRadios1" type="radio" checked="" value="woman" name="sex">
+                          <label for="optionsRadios1">女</label>
+                          <input id="optionsRadios2" type="radio" value="man" name="sex">
+                          <label for="optionsRadios2">男</label>
+                        </div>
+                      </div>
                     </div>
                     <div class="form-group">
                       头像
@@ -76,13 +88,13 @@
                       <label for="newsImg" class="label-material"></label>
                     </div>
                     <div class="form-group">
-                      <input id="register-address" type="text" name="address" required data-msg="请输入地址" class="input-material">
+                      <input id="register-address" type="text" name="address" required data-msg="请输入地址"  class="input-material">
                       <label for="register-address" class="label-material">请输入地址</label>
                     </div>
                     <div class="form-group">
                       <button id="regidter" type="submit" class="btn btn-primary">注册</button>
                     </div>
-                  </form><small>已经注册？</small><a href="doctor/main.html" class="signup">登录</a>
+                  </form><small>已经注册？</small><a href="/login" class="signup">登录</a>
                 </div>
               </div>
             </div>

@@ -5,6 +5,7 @@ import com.uhms.uhms.entity.AdminEntity;
 import com.uhms.uhms.enums.DataStatusEnum;
 import com.uhms.uhms.repository.AdminRepository;
 import com.uhms.uhms.utils.DateUtils;
+import com.uhms.uhms.utils.EmptyUtils;
 import com.uhms.uhms.utils.IdUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -50,6 +51,11 @@ public class AdminDaoImpl implements AdminDao {
         AdminEntity.setAddress(adminEntity.getAddress());
         AdminEntity.setPhoneNumber(adminEntity.getPhoneNumber());
         AdminEntity.setUpdateDate(DateUtils.getCurrentDate());
+        if(EmptyUtils.isEmpty(adminEntity.getHeadUrl())) {
+
+        }else {
+            AdminEntity.setHeadUrl(adminEntity.getHeadUrl());
+        }
         AdminRepository.save(AdminEntity);
     }
 

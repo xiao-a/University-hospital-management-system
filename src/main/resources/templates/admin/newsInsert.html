@@ -169,23 +169,23 @@
                     <div class="card-body">
                       <p>填写下列信息完成修改</p>
                       <form class="form-horizontal" method="post" action="/news_insert_submission" enctype="multipart/form-data">
-                        <div class="form-group row">
+                        <div class="form-group-material">
                           <label class="col-sm-2 form-control-label">新闻标题</label>
                           <div class="col-sm-8">
                             <input name="adminId" type="hidden" th:value="${admin.adminId}"/>
-                            <input id="newsTitle" type="text" name="newsTitle" placeholder="新闻标题" class="form-control form-control-success">
+                            <input id="newsTitle" type="text" name="newsTitle" placeholder="新闻标题" required class="input-material">
                           </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group-material">
                           <label class="col-sm-2 form-control-label">新闻图片</label>
                           <div class="col-sm-8">
-                            <input id="newsImg" type="file" name="ai_files" placeholder="新闻图片" class="form-control form-control-warning">
+                            <input id="newsImg" type="file" name="ai_files" placeholder="新闻图片" required class="input-material">
                           </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group-material">
                           <label class="col-sm-2 form-control-label">新闻内容</label>
                           <div class="col-sm-8">
-                            <input id="newsText" type="text" name="newsText" placeholder="新闻内容" class="form-control form-control-warning">
+                            <input id="newsText" type="text" name="newsText" placeholder="新闻内容" required class="input-material">
                           </div>
                         </div>
                         <div class="form-group row">

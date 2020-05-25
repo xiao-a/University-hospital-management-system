@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
+    <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>增加医生信息</title>
@@ -168,58 +169,88 @@
                     </div>
                     <div class="card-body">
                       <p>填写下列信息完成添加</p>
-                      <form class="form-horizontal" method="post" action="/doctor_insert_submission">
-                        <div class="form-group row">
+                      <form class="form-horizontal" method="post" action="/doctor_insert_submission" enctype="multipart/form-data">
+                        <div class="form-group-material">
                           <label class="col-sm-2 form-control-label">姓名</label>
                           <div class="col-sm-8">
                             <input name="adminId" type="hidden" th:value="${admin.adminId}"/>
-                            <input id="name" type="text" name="name" placeholder="姓名" class="form-control form-control-success">
-
+                            <input id="name" type="text" name="name" placeholder="姓名" required class="input-material">
                           </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group-material">
                           <label class="col-sm-2 form-control-label">性别</label>
                           <div class="col-sm-8">
-                            <input id="sex" type="text" name="sex" placeholder="性别" class="form-control form-control-warning">
+                            <!--<input id="sex" type="text" name="sex" placeholder="性别" required class="input-material" th:value="${admin.sex}">-->
+                            <div>
+                              <input id="optionsRadios1" type="radio" checked="" value="woman" name="sex">
+                              <label for="optionsRadios1">女</label>
+                              <input id="optionsRadios2" type="radio" value="man" name="sex">
+                              <label for="optionsRadios2">男</label>
+                            </div>
+                            <div>
+                            </div>
                           </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group">
+                          <input id="identify" type="hidden" name="division">
+                        </div>
+                        <div class="form-group-material">
+                          <label class="col-sm-2 form-control-label">科室</label>
+                          <div class="col-sm-8">
+                            <select id="mySelect">
+                              <option value="">---请选择---</option>
+                              <option value="physician">内科</option>
+                              <option value="surgery">外科</option>
+                              <option value="gynecology">妇科</option>
+                              <option value="orthopedics">骨科</option>
+                              <option value="ophthalmology">五官科</option>
+                              <option value="dermatology">皮肤科</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group-material">
                           <label class="col-sm-2 form-control-label">年龄</label>
                           <div class="col-sm-8">
-                            <input id="age" type="text" name="age" placeholder="年龄" class="form-control form-control-warning">
+                            <input id="age" type="text" name="age" placeholder="年龄" required class="input-material">
                           </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group-material">
                           <label class="col-sm-2 form-control-label">手机号码</label>
                           <div class="col-sm-8">
-                            <input id="phoneNumber" type="text" name="phoneNumber" placeholder="手机号码" class="form-control form-control-warning">
+                            <input id="phoneNumber" type="text" name="phoneNumber" placeholder="手机号码" required class="input-material">
                           </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group-material">
                           <label class="col-sm-2 form-control-label">用户名</label>
                           <div class="col-sm-8">
-                            <input id="username" type="text" name="username" placeholder="用户名" class="form-control form-control-success">
+                            <input id="username" type="text" name="username" placeholder="用户名" required class="input-material">
                           </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group-material">
                           <label class="col-sm-2 form-control-label">密码</label>
                           <div class="col-sm-8">
-                            <input id="password" type="password" placeholder="密码" name="password" class="form-control form-control-success">
+                            <input id="password" type="password" placeholder="密码" name="password" required class="input-material">
                           </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group-material">
+                          <label class="col-sm-2 form-control-label">邮箱</label>
+                          <div class="col-sm-8">
+                            <input id="email" type="email" placeholder="邮箱" name="email" required class="input-material">
+                          </div>
+                        </div>
+                        <div class="form-group-material">
                           <label class="col-sm-2 form-control-label">地址</label>
                           <div class="col-sm-8">
-                            <input id="email" type="text" placeholder="邮箱" name="email" class="form-control form-control-success">
+                            <input id="address" type="text" placeholder="地址" name="address" required class="input-material">
                           </div>
                         </div>
-                        <div class="form-group row">
-                          <label class="col-sm-2 form-control-label">地址</label>
+                        <div class="form-group-material">
+                          <label class="col-sm-2 form-control-label">头像</label>
                           <div class="col-sm-8">
-                            <input id="address" type="text" placeholder="地址" name="address" class="form-control form-control-success">
+                            <input id="file" type="file" name="ai_files" placeholder="头像" required class="input-material">
                           </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group-material">
                           <div class="col-sm-9 offset-sm-3">
                             <input type="submit" value="提交" class="btn btn-primary">
                           </div>
@@ -254,5 +285,11 @@
     <script src="/static/js/charts-home.js"></script>
     <!-- Main File-->
     <script src="/static/js/front.js"></script>
+    <script>
+      $("#mySelect").change(function(){
+        identify = $('#mySelect option:selected').val();
+        $("#identify").val(identify);
+      })
+    </script>
   </body>
 </html>

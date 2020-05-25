@@ -5,6 +5,7 @@ import com.uhms.uhms.dto.NewsDto;
 import com.uhms.uhms.entity.NewsEntity;
 import com.uhms.uhms.service.service.admin.NewsService;
 import com.uhms.uhms.utils.DateUtils;
+import com.uhms.uhms.utils.EmptyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -48,7 +49,11 @@ public class NewsServiceImpl implements NewsService {
         NewsEntity entity = newsDao.getById(newsDto.getNewsId());
         entity.setNewsTitle(newsDto.getNewsTitle());
         entity.setNewsText(newsDto.getNewsText());
-        entity.setNewsImg(newsDto.getNewsImg());
+        if (EmptyUtils.isEmpty(newsDto.getNewsImg())){
+
+        }else {
+            entity.setNewsImg(newsDto.getNewsImg());
+        }
         entity.setUpdateDate(DateUtils.getCurrentDate());
         newsDao.update(entity);
     }

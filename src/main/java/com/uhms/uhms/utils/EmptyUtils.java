@@ -1,5 +1,7 @@
 package com.uhms.uhms.utils;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import java.util.List;
 
 public class EmptyUtils{
@@ -24,6 +26,10 @@ public class EmptyUtils{
         if ((obj instanceof String))
         {
             return ((String) obj).trim().equals("");
+        }
+        if ((obj instanceof MultipartFile))
+        {
+            return ((MultipartFile) obj).isEmpty();
         }
         return false;
     }

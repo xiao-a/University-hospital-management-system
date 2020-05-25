@@ -168,45 +168,45 @@
                   <div class="card-body">
                     <p>填写下列信息完成修改</p>
                     <form class="form-horizontal" method="POST" action="/admin__hospitalInfo_update_submission/">
-                        <div class="form-group row">
+                        <div class="form-group-material">
                             <label class="col-sm-2 form-control-label">周一-周五上班时间</label>
                             <div class="col-sm-8">
                                 <input name="adminId" type="hidden" th:value="${admin.adminId}"/>
                                 <input name="hospitalInfoId" type="hidden" th:value="${hospitalInfo.hospitalInfoId}"/>
-                                <input id="commonStratTime" type="text" name="commonStartTime" placeholder="周一-周五上班时间" class="form-control form-control-success" th:value="${hospitalInfo.commonStartTime}">
+                                <input id="commonStratTime" type="text" name="commonStartTime" placeholder="周一-周五上班时间" required class="input-material" th:value="${hospitalInfo.commonStartTime}">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group-material">
                             <label class="col-sm-2 form-control-label">周一-周五下班时间</label>
                             <div class="col-sm-8">
-                                <input id="commonEndTime" type="text" name="commonEndTime" placeholder="周一-周五下班时间" class="form-control form-control-warning" th:value="${hospitalInfo.commonEndTime}">
+                                <input id="commonEndTime" type="text" name="commonEndTime" placeholder="周一-周五下班时间" required class="input-material" th:value="${hospitalInfo.commonEndTime}">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group-material">
                             <label class="col-sm-2 form-control-label">周六-周日上班时间</label>
                             <div class="col-sm-8">
-                                <input id="weekStartTime" type="text" name="weekStartTime" placeholder="周六-周日上班时间" class="form-control form-control-warning" th:value="${hospitalInfo.weekStartTime}">
+                                <input id="weekStartTime" type="text" name="weekStartTime" placeholder="周六-周日上班时间" required class="input-material" th:value="${hospitalInfo.weekStartTime}">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group-material">
                             <label class="col-sm-2 form-control-label">周六-周日下班时间</label>
                             <div class="col-sm-8">
-                                <input id="weekEndTime" type="text" name="weekEndTime" placeholder="周六-周日下班时间" class="form-control form-control-success" th:value="${hospitalInfo.weekEndTime}">
+                                <input id="weekEndTime" type="text" name="weekEndTime" placeholder="周六-周日下班时间" required class="input-material" th:value="${hospitalInfo.weekEndTime}">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group-material">
                             <label class="col-sm-2 form-control-label">医院电话</label>
                             <div class="col-sm-8">
-                                <input id="phoneNumber" type="text" name="phoneNumber" placeholder="医院电话" class="form-control form-control-success" th:value="${hospitalInfo.phoneNumber}">
+                                <input id="phoneNumber" type="text" name="phoneNumber" placeholder="医院电话" required class="input-material" th:value="${hospitalInfo.phoneNumber}">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group-material">
                             <label class="col-sm-2 form-control-label">医院地址</label>
                             <div class="col-sm-8">
-                                <input id="address" type="text" placeholder="医院地址" name="address" class="form-control form-control-success" th:value="${hospitalInfo.address}">
+                                <input id="address" type="text" placeholder="医院地址" name="address" required class="input-material" th:value="${hospitalInfo.address}">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group-material">
                             <div class="col-sm-9 offset-sm-3">
                                 <input type="submit" value="提交" class="btn btn-primary">
                             </div>

@@ -63,6 +63,7 @@ public class LoginController{
         model.addAttribute("patient",patientDto);
         model.addAttribute("newsList",newsService.getAll());
         model.addAttribute("hospitalInfo",hospitalInfoService.getHospitalInfo());
+        LogUtils.info("hospitalInfo"+hospitalInfoService.getHospitalInfo());
         return "index";
     }
     @RequestMapping("/login")
@@ -133,7 +134,7 @@ public class LoginController{
         return "/register";
     }
     @RequestMapping(value = "/register/submit",method = RequestMethod.POST)
-    public String registerSubmission(PatientDto patientDto,Model model, @RequestParam("ai_files") MultipartFile file) {
+    public String registerSubmission(PatientDto patientDto,Model model, @RequestParam("ai_files") MultipartFile file,HttpSession httpSession) {
 
         if (file.isEmpty()) {
             return "文件为空";
@@ -168,7 +169,9 @@ public class LoginController{
         }
         patientDto.setHeadUrl(filesPath);
         patientService.insert(patientDto);
+        LogUtils.info("patientDto"+patientDto);
         String id = loginService.Login(patientDto.getUsername(), patientDto.getPassword(), IdentifyEnum.PATIENT.getType());
+        httpSession.setAttribute("LoginInfo",id);
         PatientEntity patientEntity = patientService.getById(id);
         model.addAttribute("todayWorkDoctor",todayWorkDoctorService.getDayWordDoctor());
         model.addAttribute("date", DateUtils.showYearMonthDayStr());

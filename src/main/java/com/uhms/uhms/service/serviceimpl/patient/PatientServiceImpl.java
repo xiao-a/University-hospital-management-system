@@ -29,7 +29,7 @@ public class PatientServiceImpl implements PatientService {
     public void insert(PatientDto patientDto) {
         PatientEntity patientEntity=new PatientEntity();
         patientEntity.setName(patientDto.getName());
-        patientEntity.setSex(SexEnum.getTypeByName(patientDto.getSex()));
+        patientEntity.setSex(patientDto.getSex());
         patientEntity.setAge(patientDto.getAge());
         patientEntity.setUsername(patientDto.getUsername());
         patientEntity.setAddress(patientDto.getAddress());

@@ -6,6 +6,7 @@ import com.uhms.uhms.entity.DoctorEntity;
 import com.uhms.uhms.enums.DivisionTypeEnum;
 import com.uhms.uhms.enums.SexEnum;
 import com.uhms.uhms.service.service.doctor.DoctorService;
+import com.uhms.uhms.utils.EmptyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +36,7 @@ public class DoctorServiceImpl implements DoctorService {
         doctorEntity.setPhoneNumber(doctorDto.getPhoneNumber());
         doctorEntity.setName(doctorDto.getName());
         doctorEntity.setSex(doctorDto.getSex());
+        doctorEntity.setHeadUrl(doctorDto.getHeadUrl());
         doctorDao.insert(doctorEntity);
     }
 
@@ -60,7 +62,7 @@ public class DoctorServiceImpl implements DoctorService {
     public void updateJpa(DoctorDto doctorDto) {
         doctorEntity=doctorDao.getById(doctorDto.getDoctorId());
         doctorEntity.setName(doctorDto.getName());
-        doctorEntity.setSex(SexEnum.getTypeByName(doctorDto.getSex()));
+        doctorEntity.setSex(doctorDto.getSex());
         doctorEntity.setDivision(doctorDto.getDivision());
         doctorEntity.setAge(doctorDto.getAge());
 //        doctorEntity.setStartWorkDate(doctorDto.getStartWorkDateStr());
@@ -69,6 +71,11 @@ public class DoctorServiceImpl implements DoctorService {
         doctorEntity.setPassword(doctorDto.getPassword());
         doctorEntity.setEmail(doctorDto.getEmail());
         doctorEntity.setAddress(doctorDto.getAddress());
+        if(EmptyUtils.isEmpty(doctorDto.getHeadUrl())) {
+
+        }else{
+            doctorEntity.setHeadUrl(doctorDto.getHeadUrl());
+        }
         doctorDao.updateJpa(doctorEntity);
     }
 
