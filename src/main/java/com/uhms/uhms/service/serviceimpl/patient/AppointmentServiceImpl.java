@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -99,5 +100,10 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
         LogUtils.info("after:"+appointmentHistoryDtoList);
         return appointmentHistoryDtoList;
+    }
+
+    @Override
+    public List<AppointmentEntity> getAppointmentEntityByAppointmentDate(String appointmentStatus) {
+        return appointmentDao.getAppointmentEntityByAppointmentDate(appointmentStatus);
     }
 }

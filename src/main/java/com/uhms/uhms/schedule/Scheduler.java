@@ -1,6 +1,7 @@
 package com.uhms.uhms.schedule;
 
 import com.uhms.uhms.service.service.patient.AppointmentService;
+import com.uhms.uhms.utils.DateUtils;
 import com.uhms.uhms.utils.LogUtils;
 import com.uhms.uhms.utils.SMSUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,7 @@ public class Scheduler{
     //每天早上8点执行提醒预约功能
     @Scheduled(cron="0 0 8 * * ?")
     public void appointment() {
+        DateUtils.getCurrentDate();
         LogUtils.info("每天早上八点发送提醒信息:"+dateFormat.format(new Date()));
         SMSUtils.sendMessage("15236561632","您在校医院预约了门诊请及时就诊！");
     }

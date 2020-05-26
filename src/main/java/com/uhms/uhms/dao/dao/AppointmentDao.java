@@ -1,6 +1,8 @@
 package com.uhms.uhms.dao.dao;
 
 import com.uhms.uhms.entity.AppointmentEntity;
+
+import java.util.Date;
 import java.util.List;
 
 public interface AppointmentDao {
@@ -12,4 +14,5 @@ public interface AppointmentDao {
     List<AppointmentEntity> getAllByDoctorId(String doctorId);
     void update(String id, AppointmentEntity appointmentEntity);
     void changeAppointmentStatus(AppointmentEntity appointmentId);
+    List<AppointmentEntity> getAppointmentEntityByAppointmentDate(String  appointmentStatus);
 }

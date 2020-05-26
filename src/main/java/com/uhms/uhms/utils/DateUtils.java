@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 /**
  * 日期常用方法
@@ -89,5 +88,31 @@ public class DateUtils {
         return DateToString(date, "yyyy-MM-dd");
     }
 
+    /**
+     * 获取当天的开始时间 单位：毫秒
+     * @return
+     */
+    public static Long getStartTime(){
+        Calendar todayStart = Calendar.getInstance();
+        todayStart.set(Calendar.HOUR_OF_DAY, 0);
+        todayStart.set(Calendar.MINUTE, 0);
+        todayStart.set(Calendar.SECOND, 0);
+        todayStart.set(Calendar.MILLISECOND, 0);
+        return todayStart.getTime().getTime();
+    }
+
+
+    /**
+     * 获取当天的结束时间 单位：毫秒
+     * @return
+     */
+    public static Long getEndTime(){
+        Calendar todayEnd = Calendar.getInstance();
+        todayEnd.set(Calendar.HOUR_OF_DAY, 23);
+        todayEnd.set(Calendar.MINUTE, 59);
+        todayEnd.set(Calendar.SECOND, 59);
+        todayEnd.set(Calendar.MILLISECOND, 999);
+        return todayEnd.getTime().getTime();
+    }
 
 }

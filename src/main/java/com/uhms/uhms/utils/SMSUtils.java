@@ -1,6 +1,7 @@
 package com.uhms.uhms.utils;
 
 import com.zhenzi.sms.ZhenziSmsClient;
+import sun.rmi.runtime.Log;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,14 +23,19 @@ public class SMSUtils {
          *  clientIp	否	string	客户端IP，需要与应用设置中的”客户IP限额“配合使用，主要防止用户恶意刷短信
          */
         Map<String, Object> params = new HashMap<String, Object>();
+        boolean isMobileNumber = PhoneUtils.isMobileNumber(phoneNumber);
+        LogUtils.info("isMobileNumber:"+isMobileNumber);
         params.put("number", phoneNumber);
         params.put("message", message);
+        LogUtils.info("number:"+phoneNumber+";message:"+message);
         String balance = null;
         try {
             //查看余额，查看当前剩余短信条数
             balance = client.balance();
+            LogUtils.info("balance:"+balance);
             //发送短信
             String result = client.send(params);
+            LogUtils.info("result"+result);
         } catch (Exception e) {
             e.printStackTrace();
         }

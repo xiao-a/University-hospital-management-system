@@ -9,6 +9,7 @@ import com.uhms.uhms.utils.IdUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -63,6 +64,11 @@ public class AppointmentDaoImpl  implements AppointmentDao {
     @Override
     public void changeAppointmentStatus(AppointmentEntity appointment) {
         appointmentRepository.save(appointment);
+    }
+
+    @Override
+    public List<AppointmentEntity> getAppointmentEntityByAppointmentDate(String  appointmentStatus) {
+        return appointmentRepository.getAppointmentEntityByAppointmentDate(appointmentStatus);
     }
 
 

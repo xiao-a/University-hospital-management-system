@@ -4,6 +4,7 @@ import com.uhms.uhms.entity.AppointmentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.Date;
 import java.util.List;
 
 public interface AppointmentRepository extends JpaRepository<AppointmentEntity,String> {
@@ -11,4 +12,6 @@ public interface AppointmentRepository extends JpaRepository<AppointmentEntity,S
     List<AppointmentEntity> getAppointmentEntityByPatientId(String patientId);
     @Query(value = "select * from t_appointment where doctor_id=?1" ,nativeQuery = true)
     List<AppointmentEntity> getAppointmentEntityByDoctorId(String doctorId);
+    @Query(value = "select * from t_appointment where appointment_status=?1" ,nativeQuery = true)
+    List<AppointmentEntity> getAppointmentEntityByAppointmentDate(String  appointmentStatus);
 }

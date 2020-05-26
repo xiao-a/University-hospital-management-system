@@ -15,6 +15,7 @@ import com.uhms.uhms.service.service.patient.TodayWorkDoctorService;
 import com.uhms.uhms.utils.DateUtils;
 import com.uhms.uhms.utils.EmptyUtils;
 import com.uhms.uhms.utils.LogUtils;
+import com.uhms.uhms.utils.SMSUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -179,6 +180,13 @@ public class LoginController{
         model.addAttribute("newsList",newsService.getAll());
         model.addAttribute("hospitalInfo",hospitalInfoService.getHospitalInfo());
         return "/index";
+    }
+
+
+    @RequestMapping(value = "/jhk",method =RequestMethod.POST)
+    public String fajsklfjk(Model model) {
+        SMSUtils.sendMessage("15236561632","您的验证码为4534，有效时间为5分钟！");
+        return "/login";
     }
 
 }
