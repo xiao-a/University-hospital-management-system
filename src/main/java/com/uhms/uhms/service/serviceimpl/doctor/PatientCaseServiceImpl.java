@@ -102,4 +102,9 @@ public class PatientCaseServiceImpl implements PatientCaseService {
         String division_= DivisionTypeEnum.getTypeByName(division);
         return patientCaseDao.getPatientCaseEntitiesByDivision(division_);
     }
+
+    @Override
+    public List<PatientCaseEntity> vague_find(String patientCaseId, String patientId, String patientName) {
+        return patientCaseDao.vague_find(patientCaseId,patientId,patientName);
+    }
 }

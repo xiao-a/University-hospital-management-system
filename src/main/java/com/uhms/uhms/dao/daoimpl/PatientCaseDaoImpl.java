@@ -56,4 +56,9 @@ public class PatientCaseDaoImpl implements PatientCaseDao {
     public List<PatientCaseEntity> getPatientCaseEntitiesByPatientId(String patientId) {
         return patientCaseRepository.getPatientCaseEntitiesByPatientId(patientId);
     }
+
+    @Override
+    public List<PatientCaseEntity> vague_find(String patientCaseId, String patientId, String patientName) {
+        return patientCaseRepository.vague_find(patientCaseId,patientId,patientName);
+    }
 }

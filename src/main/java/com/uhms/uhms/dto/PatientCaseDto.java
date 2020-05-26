@@ -21,4 +21,5 @@ public class PatientCaseDto implements Serializable {
     private String status;
     private Date createDate;
     private Date updateDate;
+    private String phoneNumber;
 }

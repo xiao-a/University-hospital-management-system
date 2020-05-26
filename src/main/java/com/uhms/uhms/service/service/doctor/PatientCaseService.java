@@ -13,4 +13,5 @@ public interface PatientCaseService {
     List<PatientCaseEntity> getAll();
     void update(PatientCaseDto patientCaseDto);
     List<PatientCaseEntity> getPatientCaseEntitiesByDivision(String division);
+    List<PatientCaseEntity> vague_find(String patientCaseId,String patientId ,String patientName);
 }

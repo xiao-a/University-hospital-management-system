@@ -146,4 +146,14 @@ public class PatientCaseController {
         model.addAttribute("patientCaseList",all);
         return "doctor/patientCaseSelect";
     }
+
+
+    @RequestMapping("/doctor_select_patient_case_vague")
+    public String doctorSelectPatientCaseVague(PatientCaseDto patientCaseDto,Model model){
+        DoctorDto doctorDto = doctorService.getById(patientCaseDto.getDoctorId());
+        List<PatientCaseEntity> patientCaseEntities = patientCaseService.vague_find(patientCaseDto.getPatientCaseId(),patientCaseDto.getPatientId(),patientCaseDto.getPatientName());
+        model.addAttribute("doctor",doctorDto);
+        model.addAttribute("patientCaseList",patientCaseEntities);
+        return "doctor/patientCaseSelect";
+    }
 }

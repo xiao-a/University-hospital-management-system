@@ -12,4 +12,5 @@ public interface PatientCaseDao {
     void update(PatientCaseEntity patientCaseEntity);
     List<PatientCaseEntity> getPatientCaseEntitiesByDivision(String division);
     List<PatientCaseEntity> getPatientCaseEntitiesByPatientId(String patientId);
+    List<PatientCaseEntity> vague_find(String patientCaseId,String patientId ,String patientName);
 }
