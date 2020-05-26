@@ -1,5 +1,7 @@
 package com.uhms.uhms.schedule;
 
+import com.uhms.uhms.entity.AppointmentEntity;
+import com.uhms.uhms.enums.AppointmentStatusEnum;
 import com.uhms.uhms.service.service.patient.AppointmentService;
 import com.uhms.uhms.utils.DateUtils;
 import com.uhms.uhms.utils.LogUtils;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Component
 public class Scheduler{
@@ -32,9 +35,20 @@ public class Scheduler{
     //每天早上8点执行提醒预约功能
     @Scheduled(cron="0 0 8 * * ?")
     public void appointment() {
-        DateUtils.getCurrentDate();
-        LogUtils.info("每天早上八点发送提醒信息:"+dateFormat.format(new Date()));
-        SMSUtils.sendMessage("15236561632","您在校医院预约了门诊请及时就诊！");
+        List<AppointmentEntity> appointmentEntityByAppointmentDate = appointmentService.getAppointmentEntityByAppointmentDate(AppointmentStatusEnum.CONFIRMED.getType());
+        Long startTime = DateUtils.getStartTime();
+        Long endTime = DateUtils.getEndTime();
+        for(int i=0;i<appointmentEntityByAppointmentDate.size();i++){
+            long time = appointmentEntityByAppointmentDate.get(i).getAppointmentDate().getTime()-86399999;
+//            LogUtils.info("startTime:"+startTime);
+//            LogUtils.info("endTime:"+endTime);
+//            LogUtils.info("dateTime:"+appointmentEntityByAppointmentDate.get(i).getAppointmentDate());
+//            LogUtils.info("time:"+time);
+//            LogUtils.info("cha:"+(endTime-startTime));
+            if(time>startTime&&time<endTime){
+                LogUtils.info("恭喜你获得的被提醒的权利！");
+            }
+        }
     }
 
 

@@ -7,6 +7,7 @@ import com.uhms.uhms.enums.DivisionTypeEnum;
 import com.uhms.uhms.enums.SexEnum;
 import com.uhms.uhms.service.service.doctor.DoctorService;
 import com.uhms.uhms.utils.EmptyUtils;
+import com.uhms.uhms.utils.LogUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -62,8 +63,16 @@ public class DoctorServiceImpl implements DoctorService {
     public void updateJpa(DoctorDto doctorDto) {
         doctorEntity=doctorDao.getById(doctorDto.getDoctorId());
         doctorEntity.setName(doctorDto.getName());
-        doctorEntity.setSex(doctorDto.getSex());
-        doctorEntity.setDivision(doctorDto.getDivision());
+        if (EmptyUtils.isNotEmpty(doctorDto.getSex()))
+        {
+            doctorEntity.setSex(doctorDto.getSex());
+            LogUtils.info("sex1:"+doctorDto.getSex());
+        }
+        LogUtils.info("sex2:"+doctorEntity.getSex());
+        if (EmptyUtils.isNotEmpty(doctorDto.getDivision()))
+        {
+            doctorEntity.setDivision(doctorDto.getDivision());
+        }
         doctorEntity.setAge(doctorDto.getAge());
 //        doctorEntity.setStartWorkDate(doctorDto.getStartWorkDateStr());
         doctorEntity.setPhoneNumber(doctorDto.getPhoneNumber());

@@ -3,10 +3,13 @@ package com.uhms.uhms.service.serviceimpl.doctor;
 import com.uhms.uhms.dao.dao.AppointmentDao;
 import com.uhms.uhms.dao.dao.DoctorDao;
 import com.uhms.uhms.dao.dao.PatientCaseDao;
+import com.uhms.uhms.dao.dao.PatientDao;
 import com.uhms.uhms.dto.PatientCaseDto;
 import com.uhms.uhms.entity.AppointmentEntity;
 import com.uhms.uhms.entity.DoctorEntity;
 import com.uhms.uhms.entity.PatientCaseEntity;
+import com.uhms.uhms.entity.PatientEntity;
+import com.uhms.uhms.enums.AppointmentStatusEnum;
 import com.uhms.uhms.enums.DivisionTypeEnum;
 import com.uhms.uhms.service.service.doctor.PatientCaseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +25,14 @@ public class PatientCaseServiceImpl implements PatientCaseService {
     private DoctorDao doctorDao;
     @Autowired
     private AppointmentDao appointmentDao;
+    @Autowired
+    private PatientDao patientDao;
     @Override
     public void insert(PatientCaseDto patientCaseDto) {
         DoctorEntity doctorEntity = doctorDao.getById(patientCaseDto.getDoctorId());
         AppointmentEntity appointmentEntity = appointmentDao.getById(patientCaseDto.getAppointmentId());
+        appointmentEntity.setAppointmentStatus(AppointmentStatusEnum.COMPLETE.getType());
+        appointmentDao.update(patientCaseDto.getAppointmentId(),appointmentEntity);
         PatientCaseEntity patientCaseEntity=new PatientCaseEntity();
         patientCaseEntity.setFee(patientCaseDto.getFee());
         patientCaseEntity.setDiagnosisResult(patientCaseDto.getDiagnosisResult());
@@ -35,6 +42,24 @@ public class PatientCaseServiceImpl implements PatientCaseService {
         patientCaseEntity.setDivision(doctorEntity.getDivision());
         patientCaseEntity.setPatientName(appointmentEntity.getPatientName());
         patientCaseEntity.setPatientId(appointmentEntity.getPatientId());
+        patientCaseEntity.setAppointmentId(patientCaseDto.getAppointmentId());
+        patientCaseDao.insert(patientCaseEntity);
+    }
+
+    @Override
+    public void insert_s(PatientCaseDto patientCaseDto) {
+        DoctorEntity doctorEntity = doctorDao.getById(patientCaseDto.getDoctorId());
+        String patientId = patientCaseDto.getPatientId();
+        PatientEntity patientEntity = patientDao.getById(patientId);
+        PatientCaseEntity patientCaseEntity=new PatientCaseEntity();
+        patientCaseEntity.setFee(patientCaseDto.getFee());
+        patientCaseEntity.setDiagnosisResult(patientCaseDto.getDiagnosisResult());
+        patientCaseEntity.setExamineResult(patientCaseDto.getExamineResult());
+        patientCaseEntity.setHandlingSuggestion(patientCaseDto.getHandlingSuggestion());
+        patientCaseEntity.setPatientCaseContext(patientCaseDto.getPatientCaseContext());
+        patientCaseEntity.setDivision(doctorEntity.getDivision());
+        patientCaseEntity.setPatientName(patientEntity.getName());
+        patientCaseEntity.setPatientId(patientEntity.getPatientId());
         patientCaseEntity.setAppointmentId(patientCaseDto.getAppointmentId());
         patientCaseDao.insert(patientCaseEntity);
     }

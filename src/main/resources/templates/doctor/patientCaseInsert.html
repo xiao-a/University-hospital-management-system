@@ -127,9 +127,6 @@
                 <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>患者信息管理</a>
                     <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                         <li class="active"><a th:href="@{/select_patient/} + ${doctor.doctorId}">患者信息列表</a></li>
-                        <li ><a th:href="@{/add_patient/} + ${doctor.doctorId}">添加患者信息</a></li>
-                        <li><a th:href="@{/update_patient/} + ${doctor.doctorId}">修改患者信息</a></li>
-                        <li><a th:href="@{/delete_patient/} + ${doctor.doctorId}">删除患者信息</a></li>
                     </ul>
                 </li>
                 <li><a th:href="@{/appointment/select/} + ${doctor.doctorId}"> <i class="icon-home"></i>预约信息</a></li>
@@ -167,38 +164,50 @@
                                     <p>填写下列信息新建病例记录</p>
                                     <form class="form-horizontal" method="post" action="/patient_case_insert_submission">
                                         <input name="doctorId" type="hidden" th:value="${doctor.doctorId}">
-                                        <input name="appointmentId" type="hidden" th:value="${appointmentId}">
-                                        <div class="form-group row">
+                                        <input name="appointmentId" type="hidden" th:value="${appointment.appointmentId}">
+                                        <div class="form-group-material">
+                                            <label class="col-sm-2 form-control-label">患者编号</label>
+                                            <div class="col-sm-8">
+                                                <p>[[${appointment.patientId}]]</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-material">
+                                            <label class="col-sm-2 form-control-label">患者姓名</label>
+                                            <div class="col-sm-8">
+                                                <p>[[${appointment.patientName}]]</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-material">
                                             <label class="col-sm-2 form-control-label">病情描述</label>
                                             <div class="col-sm-8">
-                                                <textarea id="patientCaseContext" rows="3" type="text" name="patientCaseContext" placeholder="病情描述" class="form-control form-control-success"></textarea>
+                                                <textarea id="patientCaseContext" rows="3" type="text" name="patientCaseContext" placeholder="病情描述" required class="input-material"></textarea>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group-material">
                                             <label class="col-sm-2 form-control-label">检查结果</label>
                                             <div class="col-sm-8">
-                                                <textarea id="examineResult" type="text" rows="3" name="examineResult" placeholder="检查结果" class="form-control form-control-success"></textarea>
+                                                <textarea id="examineResult" type="text" rows="3" name="examineResult" placeholder="检查结果" required class="input-material"></textarea>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group-material">
                                             <label class="col-sm-2 form-control-label">诊断结果</label>
                                             <div class="col-sm-8">
-                                                <textarea id="diagnosisResult" type="text" rows="3" name="diagnosisResult" placeholder="诊断结果" class="form-control form-control-success"></textarea>
+                                                <textarea id="diagnosisResult" type="text" rows="3" name="diagnosisResult" placeholder="诊断结果" required class="input-material"></textarea>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group-material">
                                             <label class="col-sm-2 form-control-label">处理意见</label>
                                             <div class="col-sm-8">
-                                                <textarea id="handlingSuggestion" type="text" rows="3" name="handlingSuggestion" placeholder="处理意见" class="form-control form-control-success"></textarea>
+                                                <textarea id="handlingSuggestion" type="text" rows="3" name="handlingSuggestion" placeholder="处理意见" required class="input-material"></textarea>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group-material">
                                             <label class="col-sm-2 form-control-label">费用</label>
                                             <div class="col-sm-8">
-                                                <input id="fee" type="text" rows="3" name="fee" placeholder="费用" class="form-control form-control-success">
+                                                <input id="fee" type="number" rows="3" name="fee" placeholder="费用" required class="input-material">
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group-material">
                                             <div class="col-sm-9 offset-sm-3">
                                                 <input type="submit" value="提交" class="btn btn-primary">
                                             </div>

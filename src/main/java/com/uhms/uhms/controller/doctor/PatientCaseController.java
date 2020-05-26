@@ -3,6 +3,7 @@ package com.uhms.uhms.controller.doctor;
 import com.uhms.uhms.dto.DoctorDto;
 import com.uhms.uhms.dto.PatientCaseDto;
 import com.uhms.uhms.entity.AdminEntity;
+import com.uhms.uhms.entity.AppointmentEntity;
 import com.uhms.uhms.entity.PatientCaseEntity;
 import com.uhms.uhms.service.service.doctor.AppointmentDoctorService;
 import com.uhms.uhms.service.service.doctor.PatientCaseService;
@@ -112,9 +113,10 @@ public class PatientCaseController {
     @RequestMapping(value = "/patient_case_insert/{doctorId}/{appointmentId}" ,method = RequestMethod.GET)
     public String patientCaseInsert(@PathVariable("doctorId")String doctorId,@PathVariable("appointmentId")String appointmentId,Model model){
         DoctorDto doctorDto = doctorService.getById(doctorId);
+        AppointmentEntity appointmentEntity = appointmentDoctorService.getById(appointmentId);
         model.addAttribute("doctor",doctorDto);
         LogUtils.info("appointment"+appointmentId);
-        model.addAttribute("appointmentId",appointmentId);
+        model.addAttribute("appointment",appointmentEntity);
         return "doctor/patientCaseInsert";
     }
     @RequestMapping(value = "/patient_case_insert_submission" ,method = RequestMethod.POST)
@@ -123,6 +125,23 @@ public class PatientCaseController {
         DoctorDto doctorDto = doctorService.getById(patientCaseDto.getDoctorId());
         patientCaseService.insert(patientCaseDto);
         List<PatientCaseEntity> all = patientCaseService.getPatientCaseEntitiesByDivision(appointmentDoctorService.getById(patientCaseDto.getAppointmentId()).getDivision());
+        model.addAttribute("doctor",doctorDto);
+        model.addAttribute("patientCaseList",all);
+        return "doctor/patientCaseSelect";
+    }
+
+
+    @RequestMapping(value = "/patient_case_insert/{doctorId}" ,method = RequestMethod.GET)
+    public String patientCaseInsert_s(@PathVariable("doctorId")String doctorId,Model model){
+        DoctorDto doctorDto = doctorService.getById(doctorId);
+        model.addAttribute("doctor",doctorDto);
+        return "doctor/patientCaseInsert_s";
+    }
+    @RequestMapping(value = "/patient_case_insert_s_submission" ,method = RequestMethod.POST)
+    public String patientCaseInsertSubmissions(PatientCaseDto patientCaseDto, Model model){
+        DoctorDto doctorDto = doctorService.getById(patientCaseDto.getDoctorId());
+        patientCaseService.insert_s(patientCaseDto);
+        List<PatientCaseEntity> all = patientCaseService.getPatientCaseEntitiesByDivision(doctorDto.getDivision());
         model.addAttribute("doctor",doctorDto);
         model.addAttribute("patientCaseList",all);
         return "doctor/patientCaseSelect";

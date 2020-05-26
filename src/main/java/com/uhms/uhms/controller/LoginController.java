@@ -183,10 +183,24 @@ public class LoginController{
     }
 
 
-    @RequestMapping(value = "/jhk",method =RequestMethod.POST)
-    public String fajsklfjk(Model model) {
-        SMSUtils.sendMessage("15236561632","您的验证码为4534，有效时间为5分钟！");
-        return "/login";
+
+    @RequestMapping(value ="/success/{patientId}")
+    public String chengGong(Model model,@PathVariable("patientId")String patientId) {
+        model.addAttribute("todayWorkDoctor",todayWorkDoctorService.getDayWordDoctor());
+        model.addAttribute("date", DateUtils.showYearMonthDayStr());
+        PatientEntity patientEntity=new PatientEntity();
+        if(EmptyUtils.isNotEmpty(patientId))
+        {
+            patientEntity= patientService.getById(patientId);
+        }else
+        {
+            patientEntity.setName("登录");
+        }
+        model.addAttribute("patient",patientEntity);
+        model.addAttribute("newsList",newsService.getAll());
+        model.addAttribute("hospitalInfo",hospitalInfoService.getHospitalInfo());
+        LogUtils.info("hospitalInfo"+hospitalInfoService.getHospitalInfo());
+        return "index";
     }
 
 }

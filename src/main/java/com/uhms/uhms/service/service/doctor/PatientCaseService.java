@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface PatientCaseService {
     void insert(PatientCaseDto patientCaseDto);
+    void insert_s(PatientCaseDto patientCaseDto);
     void deleteById(String id);
     PatientCaseEntity getById(String id);
     List<PatientCaseEntity> getAll();

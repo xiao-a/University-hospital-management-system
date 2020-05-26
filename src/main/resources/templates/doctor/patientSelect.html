@@ -127,9 +127,6 @@
             <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>患者信息管理</a>
               <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                 <li class="active"><a th:href="@{/select_patient/} + ${doctor.doctorId}">患者信息列表</a></li>
-                <li ><a th:href="@{/add_patient/} + ${doctor.doctorId}">添加患者信息</a></li>
-                <li><a th:href="@{/update_patient/} + ${doctor.doctorId}">修改患者信息</a></li>
-                <li><a th:href="@{/delete_patient/} + ${doctor.doctorId}">删除患者信息</a></li>
               </ul>
             </li>
             <li><a th:href="@{/appointment/select/} + ${doctor.doctorId}"> <i class="icon-home"></i>预约信息</a></li>
@@ -161,8 +158,7 @@
                   </div>
                   <div class="card-header d-flex align-items-center">
                     <div class="row">
-                      <h3 class="h4">病人信息表</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4 th:text="${msg}"></h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a th:href="@{'/print_patient_list/'+${doctor.doctorId}}" class="btn btn-primary">打印</a>
-                      &nbsp;&nbsp;&nbsp;&nbsp;<a th:href="@{'/patient_insert/'+${doctor.doctorId}}" class="btn btn-primary">新增</a>
+                      <h3 class="h4">病人信息表</h3>
                     </div>
                   </div>
                   <div class="card-body">
@@ -176,9 +172,6 @@
                           <th>年龄</th>
                           <th>用户名</th>
                           <th>手机号</th>
-                          <th>地址</th>
-                          <th>创建时间</th>
-                          <th>修改时间</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -189,9 +182,6 @@
                           <th scope="row" th:text="${patient.age}"></th>
                           <th scope="row" th:text="${patient.username}"></th>
                           <th scope="row" th:text="${patient.phoneNumber}"></th>
-                          <th scope="row" th:text="${patient.address}"></th>
-                          <th scope="row" th:text="${patient.createDate}"></th>
-                          <th scope="row" th:text="${patient.updateDate}"></th>
                           <th scope="row"><a th:href="@{'/select_patient_detail/'+${doctor.doctorId}+'/'+${patient.patientId}}" class="btn btn-primary">查看</a></th>
                           <!--<th scope="row"><a th:href="@{/update_patient/} + ${doctor.doctorId}+'/'+${patient.patientId}" class="btn btn-primary">修改</a></th>-->
                           <!--<th scope="row"><a th:href="@{/delete_patient/} + ${doctor.doctorId}+'/'+${patient.patientId}" class="btn btn-primary">删除</a></th>-->

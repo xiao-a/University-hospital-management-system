@@ -13,6 +13,7 @@ import com.zhenzi.sms.ZhenziSmsClient;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -22,6 +23,8 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes= UhmsApplication.class)
 public class FunctionTest {
+    @Value("${sms.msg}") //获取短信通知信息
+    private  String msg;
     @Autowired
     AppointmentService appointmentService;
     @Autowired
@@ -38,7 +41,7 @@ public class FunctionTest {
     }
 
     @Test
-    public void sendSMSTest(){
+    public void selectTest(){
 //        SMSUtils.sendMessage("15236561632","您的验证码为4534，有效时间为5分钟！");
 
         List<AppointmentEntity> appointmentEntityByAppointmentDate = appointmentService.getAppointmentEntityByAppointmentDate(AppointmentStatusEnum.CONFIRMED.getType());
@@ -56,6 +59,27 @@ public class FunctionTest {
             }
         }
         LogUtils.info("appointmentEntityByAppointmentDate:"+appointmentEntityByAppointmentDate);
+    }
+
+    @Test
+    public void sendSMSTest(){
+
+        ZhenziSmsClient client=new ZhenziSmsClient("https://sms_developer.zhenzikj.com","104766","eff3c25d-2b26-43ea-a538-f870942e127a");
+
+        try {
+            String result = client.send("15236561632", "您的验证码为 该码有效期为3分钟");//发送信息并返回结果，0：成功，非0失败
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    public void ValueTest(){
+
+        LogUtils.info("msg:"+msg);
+
+
     }
 
 

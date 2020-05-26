@@ -128,9 +128,6 @@
                 <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>患者信息管理</a>
                     <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                         <li ><a th:href="@{/select_patient/} + ${doctor.doctorId}">患者信息列表</a></li>
-                        <!--<li><a th:href="@{/add_patient/} + ${doctor.doctorId}">添加患者信息</a></li>-->
-                        <!--<li><a th:href="@{/update_patient/} + ${doctor.doctorId}">修改患者信息</a></li>-->
-                        <!--<li><a th:href="@{/delete_patient/} + ${doctor.doctorId}">删除患者信息</a></li>-->
                     </ul>
                 </li>
                 <li><a th:href="@{/appointment/select/} + ${doctor.doctorId}"> <i class="icon-home"></i>预约信息</a></li>

@@ -1,5 +1,6 @@
 package com.uhms.uhms.enums;
 
+import com.uhms.uhms.utils.LogUtils;
 import lombok.Getter;
 
 @Getter
