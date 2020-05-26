@@ -11,4 +11,5 @@ public interface PatientCaseDao {
     List<PatientCaseEntity> getAll();
     void update(PatientCaseEntity patientCaseEntity);
     List<PatientCaseEntity> getPatientCaseEntitiesByDivision(String division);
+    List<PatientCaseEntity> getPatientCaseEntitiesByPatientId(String patientId);
 }

@@ -12,4 +12,5 @@ public interface DoctorService {
     void updateJpa(DoctorDto doctorDto);
     List<DoctorDto> getAll();
     void deleteById(String doctorId);
+    List<DoctorDto> vague_find(String doctorId,String division ,String name);
 }

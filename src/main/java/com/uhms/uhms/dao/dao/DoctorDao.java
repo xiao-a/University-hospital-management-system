@@ -14,4 +14,5 @@ public interface DoctorDao {
 
     String login(String username,String password);
     List<DoctorEntity> selectByDivision(String division);
+    List<DoctorEntity> vague_find(String doctorId,String division ,String name);
 }

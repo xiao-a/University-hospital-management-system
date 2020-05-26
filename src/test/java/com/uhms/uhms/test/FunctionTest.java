@@ -2,9 +2,11 @@ package com.uhms.uhms.test;
 
 import com.uhms.uhms.UhmsApplication;
 import com.uhms.uhms.dao.dao.DoctorDao;
+import com.uhms.uhms.dto.DoctorDto;
 import com.uhms.uhms.entity.AppointmentEntity;
 import com.uhms.uhms.entity.DoctorEntity;
 import com.uhms.uhms.enums.AppointmentStatusEnum;
+import com.uhms.uhms.service.service.doctor.DoctorService;
 import com.uhms.uhms.service.service.patient.AppointmentService;
 import com.uhms.uhms.utils.DateUtils;
 import com.uhms.uhms.utils.LogUtils;
@@ -23,12 +25,15 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes= UhmsApplication.class)
 public class FunctionTest {
-    @Value("${sms.msg}") //获取短信通知信息
-    private  String msg;
     @Autowired
     AppointmentService appointmentService;
     @Autowired
     private DoctorDao doctorDao;
+    @Autowired
+    private DoctorService doctorService;
+
+
+
     @Test
     public void time(){
         String weekOfDate = DateUtils.getWeekOfDate();
@@ -74,10 +79,13 @@ public class FunctionTest {
 
     }
 
-    @Test
-    public void ValueTest(){
 
-        LogUtils.info("msg:"+msg);
+
+    @Test
+    public void vague_find_Test(){
+//        List<DoctorDto> doctorDtoList = doctorService.vague_find(null, null, null);
+        List<DoctorDto> doctorDtoList = doctorService.vague_find(null, null, "0");
+        LogUtils.info("msg:"+doctorDtoList);
 
 
     }

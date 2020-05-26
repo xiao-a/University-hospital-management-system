@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>个人中心</title>
+<title>病例查询</title>
 <link rel="stylesheet" type="text/css" href="/static/css/customize/style.css"/>
 <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="/static/css/font-awesome.min.css"/>
@@ -35,41 +35,39 @@
     </div>
   </div>
 </div>
-<div class="banner" style="background-color: aliceblue">
-  <div class="container">
-    <div class="row">
-      <h3>我的个人信息显示</h3> 
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
+<div class="banner" style="background: url(/static/img/images/bg.jpg) no-repeat 0% 0% / 100% 100%;padding: 140px 0px;">
+    <div class="container">
+      <div class="row">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">病例信息显示</h3>
+          </div>
+          <div class="panel-body">
             <table class="table">
+              <thead>
               <tr>
-                <td>姓名</td><td th:text="${patient.name}"></td>
+                <th>医生姓名</th>
+                <th>预约科室</th>
+                <th>检查结果</th>
+                <th>处理意见</th>
+                <th>费用</th>
               </tr>
-              <tr>
-                <td>性别</td><td th:text="${patient.sex}"></td>
+              </thead>
+              <tbody>
+              <tr th:each="patientCase:${patientCaseList}">
+                <th scope="row" th:text="${patientCase.doctorName}"></th>
+                <th scope="row" th:text="${patientCase.division}"></th>
+                <th scope="row" th:text="${patientCase.examineResult}"></th>
+                <th scope="row" th:text="${patientCase.handlingSuggestion}"></th>
+                <th scope="row" th:text="${patientCase.fee}"></th>
+                <th scope="row"><a th:href="@{'/patient_case_detail/'+ ${patient.patientId}+'/'+${patientCase.patientCaseId}}" class="btn btn-primary">查看</a></th>
               </tr>
-              <tr>
-                <td>年龄</td><td th:text="${patient.age}"></td>
-              </tr>
-              <tr>
-                <td>用户名</td><td th:text="${patient.name}"></td>
-              </tr>
-              <tr>
-                <td>密码</td><td th:text="${patient.password}"></td>
-              </tr>
-              <tr>
-                <td>联系方式</td><td th:text="${patient.phoneNumber}"></td>
-              </tr>
-              <tr>
-                <td>地址</td><td th:text="${patient.address}"></td>
-              </tr>
+              </tbody>
             </table>
           </div>
         </div>
       </div>
     </div>
-  </div>
 </div>
 <footer>
   <div class="container">
@@ -81,5 +79,42 @@
   </div>
 </footer>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="application/javascript">
+  //发送表单ajax请求
+  $("#submission").click(function(){
+    $.ajax({
+        url:"appointment/submission",
+        type:"POST",
+        data:JSON.stringify($('#formId').serializeObject()),
+        dataType:"text",
+        contentType:"application/json",  //缺失会出现URL编码，无法转成json对象
+        success:function(data){
+            console.log("success:"+data);
+            $('#msg').text(data);
+        },
+        error:function(data){
+            console.log("error:"+data);
+        }
+    });
+  });
+  /**
+   * 自动将form表单封装成json对象
+   */
+  $.fn.serializeObject = function() {
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+      if (o[this.name]) {
+        if (!o[this.name].push) {
+          o[this.name] = [ o[this.name] ];
+        }
+        o[this.name].push(this.value || '');
+      } else {
+        o[this.name] = this.value || '';
+      }
+    });
+    return o;
+  };
+</script>
 </body>
 </html>

@@ -112,4 +112,24 @@ public class DoctorServiceImpl implements DoctorService {
     public void deleteById(String doctorId) {
         doctorDao.deleteById(doctorId);
     }
+
+    @Override
+    public List<DoctorDto> vague_find(String doctorId, String division, String name) {
+        List<DoctorEntity> doctorEntityList = doctorDao.vague_find(doctorId, division, name);
+        List<DoctorDto> doctorDtoList=new ArrayList<>();
+        for(int i=0;i<doctorEntityList.size();i++){
+            DoctorDto doctorDto=new DoctorDto();
+            doctorDto.setDoctorId(doctorEntityList.get(i).getDoctorId());
+            doctorDto.setName(doctorEntityList.get(i).getName());
+            doctorDto.setAge(doctorEntityList.get(i).getAge());
+            doctorDto.setDivision(DivisionTypeEnum.getNameByType(doctorEntityList.get(i).getDivision()));
+            doctorDto.setSex(SexEnum.getNameByType(doctorEntityList.get(i).getSex()));
+            doctorDto.setPhoneNumber(doctorEntityList.get(i).getPhoneNumber());
+            doctorDto.setEmail(doctorEntityList.get(i).getEmail());
+            doctorDto.setUsername(doctorEntityList.get(i).getUsername());
+            doctorDto.setPassword(doctorEntityList.get(i).getPassword());
+            doctorDtoList.add(doctorDto);
+        }
+        return doctorDtoList;
+    }
 }

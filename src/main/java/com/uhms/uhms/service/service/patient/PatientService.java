@@ -11,4 +11,5 @@ public interface PatientService {
     PatientEntity getById(String id);
     void deleteById(String id);
     void updateJpa(PatientDto patientDto);
+    List<PatientEntity> vague_find(String patientId, String name , String phoneNumber);
 }

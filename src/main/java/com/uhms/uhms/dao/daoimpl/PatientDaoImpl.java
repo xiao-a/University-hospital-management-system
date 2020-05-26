@@ -51,4 +51,9 @@ public class PatientDaoImpl implements PatientDao {
         return patientRepository.login(username,password);
     }
 
+    @Override
+    public List<PatientEntity> vague_find(String patientId, String name, String phoneNumber) {
+        return patientRepository.vague_find(patientId,name,phoneNumber);
+    }
+
 }

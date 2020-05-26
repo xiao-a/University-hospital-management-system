@@ -1,6 +1,7 @@
 package com.uhms.uhms.controller.admin;
 
 import com.uhms.uhms.dto.DoctorDto;
+import com.uhms.uhms.dto.DoctorVagueDto;
 import com.uhms.uhms.entity.AdminEntity;
 import com.uhms.uhms.service.service.doctor.DoctorService;
 import com.uhms.uhms.service.service.admin.AdminService;
@@ -162,4 +163,14 @@ public class DoctorManagerController {
         model.addAttribute("doctorList",doctorDtoList);
         return "admin/doctorSelect";
     }
+
+    @RequestMapping("/admin/select_doctor_vague")
+    public String adminSelectDoctorVague(Model model, DoctorVagueDto doctorVagueDto){
+        AdminEntity adminEntity = adminService.getById(doctorVagueDto.getAdminId());
+        List<DoctorDto> doctorDtoList = doctorService.vague_find(doctorVagueDto.getDoctorId(),doctorVagueDto.getDivision(),doctorVagueDto.getName());
+        model.addAttribute("admin",adminEntity);
+        model.addAttribute("doctorList",doctorDtoList);
+        return "admin/doctorSelect";
+    }
+
 }

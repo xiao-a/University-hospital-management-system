@@ -12,4 +12,5 @@ public interface PatientDao {
     void update(PatientEntity patientEntity);
 
     String login(String username,String password);
+    List<PatientEntity> vague_find(String patientId, String name , String phoneNumber);
 }

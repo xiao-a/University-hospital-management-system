@@ -10,4 +10,7 @@ import java.util.List;
 public interface PatientCaseRepository extends JpaRepository<PatientCaseEntity,String> {
     @Query(value = "select * from t_patient_case where division= ?1" ,nativeQuery = true)
     List<PatientCaseEntity> getPatientCaseEntitiesByDivision(String division);
+
+    @Query(value = "select * from t_patient_case where patient_id= ?1" ,nativeQuery = true)
+    List<PatientCaseEntity> getPatientCaseEntitiesByPatientId(String patientId);
 }

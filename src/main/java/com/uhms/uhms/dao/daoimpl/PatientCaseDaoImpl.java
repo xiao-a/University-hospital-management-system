@@ -51,4 +51,9 @@ public class PatientCaseDaoImpl implements PatientCaseDao {
     public List<PatientCaseEntity> getPatientCaseEntitiesByDivision(String division) {
         return patientCaseRepository.getPatientCaseEntitiesByDivision(division);
     }
+
+    @Override
+    public List<PatientCaseEntity> getPatientCaseEntitiesByPatientId(String patientId) {
+        return patientCaseRepository.getPatientCaseEntitiesByPatientId(patientId);
+    }
 }

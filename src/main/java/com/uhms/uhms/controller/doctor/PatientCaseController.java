@@ -95,7 +95,7 @@ public class PatientCaseController {
         model.addAttribute("patientCaseList",patientCaseEntities);
         return "doctor/patientCaseSelect";
     }
-    @RequestMapping(value = "/doctor_insert_patien_case/{doctorId}" ,method = RequestMethod.GET)
+    @RequestMapping(value = "/doctor_insert_patient_case/{doctorId}" ,method = RequestMethod.GET)
     public String insertDoctor(@PathVariable("doctorId")String doctorId,Model model){
         PatientCaseEntity caseEntity = patientCaseService.getById(doctorId);
         model.addAttribute("patientCase",caseEntity);

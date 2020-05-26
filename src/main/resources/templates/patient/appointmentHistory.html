@@ -27,6 +27,7 @@
               <li><a href="/login" class="page-scroll active" th:text="${patient.name}">登录</a></li>
               <li><a th:href="@{/myinfo/} + ${patient.patientId}"  class="page-scroll">个人中心</a></li>
               <li><a th:href="@{/appointment/history/} + ${patient.patientId}" class="page-scroll">预约历史</a></li>
+              <li><a th:href="@{/patient_case/} + ${patient.patientId}" class="page-scroll">病例查询</a></li>
             </ul>
           </nav>
         </div>

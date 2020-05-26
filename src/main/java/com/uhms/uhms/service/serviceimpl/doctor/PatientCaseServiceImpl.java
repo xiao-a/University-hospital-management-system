@@ -31,6 +31,7 @@ public class PatientCaseServiceImpl implements PatientCaseService {
     public void insert(PatientCaseDto patientCaseDto) {
         DoctorEntity doctorEntity = doctorDao.getById(patientCaseDto.getDoctorId());
         AppointmentEntity appointmentEntity = appointmentDao.getById(patientCaseDto.getAppointmentId());
+
         appointmentEntity.setAppointmentStatus(AppointmentStatusEnum.COMPLETE.getType());
         appointmentDao.update(patientCaseDto.getAppointmentId(),appointmentEntity);
         PatientCaseEntity patientCaseEntity=new PatientCaseEntity();
@@ -43,6 +44,8 @@ public class PatientCaseServiceImpl implements PatientCaseService {
         patientCaseEntity.setPatientName(appointmentEntity.getPatientName());
         patientCaseEntity.setPatientId(appointmentEntity.getPatientId());
         patientCaseEntity.setAppointmentId(patientCaseDto.getAppointmentId());
+        patientCaseEntity.setDoctorId(doctorEntity.getDoctorId());
+        patientCaseEntity.setDoctorName(doctorEntity.getName());
         patientCaseDao.insert(patientCaseEntity);
     }
 
@@ -61,6 +64,8 @@ public class PatientCaseServiceImpl implements PatientCaseService {
         patientCaseEntity.setPatientName(patientEntity.getName());
         patientCaseEntity.setPatientId(patientEntity.getPatientId());
         patientCaseEntity.setAppointmentId(patientCaseDto.getAppointmentId());
+        patientCaseEntity.setDoctorId(doctorEntity.getDoctorId());
+        patientCaseEntity.setDoctorName(doctorEntity.getName());
         patientCaseDao.insert(patientCaseEntity);
     }
 

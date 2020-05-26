@@ -62,4 +62,9 @@ public class DoctorDaoImpl implements DoctorDao {
     public List<DoctorEntity> selectByDivision(String division) {
         return doctorRepository.selectByDivision(division);
     }
+
+    @Override
+    public List<DoctorEntity> vague_find(String doctorId, String division, String name) {
+        return doctorRepository.vague_find(doctorId,division,name);
+    }
 }

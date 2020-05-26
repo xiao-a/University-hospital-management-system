@@ -1,6 +1,7 @@
 package com.uhms.uhms.controller.admin;
 
 import com.uhms.uhms.dto.PatientDto;
+import com.uhms.uhms.dto.PatientVagueDto;
 import com.uhms.uhms.entity.AdminEntity;
 import com.uhms.uhms.entity.PatientEntity;
 import com.uhms.uhms.service.service.admin.AdminService;
@@ -80,6 +81,15 @@ public class PatientManagerController {
         model.addAttribute("patientList",patientList);
         model.addAttribute("admin",adminService.getById(patientDto.getAdminId()));
         model.addAttribute("msg",null);
+        return "admin/patientSelect";
+    }
+
+    @RequestMapping("/admin/select_patient_vague")
+    public String adminSelectPatientVague(PatientVagueDto patientVagueDto, Model model){
+        AdminEntity adminEntity = adminService.getById(patientVagueDto.getAdminId());
+        List<PatientEntity> patientList = patientService.vague_find(patientVagueDto.getPatientId(),patientVagueDto.getName(),patientVagueDto.getPhoneNumber());
+        model.addAttribute("admin",adminEntity);
+        model.addAttribute("patientList",patientList);
         return "admin/patientSelect";
     }
 }

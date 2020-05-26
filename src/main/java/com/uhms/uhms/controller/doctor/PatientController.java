@@ -1,6 +1,7 @@
 package com.uhms.uhms.controller.doctor;
 
 import com.uhms.uhms.dto.DoctorDto;
+import com.uhms.uhms.dto.PatientDto;
 import com.uhms.uhms.entity.PatientEntity;
 import com.uhms.uhms.service.service.doctor.DoctorService;
 import com.uhms.uhms.service.service.patient.PatientService;
@@ -36,5 +37,16 @@ public class PatientController {
         model.addAttribute("doctor",doctorDto);
         model.addAttribute("patient",patient);
         return "doctor/patientDetailSelect";
+    }
+
+
+    @RequestMapping("/select_patient_vague")
+    public String doctorSelectPatient_vague(PatientDto patientDto, Model model){
+        DoctorDto doctorDto = doctorService.getById(patientDto.getDoctorId());
+        List<PatientEntity> patientList = patientService.vague_find(patientDto.getPatientId(),patientDto.getName(),patientDto.getPhoneNumber());
+        model.addAttribute("doctor",doctorDto);
+        model.addAttribute("patientList",patientList);
+        model.addAttribute("msg",null);
+        return "doctor/patientSelect";
     }
 }

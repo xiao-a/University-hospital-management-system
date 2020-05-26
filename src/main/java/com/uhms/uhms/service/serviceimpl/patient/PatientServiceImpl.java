@@ -64,5 +64,14 @@ public class PatientServiceImpl implements PatientService {
         patientDao.update(patientEntity);
     }
 
+    @Override
+    public List<PatientEntity> vague_find(String patientId, String name, String phoneNumber) {
+        List<PatientEntity> patientEntityList = patientDao.vague_find(patientId,name,phoneNumber);
+        for(int i=0;i<patientEntityList.size();i++){
+            patientEntityList.get(i).setSex(SexEnum.getNameByType(patientEntityList.get(i).getSex()));
+        }
+        return patientEntityList;
+    }
+
 
 }
